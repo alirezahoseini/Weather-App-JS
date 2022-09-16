@@ -8,50 +8,142 @@
     <link rel="stylesheet" href="./src/styles/css-reset.css" />
     <link rel="stylesheet" href="./src/styles/tailwind_output.css" />
     <link rel="stylesheet" href="./src/styles/css/animations.css" />
+    <link rel="stylesheet" href="./src/assets/fonts/Font-icons/iconly.css" />
     <!-- End of styles  -->
     <title>آب و هوا</title>
   </head>
   <body>
-    <div id="container" class="w-full bg-white selection:bg-zinc-900 overflow-hidden">
-      <!-------------------------------
+    <div
+      id="container"
+      class="w-full bg-white overflow-hidden relative"
+    >
+       <!-------------------------------
             Start Select the first city
-        --------------------------------->
-        <!-- Start First Page  -->
+       --------------------------------->
       <div
         id="select_first_city"
-        class="w-full min-h-screen flex justify-center items-center flex-col px-3 sm:px-0"
-      >
+        class="w-full min-h-screen relative flex justify-center items-center flex-col hidden"
+        >
+        <!-- Start First Page  -->
         <div
-          class="select_first_city--body w-full sm:w-8/12 md:w-6/12 xl:w-5/12 rounded-3xl mx-auto my-3 bg-gradient-to-b from-blue-300 to-blue-600"
+          class="select_first_city--first_page w-11/12 sm:w-8/12 md:w-6/12 xl:w-5/12 rounded-3xl mx-auto my-3 bg-gradient-to-b from-blue-300 to-blue-600 transition duration-700 animate_bottom"
         >
           <img
             src="./src/assets/images/sun/16.png"
             alt="sun image"
-            class="body--image w-6/12 mx-auto my-12"
+            class="body--image transition duration-700 w-6/12 mx-auto my-12 animate_bottom "
           />
           <div class="body--texts px-4 lg:px-0 text-center">
-            <h1 class="text-white font-bold text-xl sm:text-2xl">
+            <h1 class="text-white font-bold text-xl sm:text-2xl animate_bottom transition duration-700">
               Discover the Weather in Your City
             </h1>
-            <p class="text-gray-300 text-sm mt-4 leading-7">
+            <p class="text-gray-300 text-sm mt-4 leading-7 animate_bottom transition duration-700">
               Get to know your Weather maps and radar precipitation forecast
             </p>
-            <button class="bg-white rounded-lg w-6/12 py-3 my-6 text-blue-600 transition-colors  border-transparent border-2  hover:text-white hover:bg-transparent hover:border-white outline-none">Get Started</button>
+            <button
+              class="bg-white rounded-lg w-6/12 py-3 my-6 text-blue-600 transition-colors border-transparent border-2 hover:text-white hover:bg-transparent hover:border-white outline-none animate_bottom transition duration-700"
+            >
+              Get Started
+            </button>
           </div>
         </div>
+        <!-- End of First Page  -->
+        <!-- Start Select Box Popup -->
+        <div
+          class="select_first_city--selectbox w-11/12 sm:w-8/12 md:w-6/12 xl:w-5/12 rounded-3xl mx-auto my-3 bg-white first-letter: absolute top-0 invisible transition duration-700 animate_bottom"
+        >
+        <img
+            src="./src/assets/images/location/location-pin.png"
+            alt="sun image"
+            class="selectbox--image w-6/12 mx-auto transition duration-700 animate_bottom"
+          />
+          <h2 class="font-bold text-gray-700 text-xl sm:text-2xl text-center mb-10 transition duration-700 animate_bottom" >Select your City</h2>
+          <!-- Start Found your city with ip  -->
+          <div class="selectbox--founded_city_with_ip w-11/12 mx-auto">
+            <label for="city_with_ip" class="text-sm text-gray-400 mb-2 block">City found with your ip</label>
+            <div class="flex relative items-center justify-between">
+              <input name="city_with_ip" id="default_cities" class=" block bg-gray-50 focus:border-gray-400 transition-all cursor-pointer p-3 rounded-lg outline-none border-2 text-sm pr-8 text-gray-800 w-full" value="Tehran" disabled>
+            </div>
+            <div class=" buttons w-full flex justify-around items-center my-4 transition duration-700 animate_bottom">
+              <button class="w-5/12 bg-blue-100 p-3 rounded-lg text-blue-600 hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center">
+                <i class="icon-light-accept text-lg mr-2"></i>
+                <span>it's true</span>
+              </button>
+              <button class="w-5/12 bg-red-100 p-3 rounded-lg text-red-600 hover:bg-red-600 hover:text-white transition-all flex items-center justify-center">
+                <i class="icon-light-close-square text-lg mr-2"></i>
+                <span>wrong</span>
+              </button>
+            </div>
+          </div>
+          <!-- End of Found your city by ip  -->
+          <!-- Start Select Default city -->
+          <div class="selectbox--default_cities w-11/12 mx-auto invisible h-0">
+            <label for="default_cities" class="text-sm text-gray-400 mb-2 block">Default Cities</label>
+            <div class="flex select relative">
+              <select name="default_cities" id="default_cities" class=" w-full block bg-gray-50 focus:border-gray-400 transition-all cursor-pointer p-3 rounded-lg outline-none border-2 text-sm pr-8 text-gray-800">
+                <option value="null">Choose from default cities</option>
+                <option value="tehran">Tehran</option>
+                <option value="Tabriz">Tabriz</option>
+                <option value="mashhag">Mashhad</option>
+                <option value="esfahan">Esfahan</option>
+                <option value="newyork">Newyork</option>
+                <option value="landan">Landan</option>
+                <option value="moscow">Moscow</option>
+                <option value="toronto">Toronto</option>
+                <option value="tokyo">Tokyo</option>
+                <option value="berlin">Berlin</option>
+              </select>
+              <i class="icon-light-arrow-down-1 absolute right-3 text-xl"></i>
+            </div>
+          </div>
+          <!--  End of Select Default city -->
+          <div class="selectbox--line flex items-center justify-around w-full px-3 mx-auto text-gray-400 mt-5 mb-3 invisible h-0">
+            <hr class="w-5/12">
+            <span>or</span>
+            <hr class="w-5/12">
+          </div>
+          <!-- Enter custom city -->
+          <div class="selectbox--custom_city w-11/12 mx-auto invisible h-0">
+            <label for="custom_city" class="text-sm text-gray-400 mb-2 block">Enter custom city</label>
+            <div class="flex relative">
+              <input type="text" name="custom_city" id="custom_city" placeholder="For example, Tehran..." class=" w-full block bg-gray-50 focus:border-gray-400 transition-all cursor-pointer p-3 rounded-lg outline-none border-2 text-sm pr-8 text-gray-800">
+            </div>
+          </div>
+          <!-- Enter custom city -->
+        </div>
+        <!-- Start Select Box Popup -->
       </div>
-      <!-- End of First Page  -->
-      <!-- Start Select Box Popup -->
-      
-      <!-- Start Select Box Popup -->
       <!-------------------------------
             End of Select the first city
-        --------------------------------->
+       --------------------------------->
+      <!-------------------------------
+                Start APP
+       --------------------------------->
+       <div id="app">
+          <h1>app</h1>
+       </div>
+      <!-------------------------------
+                End of APP
+       --------------------------------->
+      <!-------------------------------
+                Start Loading
+       --------------------------------->
+       <div id="loading" class="w-full bg-white h-screen fixed top-0 right-0 flex items-center justify-center flex-col">
+          <i class="icon-light-star text-blue-600 text-4xl lg:text-6xl"></i>
+          <span class="text-sm text-gray-600 mt-3">Loading...</span>
+       </div>
+      <!-------------------------------
+                End of Loading
+       --------------------------------->
+
     </div>
 
     <!-----------------------
             Scripts
     ----------------------->
-    <script src="./src/js/app.js"></script>
+    <script type="module" src="./src/js/dom.js"></script>
+    <script type="module" src="./src/js/userCity.js"></script>
+    <script type="module" src="./src/js/app.js"></script>
+    <script type="module" src="./src/js/animaitons.js"></script>
   </body>
 </html>

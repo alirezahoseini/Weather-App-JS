@@ -4,56 +4,99 @@
 
 /* font family  */
 @font-face {
-    font-family: 'Poppins';
-    src: url('../../../public/fonts/Poppins/Poppins-thin.ttf') format('ttf');
-    font-weight: 200; 
-    font-style: normal;
-  }
+  font-family: "Poppins";
+  src: url("../../../public/fonts/Poppins/Poppins-thin.ttf") format("ttf");
+  font-weight: 200;
+  font-style: normal;
+}
 @font-face {
-    font-family: 'Poppins';
-    src: url('../../../public/fonts/Poppins/Poppins-light.ttf') format('ttf');
-    font-weight: 300; 
-    font-style: normal;
-  }
+  font-family: "Poppins";
+  src: url("../../../public/fonts/Poppins/Poppins-light.ttf") format("ttf");
+  font-weight: 300;
+  font-style: normal;
+}
 @font-face {
-    font-family: 'Poppins';
-    src: url('../../../public/fonts/Poppins/Poppins-regular.ttf') format('ttf');
-    font-weight: 400; 
-    font-style: normal;
-  }
+  font-family: "Poppins";
+  src: url("../../../public/fonts/Poppins/Poppins-regular.ttf") format("ttf");
+  font-weight: 400;
+  font-style: normal;
+}
 @font-face {
-    font-family: 'Poppins';
-    src: url('../../../public/fonts/Poppins/Poppins-medium.ttf') format('ttf');
-    font-weight: 500; 
-    font-style: normal;
-  }
+  font-family: "Poppins";
+  src: url("../../../public/fonts/Poppins/Poppins-medium.ttf") format("ttf");
+  font-weight: 500;
+  font-style: normal;
+}
 @font-face {
-    font-family: 'Poppins';
-    src: url('../../../public/fonts/Poppins/Poppins-demibold.ttf') format('ttf');
-    font-weight: bold; 
-    font-style: normal;
-  }
+  font-family: "Poppins";
+  src: url("../../../public/fonts/Poppins/Poppins-demibold.ttf") format("ttf");
+  font-weight: bold;
+  font-style: normal;
+}
 @font-face {
-    font-family: 'Poppins';
-    src: url('../../../public/fonts/Poppins/Poppins-extrabold.ttf') format('ttf');
-    font-weight: bolder; 
-    font-style: normal;
-  }
+  font-family: "Poppins";
+  src: url("../../../public/fonts/Poppins/Poppins-extrabold.ttf") format("ttf");
+  font-weight: bolder;
+  font-style: normal;
+}
 @font-face {
-    font-family: 'Poppins';
-    src: url('../../../public/fonts/Poppins/Poppins-extrabold.ttf') format('ttf');
-    font-weight:900; 
-    font-style: normal;
-  }
-  body{
-    font-family: "Poppins" !important;
-  }
+  font-family: "Poppins";
+  src: url("../../../public/fonts/Poppins/Poppins-extrabold.ttf") format("ttf");
+  font-weight: 900;
+  font-style: normal;
+}
+body {
+  font-family: "Poppins" !important;
+}
 /* font family  */
 
 /* -----------------
-      animations
+      Start Select City 
+------------------ */
+.selectbox--default_cities select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.selectbox--default_cities .select i {
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+}
+/* -----------------
+      End of Select City 
 ------------------ */
 
-/* -----------------
-  End of animations
------------------- */
+/* Start loading  */
+#loading.hidden{
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+#loading i{
+  animation-name: rotate;
+  animation-duration: 1.5s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation-iteration-count: infinite;
+}
+@keyframes rotate {
+  0%{
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  } 100%{
+  transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  }
+}
+
+/* End of loading  */
