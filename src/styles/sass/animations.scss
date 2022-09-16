@@ -1,0 +1,21 @@
+@import './mixins';
+
+
+#select_first_city{
+    @include slide_bottom(.5s, 50px);
+
+    .body--image{
+        @include slide_bottom (.5s, -50px);
+    }
+    .body--texts{
+        h1{
+            @include slide_bottom (.7s, 50px);
+        }
+        p{
+            @include slide_bottom (.9s, 50px);
+        }
+        button{
+            @include slide_bottom (1.1s, 50px);
+        }
+    }
+}

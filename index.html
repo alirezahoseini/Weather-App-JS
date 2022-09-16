@@ -1,13 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./src/styles/tailwind_output.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- styles  -->
+    <link rel="stylesheet" href="./src/styles/css-reset.css" />
+    <link rel="stylesheet" href="./src/styles/tailwind_output.css" />
+    <link rel="stylesheet" href="./src/styles/css/animations.css" />
+    <!-- End of styles  -->
     <title>آب و هوا</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <div id="container" class="w-full bg-white selection:bg-zinc-900 overflow-hidden">
+      <!-------------------------------
+            Start Select the first city
+        --------------------------------->
+        <!-- Start First Page  -->
+      <div
+        id="select_first_city"
+        class="w-full min-h-screen flex justify-center items-center flex-col px-3 sm:px-0"
+      >
+        <div
+          class="select_first_city--body w-full sm:w-8/12 md:w-6/12 xl:w-5/12 rounded-3xl mx-auto my-3 bg-gradient-to-b from-blue-300 to-blue-600"
+        >
+          <img
+            src="./src/assets/images/sun/16.png"
+            alt="sun image"
+            class="body--image w-6/12 mx-auto my-12"
+          />
+          <div class="body--texts px-4 lg:px-0 text-center">
+            <h1 class="text-white font-bold text-xl sm:text-2xl">
+              Discover the Weather in Your City
+            </h1>
+            <p class="text-gray-300 text-sm mt-4 leading-7">
+              Get to know your Weather maps and radar precipitation forecast
+            </p>
+            <button class="bg-white rounded-lg w-6/12 py-3 my-6 text-blue-600 transition-colors  border-transparent border-2  hover:text-white hover:bg-transparent hover:border-white outline-none">Get Started</button>
+          </div>
+        </div>
+      </div>
+      <!-- End of First Page  -->
+      <!-- Start Select Box Popup -->
+      
+      <!-- Start Select Box Popup -->
+      <!-------------------------------
+            End of Select the first city
+        --------------------------------->
+    </div>
+
+    <!-----------------------
+            Scripts
+    ----------------------->
+    <script src="./src/js/app.js"></script>
+  </body>
 </html>

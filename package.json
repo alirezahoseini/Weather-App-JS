@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "sass" : "sass --watch src/styles/sass:src/styles/css",
     "tailwind" : "npx tailwindcss -i ./src/styles/tailwind.css -o ./src/styles/tailwind_output.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

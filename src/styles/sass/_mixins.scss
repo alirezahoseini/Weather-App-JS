@@ -1,0 +1,85 @@
+// ------------  Slide right --------- //
+@mixin slide_right($duration, $space) {
+    animation-name: slide_right;
+    animation-duration: $duration;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: backwards;
+    animation-iteration-count: 1;
+    animation-delay: .3s;
+
+    @keyframes slide_right {
+        0%{
+            transform: translateX($space);
+            -webkit-transform: translateX($space);
+            -moz-transform: translateX($space);
+            -ms-transform: translateX($space);
+            -o-transform: translateX($space);
+            opacity: 0;
+}
+        100%{
+            transform: translateX(0);
+            -webkit-transform: translateX(0);
+            -moz-transform: translateX(0);
+            -ms-transform: translateX(0);
+            -o-transform: translateX(0);
+            opacity: 1;
+        }
+    }
+}
+
+// ------------  Slide Left --------- //
+@mixin slide_left($duration, $space) {
+    animation-name: slide_left;
+    animation-duration: $duration;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: backwards;
+    animation-iteration-count: 1;
+    animation-delay: .3s;
+
+    @keyframes slide_left {
+        0%{
+            transform: translateX($space);
+            -webkit-transform: translateX($space);
+            -moz-transform: translateX($space);
+            -ms-transform: translateX($space);
+            -o-transform: translateX($space);
+            opacity: 0;
+}
+        100%{
+            transform: translateX(0);
+            -webkit-transform: translateX(0);
+            -moz-transform: translateX(0);
+            -ms-transform: translateX(0);
+            -o-transform: translateX(0);
+            opacity: 1;
+        }
+    }
+}
+// ------------  Slide Bottom --------- //
+@mixin slide_bottom($duration, $space) {
+    animation-name: slide_bottm;
+    animation-duration: $duration;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: backwards;
+    animation-iteration-count: 1;
+    animation-delay: .3s;
+
+    @keyframes slide_bottm {
+        0%{
+            transform: translateY($space);
+            -webkit-transform: translateY($space);
+            -moz-transform: translateY($space);
+            -ms-transform: translateY($space);
+            -o-transform: translateY($space);
+            opacity: 0;
+}
+        100%{
+            transform: translateY(0);
+            -webkit-transform: translateY(0);
+            -moz-transform: translateY(0);
+            -ms-transform: translateY(0);
+            -o-transform: translateY(0);
+            opacity: 1;
+}
+    }
+}
