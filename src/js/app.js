@@ -1,30 +1,54 @@
-import Dom from './dom.js'
-import UserCity from './userCity.js'
-// classes 
-const dom = new Dom()
-const userCity = new UserCity()
+import Dom from "./dom.js";
+import UserCity from "./userCity.js";
+import Animations from "./animaitons.js";
+// classes
+const dom = new Dom();
+const userCity = new UserCity();
+const animations = new Animations();
 
-showPages()
-function showPages(){
-    const userCityData = userCity.checkLocalStorage();
-    if(userCityData !== null){
-        showApp()
-    }else{
-        showFirstPage()
-    }
+// Evenetlisteners
+document.addEventListener("DOMContentLoaded", eventlisteners);
+function eventlisteners() {
+  // Run animations
+  animations.firstPageSelectCity();
+  //
+  document
+    .querySelector(".select_first_city--first_page .body--texts button")
+    .addEventListener("click", animations.switchFirstPageAndSelectCityPage);
+}
+
+/*-------------------
+     Functions 
+-------------------*/
+// Automatic Show Pages
+showPages();
+function showPages() {
+  const userCityData = userCity.checkLocalStorage();
+  if (userCityData !== null) {
+    dom.showApp();
+  } else {
+    userCity.accessUserCityWithIp();
+    dom.showFirstPage();
+    openSelectCity();
+    userCity.setCityToloaclstorage()
+  }
 }
 
 
-function showApp(){
-    console.log('app');
+
+// Open select City And run select box
+function openSelectCity() {
+  // variables
+  const wrongBtn = document.querySelector("#wrong_btn");
+  const trueBtn = document.querySelector("#true_btn");
+  // ***------*** Eventlisteners ***------***
+  // Open Select options
+  wrongBtn.addEventListener("click", () => {
+    animations.openSelectCityOptions();
+    // run select city form
+    userCity.selectCity();
+  });
 }
-
-function showFirstPage(){
-    console.log('firstPage'); 
-}
-
-
-
 
 // sendRequest()
 // function sendRequest() {

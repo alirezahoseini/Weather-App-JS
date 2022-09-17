@@ -66,12 +66,23 @@ body {
   -ms-transform: translateY(-50%);
   -o-transform: translateY(-50%);
 }
+.select_first_city--selectbox  .selectbox--image{
+  transition: .7s;
+  max-width: calc(100% / 2);
+  -webkit-transition: .7s;
+  -moz-transition: .7s;
+  -ms-transition: .7s;
+  -o-transition: .7s;
+}
+.select_first_city--selectbox  .selectbox--image.sm{
+  max-width: calc(100% / 4);
+}
 /* -----------------
       End of Select City 
 ------------------ */
 
 /* Start loading  */
-#loading.hidden{
+#loading.hidde{
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
