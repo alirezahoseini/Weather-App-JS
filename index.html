@@ -13,7 +13,7 @@
     <title>Weather App</title>
   </head>
   <body>
-    <div id="container" class="w-full bg-white dark:bg-slate-900 overflow-hidden relative">
+    <div id="container" class="w-full min-h-screen bg-white dark:bg-slate-900 overflow-hidden relative">
       <!-------------------------------
             Start Select the first city
        --------------------------------->
@@ -172,14 +172,30 @@
       <!-------------------------------
                 Start APP
        --------------------------------->
-       <!-- Start Desktop Header -->
-       <div id="desktop_header" class="w-full hidden py-3 px-4 md:flex justify-between items-center dark:bg-red-600">
+       <!-- Start  Header -->
+       <div id="desktop_header" class="w-full py-3 px-4 flex justify-between items-center ">
         <h2>
-          <a href="#" class="text-sm font-bold text-gray-600">Weather App.</a>
+          <a href="#" class="text-sm font-bold text-gray-600 dark:text-gray-100">Weather App.</a>
         </h2>
-        <i id="desktop--dark_switcher" class="icon-night cursor-pointer transition duration-200 p-3 bg-slate-50 dark:bg-slate-700 rounded-lg text-md "></i>
+        <div class="theme_switcher relative">
+          <i id="switcher_btn" class="icon-night cursor-pointer transition duration-200 p-3 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-gray-200 rounded-lg text-md "></i>
+          <ul id="switcher_menu" class="flex flex-col bg-slate-50 dark:bg-slate-800  rounded-lg absolute w-20 text-slate-700 dark:text-slate-50">
+            <li data-theme-value="dark" class="flex items-center justify-start px-2 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 py-1 mb-1 rounded-lg text-sm transition duration-150">
+              <i class="icon-night mr-2"></i>
+              <span class="text-sm">Dark</span>
+            </li>
+            <li data-theme-value="light" class="flex items-center justify-start px-2 py-1 cursor-pointer my-1 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-sm transition duration-150">
+              <i class="icon-sun mr-2"></i>
+              <span class="text-sm">Light</span>
+            </li>
+            <li data-theme-value="auto" class="flex items-center justify-start px-2 py-1 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 mt-1 rounded-lg text-sm transition duration-150">
+              <i class="icon-settings-2 mr-2"></i>
+              <span class="text-sm">Auto</span>
+            </li>
+          </ul>
+        </div>
        </div>
-       <!-- End of Desktop Header -->
+       <!-- End of Header -->
       <div id="app" class="hidden p-3 ">
         <div id="gradient_box" class="bg-gradient-to-b from-blue-300 to-blue-700 rounded-3xl w-full md:w-4/12 p-2">
           <!-------------------------------
@@ -187,25 +203,10 @@
           --------------------------------->
           <div id="realtime_weather" class="p-3 text-white ">
             <!-- start real HEADER  -->
-            <div class="real--header flex justify-between items-center">
-                <div class="real_header--cities_menu_btn flex items-center w-8 h-8 cursor-pointer border-2 border-blue-200 rounded-full justify-center">
-                  <div class="row-1">
-                    <div class="cirlce-1 bg-white w-1 h-1 rounded-full mr-1 my-1"></div>
-                    <div class="cirlce-2 bg-white w-1 h-1 rounded-full mr-1 my-1"></div>
-                  </div>
-                  <div class="row-2">
-                    <div class="cirlce-3 bg-white w-1 h-1 rounded-full  my-1"></div>
-                    <div class="cirlce-4 bg-white w-1 h-1 rounded-full  my-1"></div>
-                  </div>
-                </div>
+            <div class="real--header flex justify-center items-center">
                 <div class="location font-bold">
                   <i class="icon-location text-md mr-1"></i>
                   Los Angeles
-                </div>
-                <div class="other_menu cursor-pointer w-4 h-8 pt-1 lg:invisible">
-                  <div class="cirlce-3 bg-white w-1 h-1 rounded-full mb-1 "></div>
-                  <div class="cirlce-3 bg-white w-1 h-1 rounded-full mb-1"></div>
-                  <div class="cirlce-3 bg-white w-1 h-1 rounded-full mb-1"></div>
                 </div>
             </div>
             <!-- End of real HEADER  -->

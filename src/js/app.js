@@ -18,7 +18,7 @@ function eventlisteners() {
     .querySelector(".select_first_city--first_page .body--texts button")
     .addEventListener("click", animations.switchFirstPageAndSelectCityPage);
   // Switch Theme ---- Dark and light
-  document.querySelector('#desktop--dark_switcher').addEventListener('click', themeSwitcher)
+  document.querySelector('#switcher_btn').addEventListener('click', themeSwitcher)
 }
 
 /*-------------------
@@ -62,5 +62,7 @@ function openSelectCity() {
 
 // Switch Theme ---- Dark and light
 function themeSwitcher(){
-  theme.themeChenger()
+  // open themes menu
+  const menu = document.querySelector('#switcher_menu');
+  menu.classList.add('active');
 }

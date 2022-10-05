@@ -129,4 +129,32 @@ body {
 }
 /* End of Gradient box */
 
-
+/* Dark mode Switcher menu and button styles */
+#switcher_menu{
+  top: 0px;
+  left: -40px;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: all ease-in-out 0s;
+  -webkit-transition: all ease-in-out 0s;
+  -moz-transition: all ease-in-out 0s;
+  -ms-transition: all ease-in-out 0s;
+  -o-transition: all ease-in-out 0s;
+}
+#switcher_menu.active{
+  top:0px;
+  left: -40px;
+  opacity: 1;
+  pointer-events: all;
+  visibility: visible;
+}
+#switcher_menu li.active{
+  background: rgb(220, 244, 247);
+  color: rgb(58, 58, 58);
+}
+body.dark #switcher_menu li.active{
+  background: rgb(108, 103, 122);
+  color: rgb(243, 243, 243);
+}
+/* End of Dark mode Switcher menu and button styles */
