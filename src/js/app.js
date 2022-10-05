@@ -1,9 +1,11 @@
 import Dom from "./dom.js";
 import UserCity from "./userCity.js";
 import Animations from "./animaitons.js";
+import Theme from "./theme.js";
 // classes
 const dom = new Dom();
 const userCity = new UserCity();
+const theme = new Theme();
 const animations = new Animations();
 
 // Evenetlisteners
@@ -11,10 +13,12 @@ document.addEventListener("DOMContentLoaded", eventlisteners);
 function eventlisteners() {
   // Run animations
   animations.firstPageSelectCity();
-  //
+  // Switch first page to select city page
   document
     .querySelector(".select_first_city--first_page .body--texts button")
     .addEventListener("click", animations.switchFirstPageAndSelectCityPage);
+  // Switch Theme ---- Dark and light
+  document.querySelector('#desktop--dark_switcher').addEventListener('click', themeSwitcher)
 }
 
 /*-------------------
@@ -35,12 +39,12 @@ function showPages() {
 }
 
 
-
 // Open select City And run select box
 function openSelectCity() {
   // variables
-  const wrongBtn = document.querySelector("#wrong_btn");
-  const trueBtn = document.querySelector("#true_btn");
+  const wrongBtn = document.querySelector("#wrong_btn"),
+        trueBtn = document.querySelector("#true_btn"),
+        backBtn = document.querySelector("#first_city--back_btn");
   // ***------*** Eventlisteners ***------***
   // Open Select options
   wrongBtn.addEventListener("click", () => {
@@ -48,40 +52,15 @@ function openSelectCity() {
     // run select city form
     userCity.selectCity();
   });
+  // Open App page
+  trueBtn.addEventListener('click', () => dom.showApp())
+  // Close Select options
+  backBtn.addEventListener('click', () => animations.closeSelectCityOptions())
+  
 }
 
-// sendRequest()
-// function sendRequest() {
-//     fetch("https://key48798231.herokuapp.com/weather?city=tehran", {
-//         method: "GET",
-//     }).then((res) =>{
-//         res.json().then(output => showResult(output))
-//     }).catch(error =>{
-//         console.log(error);
-//     })
-// }
 
-// function showResult(data){
-//     console.log(data)
-// }
-
-// sendRequest();
-// function sendRequest() {
-//   const url = "https://api.ipgeolocation.io/ipgeo?apiKey=";
-//   const key = "05eb684275634618a6ef2f613715aef8";
-//   fetch(url+key, {
-//     method: "GET",
-//   })
-//     .then((res) => {
-//       res.json().then((output) => showResult(output));
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// }
-
-// function showResult(data) {
-//   console.log(data);
-// }
-// const url = "https://api.ipgeolocation.io/ipgeo?apiKey=";
-// const key = "05eb684275634618a6ef2f613715aef8";
+// Switch Theme ---- Dark and light
+function themeSwitcher(){
+  theme.themeChenger()
+}

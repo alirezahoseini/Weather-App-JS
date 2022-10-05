@@ -10,20 +10,17 @@
     <link rel="stylesheet" href="./src/styles/css/animations.css" />
     <link rel="stylesheet" href="./src/assets/fonts/Font-icons/iconly.css" />
     <!-- End of styles  -->
-    <title>آب و هوا</title>
+    <title>Weather App</title>
   </head>
   <body>
-    <div
-      id="container"
-      class="w-full bg-white overflow-hidden relative"
-    >
-       <!-------------------------------
+    <div id="container" class="w-full bg-white dark:bg-slate-900 overflow-hidden relative">
+      <!-------------------------------
             Start Select the first city
        --------------------------------->
       <div
         id="select_first_city"
-        class="w-full min-h-screen relative hidden justify-center items-center "
-        >
+        class="w-full min-h-screen relative hidden justify-center items-center"
+      >
         <!-- Start First Page  -->
         <div
           class="select_first_city--first_page w-11/12 sm:w-8/12 md:w-6/12 xl:w-5/12 rounded-3xl mx-auto my-3 bg-gradient-to-b from-blue-300 to-blue-600 transition duration-700 animate_bottom"
@@ -31,13 +28,17 @@
           <img
             src="./src/assets/images/sun/16.png"
             alt="sun image"
-            class="body--image transition duration-700 w-6/12 mx-auto my-12 animate_bottom "
+            class="body--image transition duration-700 w-6/12 mx-auto my-12 animate_bottom"
           />
           <div class="body--texts px-4 lg:px-0 text-center">
-            <h1 class="text-white font-bold text-xl sm:text-2xl animate_bottom transition duration-700">
+            <h1
+              class="text-white font-bold text-xl sm:text-2xl animate_bottom transition duration-700"
+            >
               Discover the Weather in Your City
             </h1>
-            <p class="text-gray-300 text-sm mt-4 leading-7 animate_bottom transition duration-700">
+            <p
+              class="text-gray-300 text-sm mt-4 leading-7 animate_bottom transition duration-700"
+            >
               Get to know your Weather maps and radar precipitation forecast
             </p>
             <button
@@ -50,67 +51,118 @@
         <!-- End of First Page  -->
         <!-- Start Select Box Popup -->
         <div
-          class="select_first_city--selectbox  w-11/12 sm:w-8/12 md:w-6/12 xl:w-5/12 rounded-3xl mx-auto my-3 bg-white absolute top-0 invisible transition duration-700 animate_bottom"
+          class="select_first_city--selectbox w-11/12 sm:w-8/12 md:w-6/12 xl:w-5/12 rounded-3xl mx-auto my-3 bg-white absolute top-0 invisible transition duration-700 animate_bottom"
         >
-        <img
+        <button id="first_city--back_btn" class="bg-gray-100 px-4 py-2 rounded-lg flex items-center text-gray-700 hover:bg-gray-700 hover:text-white invisible animate_left transition duration-700">
+          <i class="icon-arrow-left-square mr-2"></i>
+          <span class="text-sm">Back</span>
+        </button>
+          <img
             src="./src/assets/images/location/location-pin.png"
             alt="sun image"
             class="selectbox--image mx-auto transition duration-700 animate_bottom"
           />
-          <h2 class="font-bold text-gray-700 text-xl sm:text-2xl text-center mb-10 transition duration-700 animate_bottom" >Select your City</h2>
+          <h2
+            class="font-bold text-gray-700 text-xl sm:text-2xl text-center mb-10 transition duration-700 animate_bottom"
+          >
+            Select your City
+          </h2>
           <!-- Start Found your city with ip  -->
-          <div class="selectbox--founded_city_with_ip w-11/12 mx-auto transition duration-700">
-            <label for="city_with_ip" class="text-sm text-gray-400 mb-2 block">City found with your ip</label>
+          <div
+            class="selectbox--founded_city_with_ip w-11/12 mx-auto transition duration-700"
+          >
+            <label for="city_with_ip" class="text-sm text-gray-400 mb-2 block"
+              >City found with your ip</label
+            >
             <div class="flex relative items-center justify-between">
-              <input name="city_with_ip" id="city_with_ip" class=" block bg-gray-50 focus:border-gray-400 transition-all cursor-pointer p-3 rounded-lg outline-none border-2 text-sm pr-8 text-gray-800 w-full" value="Not Access" disabled>
+              <input
+                name="city_with_ip"
+                id="city_with_ip"
+                class="block bg-gray-50 focus:border-gray-400 transition-all cursor-pointer p-3 rounded-lg outline-none border-2 text-sm pr-8 text-gray-800 w-full"
+                value="Not Access"
+                disabled
+              />
             </div>
-            <div class=" buttons w-full flex justify-around items-center my-4 transition duration-700 animate_bottom">
-              <button id="true_btn" class="w-5/12 bg-blue-100 p-3 rounded-lg text-blue-600 hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center">
-                <i class="icon-light-accept text-lg mr-2"></i>
+            <div
+              class="buttons w-full flex justify-around items-center my-4 transition duration-700 animate_bottom"
+            >
+              <button
+                id="true_btn"
+                class="w-5/12 bg-blue-100 p-3 rounded-lg text-blue-600 hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center"
+              >
+                <i class="icon-accept text-lg mr-2"></i>
                 <span>it's true</span>
               </button>
-              <button id="wrong_btn" class="w-5/12 bg-red-100 p-3 rounded-lg text-red-600 hover:bg-red-600 hover:text-white transition-all flex items-center justify-center">
-                <i class="icon-light-close-square text-lg mr-2"></i>
+              <button
+                id="wrong_btn"
+                class="w-5/12 bg-red-100 p-3 rounded-lg text-red-600 hover:bg-red-600 hover:text-white transition-all flex items-center justify-center"
+              >
+                <i class="icon-close-square text-lg mr-2"></i>
                 <span>wrong</span>
               </button>
             </div>
           </div>
           <!-- End of Found your city by ip  -->
           <!-- Start Select Default city -->
-          <div class="selectbox--default_cities w-11/12 mx-auto h-0 transition duration-700 animate_bottom invisible hidden">
-            <label for="default_cities" class="text-sm text-gray-400 mb-2 block">Default Cities</label>
+          <div
+            class="selectbox--default_cities w-11/12 mx-auto h-0 transition duration-700 animate_bottom invisible hidden"
+          >
+            <label for="default_cities" class="text-sm text-gray-400 mb-2 block"
+              >Default Cities</label
+            >
             <div class="flex select relative">
-              <select name="default_cities" id="default_cities" class=" w-full block bg-gray-50 focus:border-gray-400 transition-all cursor-pointer p-3 rounded-lg outline-none border-2 text-sm pr-8 text-gray-800">
+              <select
+                name="default_cities"
+                id="default_cities"
+                class="w-full block bg-gray-50 focus:border-gray-400 transition-all cursor-pointer p-3 rounded-lg outline-none border-2 text-sm pr-8 text-gray-800"
+              >
                 <option value="null">Choose from default cities</option>
                 <option value="tehran">Tehran</option>
                 <option value="tabriz">Tabriz</option>
                 <option value="mashhad">Mashhad</option>
                 <option value="esfahan">Esfahan</option>
-                <option value="newyork">Newyork</option>
                 <option value="landan">Landan</option>
                 <option value="moscow">Moscow</option>
                 <option value="toronto">Toronto</option>
                 <option value="tokyo">Tokyo</option>
                 <option value="berlin">Berlin</option>
               </select>
-              <i class="icon-light-arrow-down-1 absolute right-3 text-xl"></i>
+              <i class="icon-arrow-down-1 absolute right-3 text-xl"></i>
             </div>
           </div>
           <!--  End of Select Default city -->
-          <div class="selectbox--line items-center justify-around w-full px-3 mx-auto text-gray-400 mt-5 mb-3 h-0 transition duration-700 animate_bottom invisible hidden ">
-            <hr class="w-5/12">
+          <div
+            class="selectbox--line items-center justify-around w-full px-3 mx-auto text-gray-400 mt-5 mb-3 h-0 transition duration-700 animate_bottom invisible hidden"
+          >
+            <hr class="w-5/12" />
             <span>or</span>
-            <hr class="w-5/12">
+            <hr class="w-5/12" />
           </div>
           <!-- Enter custom city -->
-          <div class="selectbox--custom_city w-11/12 mx-auto  h-0 transition duration-700 animate_bottom invisible hidden">
-            <label for="custom_city" class="text-sm text-gray-400 mb-2 block">Enter custom city</label>
+          <div
+            class="selectbox--custom_city w-11/12 mx-auto h-0 transition duration-700 animate_bottom invisible hidden"
+          >
+            <label for="custom_city" class="text-sm text-gray-400 mb-2 block"
+              >Enter custom city</label
+            >
             <div class="flex relative">
-              <input type="text" name="custom_city" id="custom_city" placeholder="For example, Tehran..." class=" w-full block bg-gray-50 focus:border-gray-400 transition-all cursor-pointer p-3 rounded-lg outline-none border-2 text-sm pr-8 text-gray-800">
+              <input
+                type="text"
+                name="custom_city"
+                id="custom_city"
+                placeholder="For example, Tehran..."
+                class="w-full block bg-gray-50 focus:border-gray-400 transition-all cursor-pointer p-3 rounded-lg outline-none border-2 text-sm pr-8 text-gray-800"
+              />
             </div>
           </div>
           <!-- Enter custom city -->
-          <button type="button" class="selectbox--continue-btn bg-blue-600 text-white my-7 py-3 rounded-lg w-1/2 mx-auto block opacity-50 cursor-pointer cursor-not-allowed h-0 transition duration-700 animate_bottom invisible hidden" disabled="true">Continue</button>
+          <button
+            type="button"
+            class="selectbox--continue-btn bg-blue-600 hover:bg-blue-800 text-white my-7 py-3 rounded-lg w-1/2 mx-auto block opacity-50 cursor-pointer cursor-not-allowed h-0 transition duration-700 animate_bottom invisible hidden"
+            disabled="true"
+          >
+            Continue
+          </button>
         </div>
         <!-- Start Select Box Popup -->
       </div>
@@ -120,43 +172,89 @@
       <!-------------------------------
                 Start APP
        --------------------------------->
-       <div id="app" class="hidden">
-          <h1>app</h1>
+       <!-- Start Desktop Header -->
+       <div id="desktop_header" class="w-full hidden py-3 px-4 md:flex justify-between items-center dark:bg-red-600">
+        <h2>
+          <a href="#" class="text-sm font-bold text-gray-600">Weather App.</a>
+        </h2>
+        <i id="desktop--dark_switcher" class="icon-night cursor-pointer transition duration-200 p-3 bg-slate-50 dark:bg-slate-700 rounded-lg text-md "></i>
        </div>
+       <!-- End of Desktop Header -->
+      <div id="app" class="hidden p-3 ">
+        <div id="gradient_box" class="bg-gradient-to-b from-blue-300 to-blue-700 rounded-3xl w-full md:w-4/12 p-2">
+          <!-------------------------------
+                Start realtime weather
+          --------------------------------->
+          <div id="realtime_weather" class="p-3 text-white ">
+            <!-- start real HEADER  -->
+            <div class="real--header flex justify-between items-center">
+                <div class="real_header--cities_menu_btn flex items-center w-8 h-8 cursor-pointer border-2 border-blue-200 rounded-full justify-center">
+                  <div class="row-1">
+                    <div class="cirlce-1 bg-white w-1 h-1 rounded-full mr-1 my-1"></div>
+                    <div class="cirlce-2 bg-white w-1 h-1 rounded-full mr-1 my-1"></div>
+                  </div>
+                  <div class="row-2">
+                    <div class="cirlce-3 bg-white w-1 h-1 rounded-full  my-1"></div>
+                    <div class="cirlce-4 bg-white w-1 h-1 rounded-full  my-1"></div>
+                  </div>
+                </div>
+                <div class="location font-bold">
+                  <i class="icon-location text-md mr-1"></i>
+                  Los Angeles
+                </div>
+                <div class="other_menu cursor-pointer w-4 h-8 pt-1 lg:invisible">
+                  <div class="cirlce-3 bg-white w-1 h-1 rounded-full mb-1 "></div>
+                  <div class="cirlce-3 bg-white w-1 h-1 rounded-full mb-1"></div>
+                  <div class="cirlce-3 bg-white w-1 h-1 rounded-full mb-1"></div>
+                </div>
+            </div>
+            <!-- End of real HEADER  -->
+            <!-- Start Real image  -->
+            <div class="real-img">
+              <img src="./src/assets/images/sun/16.png" alt="title" class="w-7/12 mt-8 mx-auto">
+            </div>
+            <!-- End of Real image  -->
+
+          </div>
+          <!-------------------------------
+               End of realtime weather
+          --------------------------------->
+        </div>
+      </div>
       <!-------------------------------
                 End of APP
        --------------------------------->
       <!-------------------------------
                 Start Loading
        --------------------------------->
-       <div id="loading" class="w-full bg-white h-screen fixed top-0 right-0 flex items-center justify-center flex-col">
-          <i class="icon-light-star text-blue-600 text-4xl lg:text-6xl transition duration-500"></i>
-          <span class="text-sm text-gray-600 mt-3">Loading...</span>
-       </div>
+      <div
+        id="loading"
+        class="w-full bg-white h-screen fixed top-0 right-0 flex items-center justify-center flex-col"
+      >
+        <i class="icon-star text-blue-600 text-4xl lg:text-6xl"></i>
+        <span class="text-sm text-gray-600 mt-3">Loading...</span>
+      </div>
       <!-------------------------------
                 End of Loading
        --------------------------------->
       <!-------------------------------
               Start Message box
        --------------------------------->
-       <div id="message_box" class="w-full absolute right-0 top-0 block z-50">
-          <div class="message ">
-              <i class="message--icon icon-light-award"></i>
-              <span class="message-text">
-                  This is a message
-              </soan>
-              <i class="message--closer icon-light-plus rotate-45 inline-block"></i>
-          </div>
-       </div>
+      <div
+        id="message_box"
+        class="w-full md:w-1/2 lg:w-1/3 absolute right-0 top-0 z-50 flex flex-col items-end pr-4 pt-4"
+      >
+
+      </div>
       <!-------------------------------
                 End of Message box
        --------------------------------->
-
     </div>
 
     <!-----------------------
             Scripts
     ----------------------->
+    <script type="module" src="./src/js/theme.js"></script>
     <script type="module" src="./src/js/dom.js"></script>
     <script type="module" src="./src/js/userCity.js"></script>
     <script type="module" src="./src/js/app.js"></script>

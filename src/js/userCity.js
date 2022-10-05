@@ -9,7 +9,7 @@ class UserCity {
   }
   // Send request to the api and access to user city with IP v2
   accessUserCityWithIp() {
-    // sendRequest();
+    sendRequest();
     function sendRequest() {
       const url = "https://api.ipgeolocation.io/ipgeo?apiKey=";
       const key = "05eb684275634618a6ef2f613715aef8";
@@ -26,8 +26,8 @@ class UserCity {
     }
 
     function setResult(data) {
-      // set user city to local storage and show to page
-      localStorage.setItem("userCityIP", data.city);
+      // set user city and Geographical coordinates to local storage and show to page
+      localStorage.setItem("userCity", data.city );
       document
         .querySelector("#city_with_ip")
         .setAttribute("value", `${data.city} / ${data.country_name}`);
@@ -89,41 +89,51 @@ class UserCity {
     const continueBtn = document.querySelector(".selectbox--continue-btn"),
           loading = document.querySelector("#loading");
           
-  
-    
-    
     continueBtn.addEventListener('click', () => {
+      const customCityValue = document.querySelector("#custom_city").value,
+          defaultCitiesValue = document.querySelector("#default_cities").value;
 
-      const customCityValue = document.querySelector("#custom_city").value;
-
-
+      // Checking custom city
       if(customCityValue !== ""){
         // show loading
         loading.classList.remove('hidde');
+        // checking
         this.checkingCustomCity(customCityValue)
       }
       else{
-        console.log('Go to app')
+        // set Default city to local storage and go to app page
+        localStorage.setItem('userCity', defaultCitiesValue);
+        dom.removeClass('#loading', 'hidde');
+        dom.showApp()
       }
     })
   }
   // Checking custom city 
   async checkingCustomCity(city){
+    const key = '72caee2eff37548de75d5d9674aa2510';
+          
     // created url
-    const url = `https://key48798231.herokuapp.com/weather?city=${city}`;
+    const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}`;
     // send request
     const request = await fetch(url).then((res) => res)
-    .catch((error) => console.log(error))
+    .catch((error) => {
+      dom.showMessage('Can not access to server, plase trun on your vpn', 'wifi', 'green');
+      dom.addClass("#loading", "hidde")
+      console.log(error)
+    })
     // access response
-    const response = await request.json();
+    const response = await request.json();  
+
     // check response error
-    if(await response.error === undefined){
+    if(await response.cod === '200'){
       // Go to app
       dom.addClass("#select_first_city", "hidden");
+      localStorage.setItem('userCity',  await response.city.name)
       dom.showApp();
     }else{
       // Back to select City
       dom.addClass('#loading', 'hidde')
+      dom.showMessage('Your city Not Found, Try again ', 'info', 'red')
     }
 
   }

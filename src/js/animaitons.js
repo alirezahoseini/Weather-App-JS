@@ -70,6 +70,7 @@ class Animations {
     dom.addClassTimeOut(".select_first_city--first_page", 980, "hidden");
   
     // Show Select Cite Page
+    
     dom.removeClassTimeOut(
       ".select_first_city--selectbox",
       850,
@@ -123,6 +124,43 @@ class Animations {
     dom.removeClassTimeOut('.select_first_city--selectbox .selectbox--continue-btn', 155 ,'hidden')
     dom.removeClassTimeOut('.select_first_city--selectbox .selectbox--continue-btn', 350 ,'invisible')
     dom.removeClassTimeOut('.select_first_city--selectbox .selectbox--continue-btn', 450 ,'animate_bottom')
+    // back button
+    dom.removeClassTimeOut('#first_city--back_btn', 150 ,'invisible')
+    dom.removeClassTimeOut('#first_city--back_btn', 155 ,'animate_left')
+  }
+   /* ------------------- 
+    Close Select city options
+  -------------------- */
+  closeSelectCityOptions(){
+    // Show Automatic founded city with ip 
+    dom.removeClass('.select_first_city--selectbox .selectbox--image', 'sm')
+    dom.removeClassTimeOut('.select_first_city--selectbox .selectbox--founded_city_with_ip', 600 , "animate_top")
+    dom.removeClassTimeOut('.select_first_city--selectbox .selectbox--founded_city_with_ip', 620 , "h-0");
+
+     // Hidde Select city options
+    // default citeis
+    dom.addClassTimeOut('.select_first_city--selectbox .selectbox--default_cities', 250 ,'animate_bottom')
+    dom.addClassTimeOut('.select_first_city--selectbox .selectbox--default_cities', 650 ,'invisible')
+    dom.addClassTimeOut('.select_first_city--selectbox .selectbox--default_cities', 680 ,'h-0')
+    dom.addClassTimeOut('.select_first_city--selectbox .selectbox--default_cities', 690 ,'hidden')
+    // line
+    dom.addClassTimeOut('.select_first_city--selectbox .selectbox--line', 200 ,'animate_bottom')
+    dom.addClassTimeOut('.select_first_city--selectbox .selectbox--line', 600 ,'invisible')
+    dom.addClassTimeOut('.select_first_city--selectbox .selectbox--line', 620 ,'h-0')
+    dom.addClassTimeOut('.select_first_city--selectbox .selectbox--line', 640 ,'hidden')
+    // custom city
+    dom.addClassTimeOut('.select_first_city--selectbox .selectbox--custom_city', 100 ,'animate_bottom')
+    dom.addClassTimeOut('.select_first_city--selectbox .selectbox--custom_city', 500 ,'invisible')
+    dom.addClassTimeOut('.select_first_city--selectbox .selectbox--custom_city', 520 ,'h-0')
+    dom.addClassTimeOut('.select_first_city--selectbox .selectbox--custom_city', 545 ,'hidden')
+    // submit button
+    dom.addClassTimeOut('.select_first_city--selectbox .selectbox--continue-btn', 1 ,'animate_bottom')
+    dom.addClassTimeOut('.select_first_city--selectbox .selectbox--continue-btn', 300 ,'invisible')
+    dom.addClassTimeOut('.select_first_city--selectbox .selectbox--continue-btn', 320 ,'h-0')
+    dom.addClassTimeOut('.select_first_city--selectbox .selectbox--continue-btn', 340 ,'hidden')
+    // back button
+    dom.addClassTimeOut('#first_city--back_btn', 380 ,'invisible')
+    dom.addClassTimeOut('#first_city--back_btn', 1 ,'animate_left')
   }
 }
 

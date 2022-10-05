@@ -82,6 +82,13 @@ body {
 ------------------ */
 
 /* Start loading  */
+#loading{
+  transition: all .2s;
+  -webkit-transition: all .2s;
+  -moz-transition: all .2s;
+  -ms-transition: all .2s;
+  -o-transition: all .2s;
+}
 #loading.hidde{
   opacity: 0;
   visibility: hidden;
@@ -111,3 +118,15 @@ body {
 }
 
 /* End of loading  */
+/* Start Gradient box */
+#gradient_box{
+  box-shadow: 2px 2px 15px rgba(37, 37, 37, 0.233);
+  -webkit-box-shadow: 2px 2px 15px rgba(37, 37, 37, 0.233);
+  -moz-box-shadow: 2px 2px 15px rgba(37, 37, 37, 0.233);
+  -ms-box-shadow: 2px 2px 15px rgba(37, 37, 37, 0.233);
+  -o-box-shadow: 2px 2px 15px rgba(37, 37, 37, 0.233);
+  border: line;
+}
+/* End of Gradient box */
+
+
