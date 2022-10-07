@@ -11,14 +11,18 @@ const animations = new Animations();
 // Evenetlisteners
 document.addEventListener("DOMContentLoaded", eventlisteners);
 function eventlisteners() {
+  // Run background hidden closer popups
+  dom.backgroundHidden()
   // Run animations
   animations.firstPageSelectCity();
   // Switch first page to select city page
   document
     .querySelector(".select_first_city--first_page .body--texts button")
     .addEventListener("click", animations.switchFirstPageAndSelectCityPage);
-  // Switch Theme ---- Dark and light
+  // Switch Theme Button ---- Dark and light
   document.querySelector('#switcher_btn').addEventListener('click', themeSwitcher)
+  // Run them switcher menu -- theme selector 
+  theme.themeChengerBtn();
 }
 
 /*-------------------
@@ -60,9 +64,14 @@ function openSelectCity() {
 }
 
 
-// Switch Theme ---- Dark and light
+// Open Switch Theme Menu ---- Dark and light
 function themeSwitcher(){
+  const menu = document.querySelector('#switcher_menu'),
+  bgSection = document.querySelector('#hidden_background_section'),
+  app = document.querySelector('#app');
+  
   // open themes menu
-  const menu = document.querySelector('#switcher_menu');
   menu.classList.add('active');
+  bgSection.classList.add('active');
+  app.classList.add('blur');
 }

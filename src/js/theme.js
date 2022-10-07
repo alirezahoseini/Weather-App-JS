@@ -1,7 +1,7 @@
+
 class Theme {
    // Set app theme affter loading
   firstLoadSetTheme(){
-    this.themeChengerBtn();
     const theme = localStorage.getItem('theme');
     // First loaded
     if(theme === null){
@@ -38,9 +38,9 @@ class Theme {
         // set theme on app
         const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
         if(isDark){
-            setDark()
+            setDark();
         }else{
-            setLight()
+            setLight();
         }
     }
     changeSwitcherBtn();
@@ -50,7 +50,6 @@ class Theme {
         const body = document.querySelector('body');
         body.classList.remove('dark');
 
-
     }
     // Set Dark theme 
     function setDark(){
@@ -59,20 +58,26 @@ class Theme {
     }
     // Change switcher btn icon and active current theme
     function changeSwitcherBtn () {
-        const switcherBtn = document.querySelector('#switcher_btn');
-        const menuOptions = document.querySelectorAll('#switcher_menu li');
-        // remove active on switcher menu btns
-        menuOptions.forEach((option) => option.classList.remove('active'));
+        const switcherBtn = document.querySelector('#switcher_btn i');
+        const themeInputs = document.querySelectorAll('#switcher_menu input[name="theme"]');
 
+        // Active input in switcher select menu
         if(theme === 'auto'){
-            menuOptions[2].classList.add('active');
-            switcherBtn.classList = 'icon-settings-2 cursor-pointer transition duration-200 p-3 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-gray-200 rounded-lg text-md '
-        }else if(theme === 'dark'){
-            menuOptions[0].classList.add('active');
-            switcherBtn.classList = 'icon-night cursor-pointer transition duration-200 p-3 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-gray-200 rounded-lg text-md '
+            themeInputs[2].setAttribute('checked', 'true');
+            // check auto theme
+            const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            if(isDark){
+                switcherBtn.classList = 'icon-night';
+            }else{
+                switcherBtn.classList = 'icon-sun';
+            }
+        }else 
+        if(theme === 'dark'){
+            themeInputs[0].setAttribute('checked', 'true');
+            switcherBtn.classList = 'icon-night';
         }else if(theme === 'light'){
-            menuOptions[1].classList.add('active');
-            switcherBtn.classList = 'icon-sun cursor-pointer transition duration-200 p-3 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-gray-200 rounded-lg text-md '
+            themeInputs[1].setAttribute('checked', 'true');
+            switcherBtn.classList = 'icon-sun';
         }
     }
   }
@@ -81,19 +86,15 @@ class Theme {
   themeChengerBtn(){
     // Theme chenger Button -------------
     const menu = document.querySelector('#switcher_menu');
-    const menuButtons = document.querySelectorAll('#switcher_menu li');
-    // set click event on buttons
-    menuButtons.forEach( (button) => {
-        button.addEventListener('click', () => {
-            // remove active class
-            const currentTheme = button.getAttribute('data-theme-value')
-            menuButtons.forEach((btn) => btn.classList.remove('active'));
-            menu.classList.remove('active');
-            // set theme
-            this.setTheme(currentTheme);
-        });
-    });
-
+    const themeInputs = document.querySelectorAll('#switcher_menu input[name="theme"]');
+    
+    themeInputs.forEach((input) => {
+        input.addEventListener('change', () => {
+            this.setTheme(input.value);
+            this.closePopups();
+        })
+    })
+    
     // auto change theme
     const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
     systemTheme.addEventListener('change', () => {
@@ -103,6 +104,22 @@ class Theme {
         }
     })
   }
+
+// Auto close popups 
+closePopups(){
+    // access to elements for closeing
+    const bg = document.querySelector('#hidden_background_section');
+    const app = document.querySelector('#app'),
+            themeSwitcherMenu = document.querySelector('#switcher_menu');
+    
+    //  ****** Close Theme Switcher
+    if(themeSwitcherMenu.classList.contains('active')){
+        app.classList.remove('blur');
+        themeSwitcherMenu.classList.remove('active');
+        bg.classList.remove('active')
+    }
+
+    }
 }
 
 

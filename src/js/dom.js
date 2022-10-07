@@ -1,5 +1,7 @@
 import Theme from "./theme.js";
+import WeatherApp from "./weatherApp.js";
 const theme = new Theme();
+const weatherApp = new WeatherApp();
 
 
 class Dom {
@@ -37,34 +39,35 @@ class Dom {
   // Show APP Page
   async showApp() {
     // // Access to user city from LS
-    // const key = '72caee2eff37548de75d5d9674aa2510',
-    //       userCityName = localStorage.getItem('userCity');
-    
+    // const userCityName = localStorage.getItem('userCity').toLowerCase();
     // // created url
-    // const url = `http://api.openweathermap.org/data/2.5/forecast?q=${userCityName}&appid=${key}`;
+    // const url = `https://key48798231.herokuapp.com/weather?input=${userCityName}`;
     // // send request
     // const request = await fetch(url).then((res) => res)
     // .catch((error) => {
-    //   console.log(error)
     //   this.showMessage('Can not access to server, plase trun on your vpn', 'wifi', 'green');
     //   this.addClass("#loading", "hidde")
+    //   console.log(error)
     // })
     // // access response
     // const response = await request.json();
-    
+
     // if(await response.cod !== "404"){
     //   this.runApp(response)
     //   this.addClassTimeOut("#loading", 300, "hidde");
     //   this.removeClassTimeOut("#app", 100, "hidden");
     //   this.addClassTimeOut("#select_first_city", 100, "hidden");
+    //   theme.firstLoadSetTheme()
     // }
 
+
+      // For test offline -------------
+      const data = JSON.parse(localStorage.getItem('weather'));
+      this.runApp(data)
       this.addClassTimeOut("#loading", 300, "hidde");
       this.removeClassTimeOut("#app", 100, "hidden");
       this.addClassTimeOut("#select_first_city", 100, "hidden");
-      this.runApp()
       theme.firstLoadSetTheme()
-
 
   }
   // Show First page and select city
@@ -115,8 +118,27 @@ class Dom {
   }
   // Run and create app
   runApp(data){
-    localStorage.setItem('weather', JSON.stringify(data))
+    console.log(data)
+    localStorage.setItem('weather', JSON.stringify(data));
+    weatherApp.setRealtimeWeather(data[0])
+
   }
+  // Background hiddden Closer popups
+  backgroundHidden(){
+    const bg = document.querySelector('#hidden_background_section');
+    // access to elements for closeing
+    const app = document.querySelector('#app'),
+          themeSwitcherMenu = document.querySelector('#switcher_menu');
+    bg.addEventListener('click', () => {
+      // Close Theme Switcher
+      if(themeSwitcherMenu.classList.contains('active')){
+        app.classList.remove('blur');
+        themeSwitcherMenu.classList.remove('active');
+        bg.classList.remove('active')
+      }
+    })
+  }
+
   
 }
 
