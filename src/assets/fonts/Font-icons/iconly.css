@@ -7,8 +7,8 @@
   font-family: "ti-light-v2";
   font-style: normal;
   font-weight: 400;
-  src: url("./iconly.eot?1664267385919");
-  src: url("./iconly.eot?#iefix") format("embedded-opentype"), url("./iconly.woff2?1664267385919") format("woff2"), url("./iconly.woff?1664267385919") format("woff"), url("./iconly.ttf?1664267385919") format("truetype"), url("./iconly.svg?1664267385919#ti-light-v2") format("svg");
+  src: url("./iconly.eot?1665430336564");
+  src: url("./iconly.eot?#iefix") format("embedded-opentype"), url("./iconly.woff2?1665430336564") format("woff2"), url("./iconly.woff?1665430336564") format("woff"), url("./iconly.ttf?1665430336564") format("truetype"), url("./iconly.svg?1665430336564#ti-light-v2") format("svg");
 }
 
 [class="icon"], [class^="icon-"], [class*=" icon-"] {
@@ -675,6 +675,10 @@
   content: "\e0a2";
 }
 
+.icon-wind:before {
+  content: "\e0a3";
+}
+
 .icon-arrow-left-1:before {
   content: "\e0a4";
 }
@@ -753,4 +757,28 @@
 
 .icon-2-user:before {
   content: "\e0b7";
+}
+
+.icon-thermometer-4:before {
+  content: "\e0b8";
+}
+
+.icon-thermometer-2:before {
+  content: "\e0b9";
+}
+
+.icon-sunset:before {
+  content: "\e0ba";
+}
+
+.icon-sunrise-2:before {
+  content: "\e0bb";
+}
+
+.icon-drops:before {
+  content: "\e0bc";
+}
+
+.icon-drop-percentage:before {
+  content: "\e0bd";
 }

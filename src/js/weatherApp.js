@@ -24,7 +24,36 @@ class WeatherApp {
         }else{
             weatherImgTag.src = weatherData.day_icon;
         }
-        console.log(weatherData)
+        
+        // Set More info ------- access to elements
+        const moreInfo = document.querySelector('#realtime_weather #more-info'),
+              maxTemp = moreInfo.querySelector('#max-temp span'),
+              minTemp = moreInfo.querySelector('#min-temp span'),
+              humidity = moreInfo.querySelector('#humidity span'),
+              wind = moreInfo.querySelector('#wind span'),
+              sunriseTag = moreInfo.querySelector('#sunrise span'),
+              sunsetTag = moreInfo.querySelector('#sunset span');
+
+        
+        maxTemp.innerHTML = Math.round(weatherData.temp_max) + ' °';
+        minTemp.innerHTML = Math.round(weatherData.temp_min) + ' °';
+        humidity.innerHTML = weatherData.humidity;
+        wind.innerHTML = weatherData.wind;
+
+        // calculate Times
+        let timezone = weatherData.timezone;
+        let sunrise = weatherData.sunrise;
+        let sunset = weatherData.sunset;
+        // convert timezone
+        let sunriseTime = moment.utc(sunrise,'X').add(timezone,'seconds').format('HH:mm');
+        let sunsetTime = moment.utc(sunset,'X').add(timezone,'seconds').format('HH:mm');
+        // set to HTML
+        sunriseTag.innerHTML = sunriseTime;
+        sunsetTag.innerHTML = sunsetTime;
+        
+
+
+              
     }
 
 }

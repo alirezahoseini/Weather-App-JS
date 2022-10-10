@@ -38,36 +38,36 @@ class Dom {
   }
   // Show APP Page
   async showApp() {
-    // // Access to user city from LS
-    // const userCityName = localStorage.getItem('userCity').toLowerCase();
-    // // created url
-    // const url = `https://key48798231.herokuapp.com/weather?input=${userCityName}`;
-    // // send request
-    // const request = await fetch(url).then((res) => res)
-    // .catch((error) => {
-    //   this.showMessage('Can not access to server, plase trun on your vpn', 'wifi', 'green');
-    //   this.addClass("#loading", "hidde")
-    //   console.log(error)
-    // })
-    // // access response
-    // const response = await request.json();
+    // Access to user city from LS
+    const userCityName = localStorage.getItem('userCity').toLowerCase();
+    // created url
+    const url = `https://key48798231.herokuapp.com/weather?input=${userCityName}`;
+    // send request
+    const request = await fetch(url).then((res) => res)
+    .catch((error) => {
+      this.showMessage('Can not access to server, plase trun on your vpn', 'wifi', 'green');
+      this.addClass("#loading", "hidde")
+      console.log(error)
+    })
+    // access response
+    const response = await request.json();
 
-    // if(await response.cod !== "404"){
-    //   this.runApp(response)
-    //   this.addClassTimeOut("#loading", 300, "hidde");
-    //   this.removeClassTimeOut("#app", 100, "hidden");
-    //   this.addClassTimeOut("#select_first_city", 100, "hidden");
-    //   theme.firstLoadSetTheme()
-    // }
-
-
-      // For test offline -------------
-      const data = JSON.parse(localStorage.getItem('weather'));
-      this.runApp(data)
+    if(await response.cod !== "404"){
+      this.runApp(response)
       this.addClassTimeOut("#loading", 300, "hidde");
       this.removeClassTimeOut("#app", 100, "hidden");
       this.addClassTimeOut("#select_first_city", 100, "hidden");
       theme.firstLoadSetTheme()
+    }
+
+
+      // // For test offline -------------
+      // const data = JSON.parse(localStorage.getItem('weather'));
+      // this.runApp(data)
+      // this.addClassTimeOut("#loading", 300, "hidde");
+      // this.removeClassTimeOut("#app", 100, "hidden");
+      // this.addClassTimeOut("#select_first_city", 100, "hidden");
+      // theme.firstLoadSetTheme()
 
   }
   // Show First page and select city
