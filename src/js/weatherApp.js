@@ -55,6 +55,37 @@ class WeatherApp {
 
               
     }
+    // Next hours Weather 
+    nextHours(weatherData){
+        const slider = document.querySelector('#next_hours_weather .nextHours .swiper-wrapper');
+        const hours = new Date().getHours();
+
+        weatherData.forEach((weather, index) => {
+            let time = (weather.date).split(" ")[1];
+            let icon = '';
+            if(hours > 19 || hours < 6){
+                icon = weather.night_icon;
+            }else{
+                icon = weather.day_icon;
+            }
+            
+            time = time.slice(0, 5);
+            slider.innerHTML += `
+                <!-- Start slide ${index}  -->
+                <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 p-3 rounded-xl items-center">
+                <img src="${icon}" alt="sun">
+                <span class="title mt-3 text-slate-600 dark:text-slate-200" >${weather.weather}</span>
+                <span class="mt-2 font-bold text-slate-800 dark:text-slate-100">${time}</span>
+                </div>
+                <!-- End of slide ${index}  -->
+            `
+        });
+        
+    
+    
+    }
+    // Run Realtime Clock 
+
 
 }
 

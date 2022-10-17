@@ -48,6 +48,9 @@
 body {
   font-family: "Poppins" !important;
 }
+* {
+  -webkit-tap-highlight-color: transparent;
+}
 #app.blur{
   filter: blur(10px);
   -webkit-filter: blur(10px);
@@ -196,3 +199,36 @@ body {
   opacity: .2;
 }
 /* End of Background hidden for close popups   */
+
+
+
+/* Mobile  */
+@media screen and (max-width: 768px){
+  /* Slider Cards  */
+
+  /* End of Slider Cards  */
+}
+/* End of Mobile  */
+
+
+
+
+
+
+
+/* Swiper js slider styles  */
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 80%;
+  height: 100%;
+  object-fit: cover;
+}
+.swiper-button-disabled{
+  opacity: .2;
+}
+/* End of Swiper js slider styles  */
