@@ -217,18 +217,14 @@ body {
 
 
 /* Swiper js slider styles  */
-.swiper {
-  width: 100%;
-  height: 100%;
+.swiper-slide {
+  height: auto !important;
+}
+.swiper-slide.active{
+  background: linear-gradient(rgb(86, 154, 255), rgb(0, 81, 255));
+}
+.swiper-slide img{
+  max-height: 65%;
 }
 
-.swiper-slide img {
-  display: block;
-  width: 80%;
-  height: 100%;
-  object-fit: cover;
-}
-.swiper-button-disabled{
-  opacity: .2;
-}
 /* End of Swiper js slider styles  */

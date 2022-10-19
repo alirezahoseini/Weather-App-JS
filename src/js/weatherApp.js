@@ -58,27 +58,89 @@ class WeatherApp {
     // Next hours Weather 
     nextHours(weatherData){
         const slider = document.querySelector('#next_hours_weather .nextHours .swiper-wrapper');
-        const hours = new Date().getHours();
+        const date = new Date();
+        const hours = date.getHours();
 
+        // Create next hours weathers in slider
         weatherData.forEach((weather, index) => {
+            /// access to the weather hours
             let time = (weather.date).split(" ")[1];
+            time = time.slice(0,5);
+            // set icon by any hours
             let icon = '';
-            if(hours > 19 || hours < 6){
-                icon = weather.night_icon;
-            }else{
-                icon = weather.day_icon;
+            switch (time) {
+                case "18:00":
+                    icon = icon = weather.day_icon;;
+                    break;
+                case "21:00":
+                    icon = icon = weather.night_icon;;
+                    break;
+                case "00:00":
+                    icon = icon = weather.night_icon;;
+                    break;
+                case "03:00":
+                    icon = icon = weather.night_icon;;
+                    break;
+                case "06:00":
+                    icon = icon = weather.day_icon;;
+                    break;
+                case "09:00":
+                    icon = icon = weather.day_icon;;
+                    break;
+                case "12:00":
+                    icon = icon = weather.day_icon;;
+                    break;
+                case "15:00":
+                    icon = icon = weather.day_icon;;
+                    break;
+                default:
+                    icon = icon = weather.day_icon;;
+                    break;
             }
-            
-            time = time.slice(0, 5);
-            slider.innerHTML += `
+
+            /// Access to current time
+            let currentTime = '';
+            if(hours >= 18 && hours < 21){
+                currentTime = '18:00';
+            }else if(hours >= 21 && hours < 24){
+                currentTime = '21:00';
+            }else if(hours >= 24 || hours < 3){
+                currentTime = "00:00"
+            }else if(hours >= 3 && hours < 6){
+                currentTime = '03:00'
+            }else if(hours >= 6 && hours < 9){
+                currentTime = '06:00'
+            }else if(hours >= 9 && hours < 12){
+                currentTime = '09:00'
+            }else if(hours >= 12 && hours < 15){
+                currentTime = '12:00'
+            }else if(hours >= 15 && hours < 18){
+                currentTime = '15:00'
+            }
+
+
+
+            if(currentTime === time){
+                slider.innerHTML += `
                 <!-- Start slide ${index}  -->
-                <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 p-3 rounded-xl items-center">
-                <img src="${icon}" alt="sun">
-                <span class="title mt-3 text-slate-600 dark:text-slate-200" >${weather.weather}</span>
-                <span class="mt-2 font-bold text-slate-800 dark:text-slate-100">${time}</span>
+                <div class="swiper-slide active flex flex-col rounded-xl dark:bg-slate-800 p-3  items-center justify-between relative">
+                    <img src="${icon}">
+                    <span class="font-bold text-white dark:text-slate-100">${time}</span>
                 </div>
                 <!-- End of slide ${index}  -->
-            `
+                `
+            }else{
+                slider.innerHTML += `
+                <!-- Start slide ${index}  -->
+                <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 p-3 rounded-xl items-center justify-between relative">
+                    <img src="${icon}">
+                    <span class="font-bold text-slate-800 dark:text-slate-100">${time}</span>
+                </div>
+                <!-- End of slide ${index}  -->
+                `
+            }
+
+
         });
         
     

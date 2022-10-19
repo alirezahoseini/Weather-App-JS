@@ -1,25 +1,21 @@
 var swiper = new Swiper(".nextHours", {
     slidesPerView: 3,
     spaceBetween: 10,
-    navigation: {
-        nextEl: ".nextHours .next",
-        prevEl: ".nextHours .prev",
-    },
     breakpoints: {
     100: {
-        slidesPerView: 3,
+        slidesPerView: 3.3,
         spaceBetween: 10,
         },
       768: {
-        slidesPerView: 3,
+        slidesPerView: 3.5,
         spaceBetween: 15,
       },
       991: {
-        slidesPerView: 3,
+        slidesPerView: 4.5,
         spaceBetween: 20,
       },
       1280: {
-        slidesPerView: 3,
+        slidesPerView: 4.5,
         spaceBetween: 25,
       },
     
