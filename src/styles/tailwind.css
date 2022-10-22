@@ -224,7 +224,7 @@ body {
   background: linear-gradient(rgb(86, 154, 255), rgb(0, 81, 255));
 }
 .swiper-slide img{
-  max-height: 65%;
+  max-height: 40%;
 }
 
 /* End of Swiper js slider styles  */

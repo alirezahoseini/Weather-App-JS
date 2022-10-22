@@ -668,11 +668,6 @@ video {
   margin-bottom: 0.25rem;
 }
 
-.my-2 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
 .my-5 {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
@@ -706,16 +701,8 @@ video {
   margin-bottom: 1rem;
 }
 
-.ml-1 {
-  margin-left: 0.25rem;
-}
-
-.mr-1 {
-  margin-right: 0.25rem;
-}
-
-.ml-2 {
-  margin-left: 0.5rem;
+.-mb-4 {
+  margin-bottom: -1rem;
 }
 
 .mt-3 {
@@ -742,16 +729,16 @@ video {
   height: 0px;
 }
 
-.h-5 {
-  height: 1.25rem;
-}
-
 .h-screen {
   height: 100vh;
 }
 
 .h-1 {
   height: 0.25rem;
+}
+
+.h-5 {
+  height: 1.25rem;
 }
 
 .h-full {
@@ -782,16 +769,12 @@ video {
   width: 50%;
 }
 
-.w-2\/5 {
-  width: 40%;
+.w-auto {
+  width: auto;
 }
 
-.w-0\.5 {
-  width: 0.125rem;
-}
-
-.w-0 {
-  width: 0px;
+.w-3\/4 {
+  width: 75%;
 }
 
 .w-screen {
@@ -849,10 +832,6 @@ video {
 
 .justify-around {
   justify-content: space-around;
-}
-
-.justify-evenly {
-  justify-content: space-evenly;
 }
 
 .overflow-hidden {
@@ -979,10 +958,6 @@ video {
   padding: 0.75rem;
 }
 
-.p-2 {
-  padding: 0.5rem;
-}
-
 .p-4 {
   padding: 1rem;
 }
@@ -1027,6 +1002,10 @@ video {
   padding-right: 0.75rem;
 }
 
+.text-left {
+  text-align: left;
+}
+
 .text-center {
   text-align: center;
 }
@@ -1044,11 +1023,6 @@ video {
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
-}
-
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
 }
 
 .text-4xl {
@@ -1116,13 +1090,13 @@ video {
   color: rgb(75 85 99 / var(--tw-text-opacity));
 }
 
-.text-transparent {
-  color: transparent;
-}
-
 .text-blue-100 {
   --tw-text-opacity: 1;
   color: rgb(219 234 254 / var(--tw-text-opacity));
+}
+
+.text-transparent {
+  color: transparent;
 }
 
 .text-slate-800 {
@@ -1132,14 +1106,6 @@ video {
 
 .opacity-50 {
   opacity: 0.5;
-}
-
-.opacity-25 {
-  opacity: 0.25;
-}
-
-.opacity-75 {
-  opacity: 0.75;
 }
 
 .outline-none {
@@ -1472,7 +1438,7 @@ body {
 }
 
 .swiper-slide img{
-  max-height: 65%;
+  max-height: 40%;
 }
 
 /* End of Swiper js slider styles  */
@@ -1627,8 +1593,8 @@ body {
     padding-bottom: 0.25rem;
   }
 
-  .md\:text-8xl {
-    font-size: 6rem;
+  .md\:text-6xl {
+    font-size: 3.75rem;
     line-height: 1;
   }
 
@@ -1648,8 +1614,8 @@ body {
     padding-right: 0px;
   }
 
-  .lg\:text-9xl {
-    font-size: 8rem;
+  .lg\:text-8xl {
+    font-size: 6rem;
     line-height: 1;
   }
 

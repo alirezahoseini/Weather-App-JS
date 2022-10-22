@@ -188,78 +188,40 @@
         <!-- End of Header -->
         <div class="w-full flex flex-col md:flex-row md:justify-around items-center">
           <!--  Start Gradient box -->
-          <div id="gradient_box" class="bg-gradient-to-b from-blue-300 to-blue-700 rounded-3xl w-full md:w-4/12 p-2">
+          <div id="gradient_box" class="bg-gradient-to-b from-blue-300 to-blue-700 rounded-3xl w-full md:w-4/12 p-4">
             <!-------------------------------
                   Start realtime weather
             --------------------------------->
-            <div id="realtime_weather" class="p-3 text-white relative">
+            <div id="realtime_weather" class="text-white relative flex">
               <!-- start realtime titles  -->
-              <div class="flex items-center justify-around mt-4">
-                <div class="realtitle--degree flex justify-center w-6/12" >
-                  <h3 class="temp md:text-8xl lg:text-9xl font-semibold text-transparent bg-clip-text bg-gradient-to-t from-blue-500 to-white">
-                    14
-                  </h3>
-                  <span class="font-semibold text-transparent bg-clip-text bg-gradient-to-t from-blue-300 to-white relative md:text-4xl lg:text-5xl">°</span>
-                </div>
+              <div class="flex items-end justify-around ">
                 <div class="real-img w-5/12">
                   <img src="./src/assets/images/sun/16.png" alt="title" class="w-full mx-auto">
                 </div>
+                <div class="realtitle--degree flex flex-col w-auto " >
+                    <!--  Start Realtime City  -->
+                    <div class="realtitle--city flex flex-col ">
+                      <h2 class="location text-lg sm:text-2xl capitalize">
+                        Los Angeles
+                      </h2>
+                      <div class="description text-sm text-blue-100 my-1 capitalize"></div>
+                  </div>
+                  <!-- End of Realtime City  -->
+                  <div class="flex text-left">
+                    <h3 class="temp md:text-6xl lg:text-8xl font-semibold text-transparent bg-clip-text bg-gradient-to-t from-blue-500 to-white -mb-4">
+                      14
+                    </h3>
+                    <span class="font-semibold text-transparent bg-clip-text bg-gradient-to-t from-blue-300 to-white relative md:text-4xl lg:text-5xl">
+                      °
+                    </span>
+                  </div>
+                </div>
               </div>
               <!-- End of realtime titles  -->
-              <!--  Start Realtime City  -->
-              <div class="realtitle--city flex justify-center items-center flex-col">
-                  <h2 class="location text-lg sm:text-2xl capitalize">
-                    Los Angeles
-                  </h2>
-                  <div class="description text-sm text-blue-100 my-1 capitalize"></div>
-              </div>
-              <!-- End of Realtime City  -->
+
               <!-- Start Weather More Info  -->
-              <div id="more-info" class="flex w-full flex-col">
-                <!-- start ROW 1 -->
-                <div class="flex w-full justify-evenly items-center my-2">
-                  <div id="max-temp" title="Today's maximum temperature" class="flex items-center w-2/5 justify-center">
-                    <i class="icon-thermometer-2 text-xl mr-2"></i>
-                    <span> 15</span>
-                  </div>
-                  <span class="h-5 w-0.5 opacity-25 bg-white"></span>
-                  <div id="min-temp" title="Minimum temperature today" class="flex items-center w-2/5 justify-center">
-                    <i class="icon-thermometer-4 text-xl mr-2"></i>
-                    <span> -23</span>
-                  </div>
-                </div>
-                <!-- end ROW 1 -->
-                <!-- start ROW 2 -->
-                <div class="flex w-full justify-evenly items-center my-2">
-                  <div id="humidity" title="Humidity air" class="flex items-center w-2/5 justify-center">
-                    <i class="icon-drop-percentage text-xl mr-2"></i>
-                    <span></span>
-                    <i class="text-xs ml-1 opacity-75">%</i>
-                  </div>
-                  <span class="h-5 w-0.5 opacity-25 bg-white "></span>
-                  <div id="wind" title="wind speed" class="flex items-center w-2/5 justify-center">
-                    <i class="icon-wind text-xl mr-1"></i>
-                    <span>1.23</span>
-                    <i class="text-xs ml-2 opacity-75">km/h</i>
-                  </div>
-                </div>
-                <!-- end ROW 2 -->
-                <!-- start ROW 3 -->
-                <div class="flex w-full justify-evenly items-center my-2">
-                  <div id="sunrise" title="Sunrise" class="flex items-center w-2/5 justify-center">
-                    <i class="icon-sunrise-2 text-xl mr-2"></i>
-                    <span> 05:00</span>
-                    <i class="text-xs ml-1 opacity-75">Am</i>
-                  </div>
-                  <span class="h-5 w-0.5 opacity-25 bg-white "></span>
-                  <div id="sunset" title="Sunset" class="flex items-center w-2/5 justify-center">
-                    <i class="icon-sunset text-xl mr-2"></i>
-                    <span> 18:00</span>
-                    <i class="text-xs ml-1 opacity-75">Pm</i>
-                  </div>
-                  
-                </div>
-                <!-- end ROW 3 -->
+              <div id="more-info" class="flex w-3/4 flex-col mx-auto">
+
               </div>
               <!-- Start Weather More Info  -->
   

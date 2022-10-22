@@ -35,21 +35,21 @@ class WeatherApp {
               sunsetTag = moreInfo.querySelector('#sunset span');
 
         
-        maxTemp.innerHTML = Math.round(weatherData.temp_max) + ' °';
-        minTemp.innerHTML = Math.round(weatherData.temp_min) + ' °';
-        humidity.innerHTML = weatherData.humidity;
-        wind.innerHTML = weatherData.wind;
+        // maxTemp.innerHTML = Math.round(weatherData.temp_max) + ' °';
+        // minTemp.innerHTML = Math.round(weatherData.temp_min) + ' °';
+        // humidity.innerHTML = weatherData.humidity;
+        // wind.innerHTML = weatherData.wind;
 
-        // calculate Times
-        let timezone = weatherData.timezone;
-        let sunrise = weatherData.sunrise;
-        let sunset = weatherData.sunset;
-        // convert timezone
-        let sunriseTime = moment.utc(sunrise,'X').add(timezone,'seconds').format('HH:mm');
-        let sunsetTime = moment.utc(sunset,'X').add(timezone,'seconds').format('HH:mm');
-        // set to HTML
-        sunriseTag.innerHTML = sunriseTime;
-        sunsetTag.innerHTML = sunsetTime;
+        // // calculate Times
+        // let timezone = weatherData.timezone;
+        // let sunrise = weatherData.sunrise;
+        // let sunset = weatherData.sunset;
+        // // convert timezone
+        // let sunriseTime = moment.utc(sunrise,'X').add(timezone,'seconds').format('HH:mm');
+        // let sunsetTime = moment.utc(sunset,'X').add(timezone,'seconds').format('HH:mm');
+        // // set to HTML
+        // sunriseTag.innerHTML = sunriseTime;
+        // sunsetTag.innerHTML = sunsetTime;
         
 
 
@@ -123,7 +123,8 @@ class WeatherApp {
             if(currentTime === time){
                 slider.innerHTML += `
                 <!-- Start slide ${index}  -->
-                <div class="swiper-slide active flex flex-col rounded-xl dark:bg-slate-800 p-3  items-center justify-between relative">
+                <div class="swiper-slide active flex flex-col rounded-3xl dark:bg-slate-800 py-3  items-center justify-between relative">
+                    <span class="text-white">${weather.weather}</span>
                     <img src="${icon}">
                     <span class="font-bold text-white dark:text-slate-100">${time}</span>
                 </div>
@@ -132,7 +133,8 @@ class WeatherApp {
             }else{
                 slider.innerHTML += `
                 <!-- Start slide ${index}  -->
-                <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 p-3 rounded-xl items-center justify-between relative">
+                <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-3xl items-center justify-between relative">
+                    <span class="text-white">${weather.weather}</span>
                     <img src="${icon}">
                     <span class="font-bold text-slate-800 dark:text-slate-100">${time}</span>
                 </div>

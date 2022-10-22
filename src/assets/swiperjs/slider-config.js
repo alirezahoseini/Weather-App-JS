@@ -3,20 +3,20 @@ var swiper = new Swiper(".nextHours", {
     spaceBetween: 10,
     breakpoints: {
     100: {
-        slidesPerView: 3.3,
+        slidesPerView: 4.5,
         spaceBetween: 10,
         },
       768: {
-        slidesPerView: 3.5,
+        slidesPerView: 4.5,
         spaceBetween: 15,
       },
       991: {
-        slidesPerView: 4.5,
-        spaceBetween: 20,
+        slidesPerView: 5.5,
+        spaceBetween: 15,
       },
       1280: {
-        slidesPerView: 4.5,
-        spaceBetween: 25,
+        slidesPerView: 5.5,
+        spaceBetween: 15,
       },
     
     },
