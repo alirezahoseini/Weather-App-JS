@@ -705,6 +705,10 @@ video {
   margin-bottom: -1rem;
 }
 
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
 .mt-3 {
   margin-top: 0.75rem;
 }
@@ -713,8 +717,16 @@ video {
   margin-bottom: 2rem;
 }
 
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
 .block {
   display: block;
+}
+
+.inline-block {
+  display: inline-block;
 }
 
 .flex {
@@ -777,6 +789,10 @@ video {
   width: 75%;
 }
 
+.w-12 {
+  width: 3rem;
+}
+
 .w-screen {
   width: 100vw;
 }
@@ -812,6 +828,10 @@ video {
 
 .flex-col {
   flex-direction: column;
+}
+
+.items-start {
+  align-items: flex-start;
 }
 
 .items-end {
@@ -1097,6 +1117,11 @@ video {
 
 .text-transparent {
   color: transparent;
+}
+
+.text-slate-700 {
+  --tw-text-opacity: 1;
+  color: rgb(51 65 85 / var(--tw-text-opacity));
 }
 
 .text-slate-800 {
@@ -1417,16 +1442,6 @@ body {
 
 /* End of Background hidden for close popups   */
 
-/* Mobile  */
-
-@media screen and (max-width: 768px){
-  /* Slider Cards  */
-
-  /* End of Slider Cards  */
-}
-
-/* End of Mobile  */
-
 /* Swiper js slider styles  */
 
 .swiper-slide {
@@ -1441,7 +1456,33 @@ body {
   max-height: 40%;
 }
 
+.rounded-2xl{
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
+
 /* End of Swiper js slider styles  */
+
+/* Main weather */
+
+#more_data_section{
+  font-size: .9em;
+}
+
+/* End of Main weather */
+
+/* Mobile  */
+
+@media screen and (max-width: 768px){
+  /* Slider Cards  */
+
+  /* End of Slider Cards  */
+}
+
+/* End of Mobile  */
 
 .hover\:border-white:hover {
   --tw-border-opacity: 1;
@@ -1512,6 +1553,11 @@ body {
   color: rgb(229 231 235 / var(--tw-text-opacity));
 }
 
+.dark .dark\:text-slate-50 {
+  --tw-text-opacity: 1;
+  color: rgb(248 250 252 / var(--tw-text-opacity));
+}
+
 .dark .dark\:text-slate-100 {
   --tw-text-opacity: 1;
   color: rgb(241 245 249 / var(--tw-text-opacity));
@@ -1520,6 +1566,11 @@ body {
 .dark .dark\:text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.dark .dark\:text-slate-200 {
+  --tw-text-opacity: 1;
+  color: rgb(226 232 240 / var(--tw-text-opacity));
 }
 
 .dark .dark\:hover\:bg-slate-700:hover {

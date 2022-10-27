@@ -202,20 +202,6 @@ body {
 
 
 
-/* Mobile  */
-@media screen and (max-width: 768px){
-  /* Slider Cards  */
-
-  /* End of Slider Cards  */
-}
-/* End of Mobile  */
-
-
-
-
-
-
-
 /* Swiper js slider styles  */
 .swiper-slide {
   height: auto !important;
@@ -226,5 +212,26 @@ body {
 .swiper-slide img{
   max-height: 40%;
 }
-
+.rounded-2xl{
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
 /* End of Swiper js slider styles  */
+
+/* Main weather */
+#more_data_section{
+  font-size: .9em;
+}
+/* End of Main weather */
+
+
+/* Mobile  */
+@media screen and (max-width: 768px){
+  /* Slider Cards  */
+
+  /* End of Slider Cards  */
+}
+/* End of Mobile  */

@@ -26,27 +26,28 @@ class WeatherApp {
         }
         
         // Set More info ------- access to elements
-        const moreInfo = document.querySelector('#realtime_weather #more-info'),
-              maxTemp = moreInfo.querySelector('#max-temp span'),
-              minTemp = moreInfo.querySelector('#min-temp span'),
-              humidity = moreInfo.querySelector('#humidity span'),
-              wind = moreInfo.querySelector('#wind span'),
-              sunriseTag = moreInfo.querySelector('#sunrise span'),
-              sunsetTag = moreInfo.querySelector('#sunset span');
+        const moreInfo = document.querySelector('#more_data_section'),
+              maxTemp = moreInfo.querySelector('#max_temp h4'),
+              minTemp = moreInfo.querySelector('#min_temp h4'),
+              humidity = moreInfo.querySelector('#humidity h4'),
+              wind = moreInfo.querySelector('#wind h4');
+            //   sunriseTag = moreInfo.querySelector('#sunrise span'),
+            //   sunsetTag = moreInfo.querySelector('#sunset span');
 
+        // console.log(moreInfo)
         
-        // maxTemp.innerHTML = Math.round(weatherData.temp_max) + ' °';
-        // minTemp.innerHTML = Math.round(weatherData.temp_min) + ' °';
-        // humidity.innerHTML = weatherData.humidity;
-        // wind.innerHTML = weatherData.wind;
+        maxTemp.innerHTML = Math.round(weatherData.temp_max) + ' °';
+        minTemp.innerHTML = Math.round(weatherData.temp_min) + ' °';
+        humidity.innerHTML = weatherData.humidity;
+        wind.innerHTML = weatherData.wind;
 
-        // // calculate Times
-        // let timezone = weatherData.timezone;
-        // let sunrise = weatherData.sunrise;
-        // let sunset = weatherData.sunset;
-        // // convert timezone
-        // let sunriseTime = moment.utc(sunrise,'X').add(timezone,'seconds').format('HH:mm');
-        // let sunsetTime = moment.utc(sunset,'X').add(timezone,'seconds').format('HH:mm');
+        // calculate Times
+        let timezone = weatherData.timezone;
+        let sunrise = weatherData.sunrise;
+        let sunset = weatherData.sunset;
+        // convert timezone
+        let sunriseTime = moment.utc(sunrise,'X').add(timezone,'seconds').format('HH:mm');
+        let sunsetTime = moment.utc(sunset,'X').add(timezone,'seconds').format('HH:mm');
         // // set to HTML
         // sunriseTag.innerHTML = sunriseTime;
         // sunsetTag.innerHTML = sunsetTime;
@@ -123,7 +124,7 @@ class WeatherApp {
             if(currentTime === time){
                 slider.innerHTML += `
                 <!-- Start slide ${index}  -->
-                <div class="swiper-slide active flex flex-col rounded-3xl dark:bg-slate-800 py-3  items-center justify-between relative">
+                <div class="swiper-slide active flex flex-col rounded-2xl dark:bg-slate-800 py-3  items-center justify-between relative">
                     <span class="text-white">${weather.weather}</span>
                     <img src="${icon}">
                     <span class="font-bold text-white dark:text-slate-100">${time}</span>
@@ -133,8 +134,8 @@ class WeatherApp {
             }else{
                 slider.innerHTML += `
                 <!-- Start slide ${index}  -->
-                <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-3xl items-center justify-between relative">
-                    <span class="text-white">${weather.weather}</span>
+                <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
+                    <span class="text-slate-800 dark:text-white">${weather.weather}</span>
                     <img src="${icon}">
                     <span class="font-bold text-slate-800 dark:text-slate-100">${time}</span>
                 </div>
