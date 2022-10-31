@@ -31,10 +31,7 @@ class WeatherApp {
               minTemp = moreInfo.querySelector('#min_temp h4'),
               humidity = moreInfo.querySelector('#humidity h4'),
               wind = moreInfo.querySelector('#wind h4');
-            //   sunriseTag = moreInfo.querySelector('#sunrise span'),
-            //   sunsetTag = moreInfo.querySelector('#sunset span');
 
-        // console.log(moreInfo)
         
         maxTemp.innerHTML = Math.round(weatherData.temp_max) + ' °';
         minTemp.innerHTML = Math.round(weatherData.temp_min) + ' °';
@@ -48,13 +45,7 @@ class WeatherApp {
         // convert timezone
         let sunriseTime = moment.utc(sunrise,'X').add(timezone,'seconds').format('HH:mm');
         let sunsetTime = moment.utc(sunset,'X').add(timezone,'seconds').format('HH:mm');
-        // // set to HTML
-        // sunriseTag.innerHTML = sunriseTime;
-        // sunsetTag.innerHTML = sunsetTime;
-        
 
-
-              
     }
     // Next hours Weather 
     nextHours(weatherData){
@@ -149,7 +140,39 @@ class WeatherApp {
     
     
     }
-    // Run Realtime Clock 
+    // Set Time and Date
+    async setDateAndTime(){
+        // Access to user city
+        const userCity = localStorage.getItem('userCity');
+        // base url and api key
+        const url = 'https://api.api-ninjas.com/v1/worldtime?city=';
+        const key = 'UugH/GVejG63QV8L9voW/w==AEG2K0kCQF2h4aiG';
+
+        // Get Date and time from Api
+        const response = fetch(url + userCity,{
+            headers: { 'X-Api-Key': key},
+            contentType: 'application/json',
+        }).then(res => {
+            return res.json()
+        }).catch(error => {
+            console.log(error);
+        })
+        // // Set date and time in Local storage
+        // localStorage.setItem('time', JSON.stringify(await response) )
+    
+        // const time = JSON.parse(localStorage.getItem('time'));
+
+        const {hour , minute , second, day_of_week, date} = await response;
+        
+        // access to HTML elemnts 
+        const dateTag = document.querySelector('#time_and_date .date');
+        const timeTag = document.querySelector('#time_and_date .time');
+
+        dateTag.innerHTML = `${day_of_week}    /    ${date}`;
+        timeTag.innerHTML = `${ hour }: ${minute} : ${second}`;
+    
+    }
+
 
 
 }

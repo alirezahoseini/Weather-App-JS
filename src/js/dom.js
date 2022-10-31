@@ -61,7 +61,7 @@ class Dom {
     }
 
 
-      // // For test offline -------------
+      // For test offline -------------
       // const data = JSON.parse(localStorage.getItem('weather'));
       // this.runApp(data)
       // this.addClassTimeOut("#loading", 300, "hidde");
@@ -122,7 +122,7 @@ class Dom {
     localStorage.setItem('weather', JSON.stringify(data));
     weatherApp.setRealtimeWeather(data[0]);
     weatherApp.nextHours(data);
-
+    weatherApp.setDateAndTime()
   }
   // Background hiddden Closer popups
   backgroundHidden(){

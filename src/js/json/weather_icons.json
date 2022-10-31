@@ -1,0 +1,74 @@
+{
+    "broken_clouds" : {
+        "day" : {
+            "img" : "./src/assets/images/weather/broken_clouds/broken_clouds_day.webp"
+        },
+        "night" : {
+            "img" : "./src/assets/images/weather/broken_clouds/borken_clouds_night.web"
+        }
+    },
+    "clear_sky" : {
+        "day" : {
+            "img" : "./src/assets/images/weather/clear_sky/clear_sky_day.webp"
+        },
+        "night" : {
+            "img" : "./src/assets/images/weather/clear_sky/clear_sky_night.webp"
+        }
+    },
+    "few_clouds" : {
+        "day" : {
+            "img" : "./src/assets/images/weather/few_clouds/few_clouds_day.webp"
+        },
+        "night" : {
+            "img" : "./src/assets/images/weather/few_clouds/few_clouds_night.webp"
+        }
+    },
+    "mist" : {
+        "day" : {
+            "img" : "./src/assets/images/weather/mist/mist_day.webp"
+        },
+        "night" : {
+            "img" : "./src/assets/images/weather/mist/mist_night.webp"
+        }
+    },
+    "scattered_clouds" : {
+        "day" : {
+            "img" : "./src/assets/images/weather/scattered_clouds/scattered_clouds_day.webp"
+        },
+        "night" : {
+            "img" : "./src/assets/images/weather/scattered_clouds/scattered_clouds_night.webp"
+        }
+    },
+    "shower_rain" : {
+        "day" : {
+            "img" : "./src/assets/images/weather/shower_rain/shower_rain_day.webp"
+        },
+        "night" : {
+            "img" : "./src/assets/images/weather/shower_rain/shower_rain_night.webp"
+        }
+    },
+    "snow" : {
+        "day" : {
+            "img" : "./src/assets/images/weather/snow/snow.webp"
+        },
+        "night" : {
+            "img" : "./src/assets/images/weather/snow/snow.webp"
+        }
+    },
+    "thunderstorm" : {
+        "day" : {
+            "img" : "./src/assets/images/weather/thunderstorm/thunderstorm_day.webp"
+        },
+        "night" : {
+            "img" : "./src/assets/images/weather/thunderstorm//thunderstorm_night.webp"
+        }
+    },
+    "rain" : {
+        "day" : {
+            "img" : "./src/assets/images/weather/rain/rain.webp"
+        },
+        "night" : {
+            "img" : "./src/assets/images/weather/rain/rain.webp"
+        }
+    }
+}

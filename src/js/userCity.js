@@ -137,10 +137,6 @@ class UserCity {
     }
 
   }
-
-
-
-  
 }
 
 export default UserCity;
