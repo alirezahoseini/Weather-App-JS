@@ -38,7 +38,7 @@ function showPages() {
     userCity.accessUserCityWithIp();
     dom.showFirstPage();
     openSelectCity();
-    userCity.setCityToloaclstorage()
+    userCity.setCityToloaclstorage();
   }
 }
 

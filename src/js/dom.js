@@ -38,6 +38,10 @@ class Dom {
   }
   // Show APP Page
   async showApp() {
+    this.removeClassTimeOut("#app", 100, "hidden");
+    theme.firstLoadSetTheme()
+    this.addClassTimeOut("#loading", 300, "hidde");
+
     // Access to user city from LS
     const userCityName = localStorage.getItem('userCity').toLowerCase();
     // created url
@@ -45,8 +49,7 @@ class Dom {
     // send request
     const request = await fetch(url).then((res) => res)
     .catch((error) => {
-      this.showMessage('Can not access to server, plase trun on your vpn', 'wifi', 'green');
-      this.addClass("#loading", "hidde")
+      this.showVpnError()
       console.log(error)
     })
     // access response
@@ -54,14 +57,13 @@ class Dom {
 
     if(await response.cod !== "404"){
       this.runApp(response)
-      this.addClassTimeOut("#loading", 300, "hidde");
-      this.removeClassTimeOut("#app", 100, "hidden");
       this.addClassTimeOut("#select_first_city", 100, "hidden");
-      theme.firstLoadSetTheme()
+    }else{
+      this.showVpnError()
     }
 
 
-      // For test offline -------------
+      // // For test offline -------------
       // const data = JSON.parse(localStorage.getItem('weather'));
       // this.runApp(data)
       // this.addClassTimeOut("#loading", 300, "hidde");
@@ -77,28 +79,20 @@ class Dom {
     this.removeClass("#select_first_city", "hidden");
   }
   // Show Message
-  showMessage(message="default message", icon= "info", colorClass="red") {
-    // set color
-    let color = ''
-    if(colorClass === 'blue') {
-        color = 'bg-blue-600'
-    }else if(colorClass === 'red') {
-        color = 'bg-red-500'
-    }else if(colorClass === 'green') {
-        color = 'bg-green-600'
-    }
+  showMessage(message="default message", icon= "info", colorClass='success') {
     // access message box
     const messageBox = document.querySelector("#message_box");
     // create message tag
+    console.log(colorClass)
     const messageTag = document.createElement('div');
-    messageTag.classList = 'message bg-white rounded-lg shadow-md p-3 w-11/12 flex justify-between items-center transition duration-700 my-2 invisible animate_bottom'
+    messageTag.classList = `message ${colorClass} duration-700 invisible animate_bottom`;
     messageTag.innerHTML = `
-            <div class="message--body flex items-center">
-            <i class="message--icon icon-light-${icon} text-2xl ${color} p-2 text-white rounded-lg"></i>
-            <span class="message-text ml-2 text-sm px-3">
-                ${message}
-            </span>
-            </div>
+        <div class="message--body">
+          <i class="message--icon icon-${icon}"></i>
+          <span class="message-text">
+              ${message}
+          </span>
+        </div>
         `;
     // apeend and show message
     messageBox.appendChild(messageTag)
@@ -110,11 +104,11 @@ class Dom {
     // slide out
     setTimeout(() => {
         messageTag.classList.add('animate_top')
-    }, 4000);
+    }, 5000);
     // romowe from DOM
     setTimeout(() => {
         messageTag.remove()
-    }, 4500);
+    }, 5500);
   }
   // Run and create app
   runApp(data){
@@ -122,7 +116,13 @@ class Dom {
     localStorage.setItem('weather', JSON.stringify(data));
     weatherApp.setRealtimeWeather(data[0]);
     weatherApp.nextHours(data);
-    weatherApp.setDateAndTime()
+    weatherApp.setDateAndTime();
+
+    // Remove loading frame classes
+    this.removeLoadingFrame('main_weather');
+    this.removeLoadingFrame('more_data_section');
+    this.removeLoadingFrame('next_hours_weather');
+    
   }
   // Background hiddden Closer popups
   backgroundHidden(){
@@ -139,7 +139,32 @@ class Dom {
       }
     })
   }
+  // Show Vpn error
+  showVpnError(){
+    // access to the Elements
+    const appElem = document.querySelector('#app'),
+          selectFirstCityElem = document.querySelector('#select_first_city'),
+          vpnErrorElem = document.querySelector('#vpn_error'),
+          errorTextBox = vpnErrorElem.querySelector('#error-text');
 
+          console.log('first')
+    // Blur bg
+    appElem.classList.add('blur');
+    selectFirstCityElem.classList.add('blur');
+
+    // Show error
+    vpnErrorElem.classList.add('active');
+    setTimeout(() => {
+      errorTextBox.classList.remove('animate_bottom')
+    }, 500);
+  }
+  // Remove loading frame
+  removeLoadingFrame(elementId){
+    // access to the loading classes
+    const loadingClasses = document.querySelectorAll(`#${elementId} .loading_frame`);
+    // remove classes
+    loadingClasses.forEach(currentElement => currentElement.classList.remove('loading_frame'))
+  }
   
 }
 

@@ -11,6 +11,11 @@ class UserCity {
   accessUserCityWithIp() {
     sendRequest();
     function sendRequest() {
+      // if server not response affter 10s , show error
+      let showError = setTimeout(() => {
+        dom.showVpnError();
+      }, 10000);
+      
       const url = "https://api.ipgeolocation.io/ipgeo?apiKey=";
       const key = "05eb684275634618a6ef2f613715aef8";
       fetch(url + key, {
@@ -19,10 +24,13 @@ class UserCity {
         .then((res) => {
           // set result
           res.json().then((output) => setResult(output));
+          clearTimeout(showError)
         })
         .catch((error) => {
           console.log(error);
         });
+
+
     }
 
     function setResult(data) {
@@ -31,6 +39,8 @@ class UserCity {
       document
         .querySelector("#city_with_ip")
         .setAttribute("value", `${data.city} / ${data.country_name}`);
+
+      console.log(data)
     }
   }
   // Select city Form Handler
@@ -117,7 +127,7 @@ class UserCity {
     // send request
     const request = await fetch(url).then((res) => res)
     .catch((error) => {
-      dom.showMessage('Can not access to server, plase trun on your vpn', 'wifi', 'green');
+      dom.showMessage('Can not access to server, plase trun on your vpn', 'wifi', 'danger');
       dom.addClass("#loading", "hidde")
       console.log(error)
     })
@@ -133,7 +143,7 @@ class UserCity {
     }else{
       // Back to select City
       dom.addClass('#loading', 'hidde')
-      dom.showMessage('Your city Not Found, Try again ', 'info', 'red')
+      dom.showMessage('Your city Not Found, Try again ', 'info', 'danger')
     }
 
   }

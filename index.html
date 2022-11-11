@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- styles  -->
+    <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
     <link rel="stylesheet" href="./src/styles/css-reset.css" />
     <link rel="stylesheet" href="./src/styles/tailwind_output.css" />
     <link rel="stylesheet" href="./src/styles/css/animations.css" />
@@ -89,7 +90,7 @@
                 name="city_with_ip"
                 id="city_with_ip"
                 class="block bg-gray-50 focus:border-gray-400 transition-all cursor-pointer p-3 rounded-lg outline-none border-2 text-sm pr-8 text-gray-800 w-full"
-                value="Not Access"
+                value="loading . . ."
                 disabled
               />
             </div>
@@ -208,14 +209,15 @@
           <!-- End of Theme switcher Button -->
         </div>
         <!-- End of Header -->
-        <div
+        <!-- Start main app  -->
+        <div id="main_app"
           class="w-full flex flex-col md:flex-row md:justify-around items-start"
         >
           <div class="w-full md:w-4/12 flex flex-col">
             <!--  Start Gradient box - Main Weather -->
             <div
               id="main_weather"
-              class="bg-gradient-to-b from-blue-300 to-blue-700 rounded-3xl p-4 w-full"
+              class="bg-gradient-to-b from-blue-300 to-blue-700 rounded-3xl p-4 w-full loading_color"
             >
               <!-------------------------------
                     Start realtime weather
@@ -223,7 +225,7 @@
               <div id="realtime_weather" class="text-white relative flex">
                 <!-- start realtime titles  -->
                 <div class="flex justify-around items-center">
-                  <div class="real-img w-5/12">
+                  <div class="real-img w-5/12 loading_frame animate ">
                     <img
                       src="./src/assets/images/first page/27.webp"
                       alt="title"
@@ -233,17 +235,19 @@
                   <div class="realtitle--degree flex flex-col w-auto">
                     <!--  Start Realtime City  -->
                     <div class="realtitle--city flex flex-col">
-                      <h2 class="location text-lg sm:text-2xl capitalize">
+                      <h2 class="location text-lg sm:text-2xl capitalize loading_frame">
                         Los Angeles
                       </h2>
                       <div
-                        class="description text-sm text-blue-100 my-1 capitalize"
-                      ></div>
+                        class="description text-sm text-blue-100 my-1 capitalize loading_frame"
+                      >
+                      CLear sky
+                      </div>
                     </div>
                     <!-- End of Realtime City  -->
-                    <div class="flex text-left">
+                    <div class="flex text-left loading_frame">
                       <h3
-                        class="temp md:text-6xl lg:text-8xl font-semibold text-transparent bg-clip-text bg-gradient-to-t from-blue-500 to-white -mb-4"
+                        class="temp md:text-6xl lg:text-8xl font-semibold text-transparent bg-clip-text bg-gradient-to-t from-blue-500 to-white"
                       >
                         14
                       </h3>
@@ -271,14 +275,14 @@
               <div class="more_data-row w-full flex">
                 <!-- Wind  -->
                 <div id="wind" class="flex flex-col items-center w-1/2">
-                  <div class="w-12">
+                  <div class="w-12 loading_frame">
                     <img
                       src="./src/assets/animated-svg/wind.svg"
                       class="mb-2"
                       alt=""
                     />
                   </div>
-                  <span class="ml-2">
+                  <span class="ml-2 loading_frame">
                     Wind :
                     <h4 class="font-bold inline-block"> 2.8 </h4>
                     <span class="text-sm">km/h</span>
@@ -287,14 +291,14 @@
                 <!-- End of Wind  -->
                 <!-- humidity  -->
                 <div id="humidity" class="flex flex-col items-center w-1/2">
-                  <div class="w-12">
+                  <div class="w-12 loading_frame">
                     <img
                       src="./src/assets/animated-svg/raindrop-measure.svg"
                       class="mb-2"
                       alt=""
                     />
                   </div>
-                  <span class="ml-2">
+                  <span class="ml-2 loading_frame">
                     Humidity :
                     <h4 class="font-bold inline-block"> 35 </h4>
                     <span class="text-sm">%</span>
@@ -307,14 +311,14 @@
               <div class="more_data-row w-full flex mt-4">
                 <!-- Min temp  -->
                 <div id="min_temp" class="flex flex-col items-center w-1/2">
-                  <div class="w-12">
+                  <div class="w-12 loading_frame">
                     <img
                       src="./src/assets/animated-svg/thermometer-colder.svg"
                       class="mb-2"
                       alt=""
                     />
                   </div>
-                  <span class="ml-2">
+                  <span class="ml-2 loading_frame">
                     Min temp :
                     <h4 class="font-bold inline-block"> 28 </h4>
                   </span>
@@ -322,14 +326,14 @@
                 <!-- End of Main temp  -->
                 <!-- Max temp  -->
                 <div id="max_temp" class="flex flex-col items-center w-1/2">
-                  <div class="w-12">
+                  <div class="w-12 loading_frame">
                     <img
                       src="./src/assets/animated-svg/thermometer-warmer.svg"
                       class="mb-2"
                       alt=""
                     />
                   </div>
-                  <span class="ml-2">
+                  <span class="ml-2 loading_frame">
                     Max temp :
                     <h4 class="font-bold inline-block"> 35 </h4>
                   </span>
@@ -342,11 +346,11 @@
             <!-- Time And Date  -->
             <div id="time_and_date">
               <div class="mt-4 bg-gray-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-3xl w-full p-4 flex justify-between items-center">
-                <div class="date text-sm">
-                  loading....
+                <div class="time loading_frame">
+                  20:35:42   
                 </div>
-                <div class="time">
-                  loading ....
+                <div class="date text-sm loading_frame">
+                  sat / 2022,18,25
                 </div>
               </div>
             </div>
@@ -359,12 +363,79 @@
             </h3>
             <!-- Swiper -->
             <div class="swiper nextHours">
-              <div class="swiper-wrapper"></div>
+              <div class="swiper-wrapper">
+                  <!-- Start slide 1  -->
+                  <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
+                    <span class="weather_info dark:text-white loading_frame text-sm">Clear Sky</span>
+                    <span class="slide-image loading_frame">
+                      <img src="./src/assets/images/weather/clear_sky/clear_sky_night.webp" class="weather_icon">
+                    </span>
+                    <span class="weather_time font-bold dark:text-slate-100 loading_frame">09:00</span>
+                  </div>
+                  <!-- End of slide 1  -->
+                  <!-- Start slide 2  -->
+                  <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
+                    <span class="weather_info text-slate-800 dark:text-white loading_frame text-sm">Clear Sky</span>
+                    <span class="slide-image loading_frame">
+                      <img src="./src/assets/images/weather/clear_sky/clear_sky_night.webp" class="weather_icon">
+                    </span>
+                    <span class="weather_time font-bold text-slate-800 dark:text-slate-100 loading_frame">09:00</span>
+                  </div>
+                  <!-- End of slide 2  -->
+                  <!-- Start slide 3  -->
+                  <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
+                    <span class="weather_info text-slate-800 dark:text-white loading_frame text-sm">Clear Sky</span>
+                    <span class="slide-image loading_frame">
+                      <img src="./src/assets/images/weather/clear_sky/clear_sky_night.webp" class="weather_icon">
+                    </span>
+                    <span class="weather_time font-bold text-slate-800 dark:text-slate-100 loading_frame">09:00</span>
+                  </div>
+                  <!-- End of slide 3  -->
+                  <!-- Start slide 4  -->
+                  <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
+                    <span class="weather_info text-slate-800 dark:text-white loading_frame text-sm">Clear Sky</span>
+                    <span class="slide-image loading_frame">
+                      <img src="./src/assets/images/weather/clear_sky/clear_sky_night.webp" class="weather_icon">
+                    </span>
+                    <span class="weather_time font-bold text-slate-800 dark:text-slate-100 loading_frame">09:00</span>
+                  </div>
+                  <!-- End of slide 4  -->
+                  <!-- Start slide 5  -->
+                  <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
+                    <span class="weather_info text-slate-800 dark:text-white loading_frame text-sm">Clear Sky</span>
+                    <span class="slide-image loading_frame">
+                      <img src="./src/assets/images/weather/clear_sky/clear_sky_night.webp" class="weather_icon">
+                    </span>
+                    <span class="weather_time font-bold text-slate-800 dark:text-slate-100 loading_frame">09:00</span>
+                  </div>
+                  <!-- End of slide 5  -->
+                  <!-- Start slide 6  -->
+                  <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
+                    <span class="weather_info text-slate-800 dark:text-white loading_frame text-sm">Clear Sky</span>
+                    <span class="slide-image loading_frame">
+                      <img src="./src/assets/images/weather/clear_sky/clear_sky_night.webp" class="weather_icon">
+                    </span>
+                    <span class="weather_time font-bold text-slate-800 dark:text-slate-100 loading_frame">09:00</span>
+                  </div>
+                  <!-- End of slide 6  -->
+                  <!-- Start slide 7  -->
+                  <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
+                    <span class="weather_info text-slate-800 dark:text-white loading_frame text-sm">Clear Sky</span>
+                    <span class="slide-image loading_frame">
+                      <img src="./src/assets/images/weather/clear_sky/clear_sky_night.webp" class="weather_icon">
+                    </span>
+                    <span class="weather_time font-bold text-slate-800 dark:text-slate-100 loading_frame">09:00</span>
+                  </div>
+                  <!-- End of slide 7  -->
+                
+              
+              </div>
             </div>
             <!-- Swiper JS -->
           </div>
           <!-- End of Next hours weather -->
         </div>
+        <!-- End off main app  -->
       </div>
       <!-------------------------------
                 End of APP
@@ -387,8 +458,8 @@
        --------------------------------->
       <div
         id="message_box"
-        class="w-full md:w-1/2 lg:w-1/3 absolute right-0 top-0 z-50 flex flex-col items-end pr-4 pt-4"
-      ></div>
+        class="w-full md:w-1/2 lg:w-1/3 absolute right-0 top-0 z-50 flex flex-col items-center p-2">
+      </div>
       <!-------------------------------
               End of Message box
        --------------------------------->
@@ -491,6 +562,25 @@
       </div>
       <!-- End of Theme Switcher MENU  -->
     </div>
+    <!-------------------------------
+        Start VPN ERROR
+       --------------------------------->
+       <div id="vpn_error" class="w-screen h-screen bg-slate-500 dark:bg-opacity-0 fixed top-0 right-0 bg-opacity-20 flex items-center justify-center" >
+        <div id="error-text" class="animate_bottom bg-white dark:bg-slate-800 w-11/12 md:w-6/12 lg:w-5/12 rounded-xl text-center flex flex-col items-center justify-center">
+          <i class="icon-key text-8xl text-slate-600 dark:text-slate-300 my-6"></i>
+          <span class="dark:text-white">
+            Please turn on your <strong>VPN</strong>
+          </span>
+          <span class="mt-4 text-center w-11/12 mx-auto bg-slate-100 dark:bg-slate-600 dark:text-white p-3 rounded-2xl mb-3 text-slate-900 text-sm">Without VPN, we cannot receive information from the server</span>
+          <button class="bg-blue-600 px-7 py-1 text-white rounded-lg my-3 text-sm" onclick="window.location.reload()">
+            <span>Refresh</span>
+            <i class="icon-rotate-right ml-2"></i>
+          </button>
+        </div>
+     </div>
+    <!-------------------------------
+      Start VPN ERROR
+     --------------------------------->
 
     <!-----------------------
             Scripts

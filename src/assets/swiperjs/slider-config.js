@@ -3,7 +3,7 @@ var swiper = new Swiper(".nextHours", {
     spaceBetween: 10,
     breakpoints: {
     100: {
-        slidesPerView: 4.5,
+        slidesPerView: 3.7,
         spaceBetween: 10,
         },
       768: {

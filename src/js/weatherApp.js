@@ -49,12 +49,16 @@ class WeatherApp {
     }
     // Next hours Weather 
     nextHours(weatherData){
-        const slider = document.querySelector('#next_hours_weather .nextHours .swiper-wrapper');
+        // access to the time 
         const date = new Date();
         const hours = date.getHours();
-
+        // access to the slider static childs
+        const sliderChildes = document.querySelectorAll('.nextHours .swiper-slide');
+        
         // Create next hours weathers in slider
         weatherData.forEach((weather, index) => {
+            // access slide element
+            const slideElement = sliderChildes[index];
             /// access to the weather hours
             let time = (weather.date).split(" ")[1];
             time = time.slice(0,5);
@@ -110,28 +114,17 @@ class WeatherApp {
                 currentTime = '15:00'
             }
 
+            const weatherInfo = slideElement.querySelector('.weather_info'),
+                  weatherIcon = slideElement.querySelector('.weather_icon'),
+                  weatherTime = slideElement.querySelector('.weather_time');
+
+            weatherInfo.innerHTML = weather.weather;
+            weatherIcon.src = icon;
+            weatherTime.innerHTML = time;
 
 
             if(currentTime === time){
-                slider.innerHTML += `
-                <!-- Start slide ${index}  -->
-                <div class="swiper-slide active flex flex-col rounded-2xl dark:bg-slate-800 py-3  items-center justify-between relative">
-                    <span class="text-white">${weather.weather}</span>
-                    <img src="${icon}">
-                    <span class="font-bold text-white dark:text-slate-100">${time}</span>
-                </div>
-                <!-- End of slide ${index}  -->
-                `
-            }else{
-                slider.innerHTML += `
-                <!-- Start slide ${index}  -->
-                <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
-                    <span class="text-slate-800 dark:text-white">${weather.weather}</span>
-                    <img src="${icon}">
-                    <span class="font-bold text-slate-800 dark:text-slate-100">${time}</span>
-                </div>
-                <!-- End of slide ${index}  -->
-                `
+                slideElement.classList.add('active');
             }
 
 
@@ -158,9 +151,9 @@ class WeatherApp {
             console.log(error);
         })
         // // Set date and time in Local storage
-        // localStorage.setItem('time', JSON.stringify(await response) )
+        localStorage.setItem('time', JSON.stringify(await response) )
     
-        // const time = JSON.parse(localStorage.getItem('time'));
+        const time = JSON.parse(localStorage.getItem('time'));
 
         const {hour , minute , second, day_of_week, date} = await response;
         
@@ -171,6 +164,70 @@ class WeatherApp {
         dateTag.innerHTML = `${day_of_week}    /    ${date}`;
         timeTag.innerHTML = `${ hour }: ${minute} : ${second}`;
     
+        // run clock
+        this.runClock([hour, minute, second])
+    }
+    runClock(timeData){
+        // access to the loading classes
+        const loadingClasses = document.querySelectorAll(`#time_and_date .loading_frame`);
+        // remove classes
+        loadingClasses.forEach(currentElement => currentElement.classList.remove('loading_frame'))
+        // access to the data
+        let hour = Number(timeData[0]),
+        minute = Number(timeData[1]),
+        seconde = Number(timeData[2]);
+
+        // show values
+        let showSeconde = '';
+        let showMinute = '';
+        let showHour = '';
+
+        // access to the Elements
+        const timeTag = document.querySelector('#time_and_date .time');
+
+        setInterval(() => {
+            // seconde --------------
+            seconde++
+            if(seconde > 59){
+                seconde = 1;
+            }
+            // seconde fixer
+            if(seconde < 10){
+                showSeconde = `0${seconde}`;
+            }else{
+                showSeconde = seconde;
+            }
+
+            // minute ------------------
+            if(seconde === 1){
+                minute++
+            }
+            if(minute > 59){
+                minute = 1
+            }
+            // minute fixer
+            if(minute < 10){
+                showMinute = `0${minute}`;
+            }else{
+                showMinute = minute;
+            }
+
+            // hour ---------------
+            if(minute === 1){
+                hour++
+            }
+
+            // hour fixer
+            if(hour < 10){
+                showHour = `0${hour}`;
+            }else{
+                showHour = hour;
+            }
+
+            timeTag.innerHTML = `${showHour} : ${showMinute} : ${showSeconde}`
+        }, 1000);
+
+
     }
 
 
