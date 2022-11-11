@@ -38,9 +38,10 @@ class Dom {
   }
   // Show APP Page
   async showApp() {
-    this.removeClassTimeOut("#app", 100, "hidden");
+    this.removeClassTimeOut("#app", 300, "hidden");
     theme.firstLoadSetTheme()
-    this.addClassTimeOut("#loading", 300, "hidde");
+    this.addClassTimeOut("#loading", 500, "hidde");
+    this.addClass("#select_first_city", "hidden");
 
     // Access to user city from LS
     const userCityName = localStorage.getItem('userCity').toLowerCase();
@@ -83,7 +84,6 @@ class Dom {
     // access message box
     const messageBox = document.querySelector("#message_box");
     // create message tag
-    console.log(colorClass)
     const messageTag = document.createElement('div');
     messageTag.classList = `message ${colorClass} duration-700 invisible animate_bottom`;
     messageTag.innerHTML = `

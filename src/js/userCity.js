@@ -15,7 +15,7 @@ class UserCity {
       let showError = setTimeout(() => {
         dom.showVpnError();
       }, 10000);
-      
+
       const url = "https://api.ipgeolocation.io/ipgeo?apiKey=";
       const key = "05eb684275634618a6ef2f613715aef8";
       fetch(url + key, {
@@ -29,18 +29,14 @@ class UserCity {
         .catch((error) => {
           console.log(error);
         });
-
-
     }
 
     function setResult(data) {
       // set user city and Geographical coordinates to local storage and show to page
-      localStorage.setItem("userCity", data.city );
+      localStorage.setItem("autoUserCity", data.city);
       document
         .querySelector("#city_with_ip")
         .setAttribute("value", `${data.city} / ${data.country_name}`);
-
-      console.log(data)
     }
   }
   // Select city Form Handler
@@ -76,11 +72,11 @@ class UserCity {
     if (
       (defaultCitiesValue === "null" ||
         (defaultCitiesValue === null && customCityValue !== ""),
-      customCityValue.length > 2)
+        customCityValue.length > 2)
     ) {
       continueBtn.classList.remove(...classes);
       continueBtn.removeAttribute('disabled');
-    // cheacking Custom city
+      // cheacking Custom city
     } else if (
       customCityValue === "" &&
       defaultCitiesValue !== null &&
@@ -94,23 +90,23 @@ class UserCity {
     }
   }
   // Set Selected city to localstorage
-  setCityToloaclstorage(){
+  setCityToloaclstorage() {
     // access to elements
     const continueBtn = document.querySelector(".selectbox--continue-btn"),
-          loading = document.querySelector("#loading");
-          
+      loading = document.querySelector("#loading");
+
     continueBtn.addEventListener('click', () => {
       const customCityValue = document.querySelector("#custom_city").value,
-          defaultCitiesValue = document.querySelector("#default_cities").value;
+        defaultCitiesValue = document.querySelector("#default_cities").value;
 
       // Checking custom city
-      if(customCityValue !== ""){
+      if (customCityValue !== "") {
         // show loading
         loading.classList.remove('hidde');
         // checking
         this.checkingCustomCity(customCityValue)
       }
-      else{
+      else {
         // set Default city to local storage and go to app page
         localStorage.setItem('userCity', defaultCitiesValue);
         dom.removeClass('#loading', 'hidde');
@@ -119,26 +115,27 @@ class UserCity {
     })
   }
   // Checking custom city 
-  async checkingCustomCity(city){
+  async checkingCustomCity(city) {
     const key = '72caee2eff37548de75d5d9674aa2510';
-          
+
     // created url
-    const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}`;
+    const url = `https://key48798231.herokuapp.com/weather?input=${city}`;
     // send request
     const request = await fetch(url).then((res) => res)
-    .catch((error) => {
-      dom.showMessage('Can not access to server, plase trun on your vpn', 'wifi', 'danger');
-      dom.addClass("#loading", "hidde")
-      console.log(error)
-    })
+      .catch((error) => {
+        dom.showVpnError()
+        dom.addClass("#loading", "hidde")
+        console.log(error)
+      })
     // access response
-    const response = await request.json();  
+    const response = await request.json();
+
 
     // check response error
-    if(await response.cod === '200'){
+    if(request.status === 200){
       // Go to app
       dom.addClass("#select_first_city", "hidden");
-      localStorage.setItem('userCity',  await response.city.name)
+      localStorage.setItem('userCity', city)
       dom.showApp();
     }else{
       // Back to select City

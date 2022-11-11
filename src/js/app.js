@@ -57,7 +57,15 @@ function openSelectCity() {
     userCity.selectCity();
   });
   // Open App page
-  trueBtn.addEventListener('click', () => dom.showApp())
+  trueBtn.addEventListener('click', () => {
+    // set auto city to user city
+    const autoCity = localStorage.getItem('autoUserCity');
+    localStorage.setItem('userCity', autoCity)
+    localStorage.removeItem('autoUserCity');
+    // show and run app
+    dom.removeClass('#loading', 'hidde')
+    dom.showApp()
+  })
   // Close Select options
   backBtn.addEventListener('click', () => animations.closeSelectCityOptions())
   

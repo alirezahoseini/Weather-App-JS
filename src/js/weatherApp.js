@@ -1,5 +1,4 @@
 class WeatherApp {
-
     // Set Realtime Weather
     setRealtimeWeather(weatherData){
         // Set user City
@@ -167,6 +166,7 @@ class WeatherApp {
         // run clock
         this.runClock([hour, minute, second])
     }
+    // Run clock
     runClock(timeData){
         // access to the loading classes
         const loadingClasses = document.querySelectorAll(`#time_and_date .loading_frame`);
