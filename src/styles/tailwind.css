@@ -12,7 +12,7 @@ body {
   -ms-transition: .1s;
   -o-transition: .1s;
 }
-#app.blur{
+.blur{
   filter: blur(10px);
   -webkit-filter: blur(10px);
 }

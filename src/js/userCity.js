@@ -96,8 +96,9 @@ class UserCity {
       loading = document.querySelector("#loading");
 
     continueBtn.addEventListener('click', () => {
-      const customCityValue = document.querySelector("#custom_city").value,
-        defaultCitiesValue = document.querySelector("#default_cities").value;
+      let customCityValue = document.querySelector("#custom_city").value; 
+      customCityValue = customCityValue.toLowerCase()
+      const defaultCitiesValue = document.querySelector("#default_cities").value;
 
       // Checking custom city
       if (customCityValue !== "") {

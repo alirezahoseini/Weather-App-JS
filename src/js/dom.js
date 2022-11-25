@@ -38,9 +38,17 @@ class Dom {
   }
   // Show APP Page
   async showApp() {
+    // Set 10s timeout for showing vpn error
+    const showErorTimeOut = setTimeout(() => {
+      this.showVpnError();
+    }, 20000);
+    // show app page
     this.removeClassTimeOut("#app", 300, "hidden");
+    // set theme
     theme.firstLoadSetTheme()
+    // hidde loading
     this.addClassTimeOut("#loading", 500, "hidde");
+    // hidde first select city page
     this.addClass("#select_first_city", "hidden");
 
     // Access to user city from LS
@@ -56,13 +64,14 @@ class Dom {
     // access response
     const response = await request.json();
 
-    if(await response.cod !== "404"){
+    // check response error
+    if(request.status === 200){
       this.runApp(response)
       this.addClassTimeOut("#select_first_city", 100, "hidden");
+      clearTimeout(showErorTimeOut)
     }else{
       this.showVpnError()
     }
-
 
       // // For test offline -------------
       // const data = JSON.parse(localStorage.getItem('weather'));
@@ -147,7 +156,6 @@ class Dom {
           vpnErrorElem = document.querySelector('#vpn_error'),
           errorTextBox = vpnErrorElem.querySelector('#error-text');
 
-          console.log('first')
     // Blur bg
     appElem.classList.add('blur');
     selectFirstCityElem.classList.add('blur');
