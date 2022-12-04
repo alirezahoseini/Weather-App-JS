@@ -15,27 +15,17 @@ class Dom {
     const selectedElement = document.querySelector(elementId);
     selectedElement.classList.remove(classValue);
   }
-
   addClassTimeOut(elementId, time, classValue) {
     const selectedElement = document.querySelector(elementId);
     setTimeout(() => {
       selectedElement.classList.add(classValue);
     }, time);
   }
-
   addClass(elementId, classValue) {
     const selectedElement = document.querySelector(elementId);
     selectedElement.classList.add(classValue);
   }
 
-  replaceClass(element, prevClass, newClass) {
-    const selectedElem = document.querySelector(element);
-    selectedElem.classList.remove(prevClass);
-
-    setTimeout(() => {
-      selectedElem.classList.add(newClass);
-    }, 10);
-  }
   // Show APP Page
   async showApp() {
     // Set 10s timeout for showing vpn error
@@ -121,17 +111,8 @@ class Dom {
   }
   // Run and create app
   runApp(data){
-    console.log(data)
     localStorage.setItem('weather', JSON.stringify(data));
-    weatherApp.setRealtimeWeather(data[0]);
-    weatherApp.nextHours(data);
     weatherApp.setDateAndTime();
-
-    // Remove loading frame classes
-    this.removeLoadingFrame('main_weather');
-    this.removeLoadingFrame('more_data_section');
-    this.removeLoadingFrame('next_hours_weather');
-    
   }
   // Background hiddden Closer popups
   backgroundHidden(){

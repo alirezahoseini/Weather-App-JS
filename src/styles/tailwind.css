@@ -166,6 +166,11 @@ body {
 /* Swiper js slider styles  */
 .swiper-slide {
   height: auto !important;
+  transition: .3s;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -ms-transition: .3s;
+  -o-transition: .3s;
 }
 .swiper-slide.active{
   background: linear-gradient(rgb(86, 154, 255), rgb(0, 81, 255));

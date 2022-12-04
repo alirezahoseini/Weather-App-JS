@@ -16,8 +16,10 @@ class WeatherApp {
 
         // Set weather icon
         const weatherImgTag = document.querySelector('#realtime_weather .real-img img')
-        const date = new Date();
-        const hours = date.getHours();
+        let time = JSON.parse(localStorage.getItem('time'));
+        time = time.hour;
+        console.log(time)
+ 
         if(hours > 19 || hours < 6){
             weatherImgTag.src = weatherData.night_icon;
         }else{
@@ -36,14 +38,6 @@ class WeatherApp {
         minTemp.innerHTML = Math.round(weatherData.temp_min) + ' °';
         humidity.innerHTML = weatherData.humidity;
         wind.innerHTML = weatherData.wind;
-
-        // calculate Times
-        let timezone = weatherData.timezone;
-        let sunrise = weatherData.sunrise;
-        let sunset = weatherData.sunset;
-        // convert timezone
-        let sunriseTime = moment.utc(sunrise,'X').add(timezone,'seconds').format('HH:mm');
-        let sunsetTime = moment.utc(sunset,'X').add(timezone,'seconds').format('HH:mm');
 
     }
     // Next hours Weather 
@@ -113,24 +107,45 @@ class WeatherApp {
                 currentTime = '15:00'
             }
 
+            // access to tags
             const weatherInfo = slideElement.querySelector('.weather_info'),
                   weatherIcon = slideElement.querySelector('.weather_icon'),
                   weatherTime = slideElement.querySelector('.weather_time');
-
+            // set data
             weatherInfo.innerHTML = weather.weather;
             weatherIcon.src = icon;
             weatherTime.innerHTML = time;
+            slideElement.setAttribute('timeId', index)
 
-
+            // active current time
             if(currentTime === time){
                 slideElement.classList.add('active');
             }
 
-
+            // switching in times
+            slideElement.addEventListener('click', () => this.activeThisTime(index));
         });
+    }
+    //
+    activeThisTime(selectedTime){
         
-    
-    
+        const weatherData = JSON.parse(localStorage.getItem('weather'))
+        console.log(selectedTime);
+        // Active time
+        (function (){
+            // access to the time slides
+            const timeSlides = document.querySelectorAll('.nextHours .swiper-slide');
+            // unActive last slide
+            timeSlides.forEach((slide, index) => {
+                if(slide.classList.contains('active')){slide.classList.remove('active')}
+            });
+            // active new slide
+            timeSlides.forEach((slide, index) => {
+                if(index === selectedTime){slide.classList.add('active')}
+            });
+        })()
+
+        this.setRealtimeWeather(weatherData[selectedTime])
     }
     // Set Time and Date
     async setDateAndTime(){
@@ -228,6 +243,13 @@ class WeatherApp {
         }, 1000);
 
 
+        this.setRealtimeWeather(data[0]);
+        this.nextHours(data);
+
+        // // Remove loading frame classes
+        this.removeLoadingFrame('main_weather');
+        this.removeLoadingFrame('more_data_section');
+        this.removeLoadingFrame('next_hours_weather');
     }
 
 
