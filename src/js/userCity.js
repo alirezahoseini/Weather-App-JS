@@ -13,7 +13,7 @@ class UserCity {
     function sendRequest() {
       // if server not response affter 10s , show error
       let showError = setTimeout(() => {
-        dom.showVpnError();
+        // dom.showVpnError();
       }, 10000);
 
       const url = "https://api.ipgeolocation.io/ipgeo?apiKey=";
@@ -117,20 +117,20 @@ class UserCity {
   }
   // Checking custom city 
   async checkingCustomCity(city) {
+    // Access to user city from LS
     const key = '72caee2eff37548de75d5d9674aa2510';
-
     // created url
-    const url = `https://key48798231.herokuapp.com/weather?input=${city}`;
+    const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${key}`;
     // send request
     const request = await fetch(url).then((res) => res)
-      .catch((error) => {
-        dom.showVpnError()
-        dom.addClass("#loading", "hidde")
-        console.log(error)
-      })
-    // access response
+    .catch((error) => {
+      // dom.showVpnError()
+      dom.addClass("#loading", "hidde")
+      console.log(error)
+    })
     const response = await request.json();
 
+    console.log(response)
 
     // check response error
     if(request.status === 200){

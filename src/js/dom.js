@@ -43,8 +43,10 @@ class Dom {
 
     // Access to user city from LS
     const userCityName = localStorage.getItem('userCity').toLowerCase();
+
     // created url
-    const url = `https://key48798231.herokuapp.com/weather?input=${userCityName}`;
+    const key = '72caee2eff37548de75d5d9674aa2510';
+    const url = `http://api.openweathermap.org/data/2.5/forecast?q=${userCityName}&units=metric&appid=${key}`;
     // send request
     const request = await fetch(url).then((res) => res)
     .catch((error) => {
@@ -63,14 +65,15 @@ class Dom {
       this.showVpnError()
     }
 
-      // // For test offline -------------
-      // const data = JSON.parse(localStorage.getItem('weather'));
-      // this.runApp(data)
-      // this.addClassTimeOut("#loading", 300, "hidde");
-      // this.removeClassTimeOut("#app", 100, "hidden");
-      // this.addClassTimeOut("#select_first_city", 100, "hidden");
-      // theme.firstLoadSetTheme()
+    //   // For test offline -------------
+    //   const data = JSON.parse(localStorage.getItem('weather'));
+    //   this.runApp(data)
+    //   this.addClassTimeOut("#loading", 300, "hidde");
+    //   this.removeClassTimeOut("#app", 100, "hidden");
+    //   this.addClassTimeOut("#select_first_city", 100, "hidden");
+    //   theme.firstLoadSetTheme()
 
+ 
   }
   // Show First page and select city
   showFirstPage() {
@@ -113,6 +116,13 @@ class Dom {
   runApp(data){
     localStorage.setItem('weather', JSON.stringify(data));
     weatherApp.setDateAndTime();
+    weatherApp.setRealtimeWeather(data.list[0]);
+    // weatherApp.nextHours(data);
+
+    // Remove loading frame classes
+    this.removeLoadingFrame('main_weather');
+    this.removeLoadingFrame('more_data_section');
+    this.removeLoadingFrame('next_hours_weather');
   }
   // Background hiddden Closer popups
   backgroundHidden(){

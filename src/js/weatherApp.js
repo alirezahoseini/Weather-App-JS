@@ -1,6 +1,15 @@
+
 class WeatherApp {
     // Set Realtime Weather
-    setRealtimeWeather(weatherData){
+    async setRealtimeWeather(weatherData){
+
+        // distruckturing data 
+        const {humidity, temp, temp_max, temp_min} = weatherData.main;
+        const windSpeed = weatherData.wind.speed;
+        const description =  weatherData.weather[0].description;
+
+
+        console.log(weatherData)
         // Set user City
         const userCity = localStorage.getItem('userCity');
         const userCityTag = document.querySelector('#realtime_weather .location')
@@ -8,36 +17,36 @@ class WeatherApp {
 
         // Set description
         const descriptionTag = document.querySelector('#realtime_weather .description')
-        descriptionTag.innerHTML =  weatherData.weather_description;
+        descriptionTag.innerHTML = description;
 
         // Set weather temperature
         const tempTag = document.querySelector('#realtime_weather .temp')
-        tempTag.innerHTML = Math.floor(weatherData.temp_now);
+        tempTag.innerHTML = Math.floor(temp);
 
-        // Set weather icon
-        const weatherImgTag = document.querySelector('#realtime_weather .real-img img')
-        let time = JSON.parse(localStorage.getItem('time'));
-        time = time.hour;
-        console.log(time)
+        // // Set weather icon
+        // const weatherImgTag = document.querySelector('#realtime_weather .real-img img')
+        // let time = JSON.parse(localStorage.getItem('time'));
+        // time = time.hour;
+        // console.log(time)
  
-        if(hours > 19 || hours < 6){
-            weatherImgTag.src = weatherData.night_icon;
-        }else{
-            weatherImgTag.src = weatherData.day_icon;
-        }
+        // if(hours > 19 || hours < 6){
+        //     weatherImgTag.src = weatherData.night_icon;
+        // }else{
+        //     weatherImgTag.src = weatherData.day_icon;
+        // }
         
         // Set More info ------- access to elements
         const moreInfo = document.querySelector('#more_data_section'),
-              maxTemp = moreInfo.querySelector('#max_temp h4'),
-              minTemp = moreInfo.querySelector('#min_temp h4'),
-              humidity = moreInfo.querySelector('#humidity h4'),
-              wind = moreInfo.querySelector('#wind h4');
+              maxTempTag = moreInfo.querySelector('#max_temp h4'),
+              minTempTag = moreInfo.querySelector('#min_temp h4'),
+              humidityTag = moreInfo.querySelector('#humidity h4'),
+              windTag = moreInfo.querySelector('#wind h4');
 
         
-        maxTemp.innerHTML = Math.round(weatherData.temp_max) + ' °';
-        minTemp.innerHTML = Math.round(weatherData.temp_min) + ' °';
-        humidity.innerHTML = weatherData.humidity;
-        wind.innerHTML = weatherData.wind;
+        maxTempTag.innerHTML = Math.round(temp_max) + ' °';
+        minTempTag.innerHTML = Math.round(temp_min) + ' °';
+        humidityTag.innerHTML = humidity;
+        windTag.innerHTML = windSpeed;
 
     }
     // Next hours Weather 
@@ -243,13 +252,7 @@ class WeatherApp {
         }, 1000);
 
 
-        this.setRealtimeWeather(data[0]);
-        this.nextHours(data);
 
-        // // Remove loading frame classes
-        this.removeLoadingFrame('main_weather');
-        this.removeLoadingFrame('more_data_section');
-        this.removeLoadingFrame('next_hours_weather');
     }
 
 
