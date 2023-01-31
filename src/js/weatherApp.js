@@ -27,6 +27,10 @@ class WeatherApp {
               minTempTag = moreInfo.querySelector('#min_temp h4'),
               humidityTag = moreInfo.querySelector('#humidity h4'),
               windTag = moreInfo.querySelector('#wind h4');
+              maxTempTag = moreInfo.querySelector('#max_temp h4'),
+              minTempTag = moreInfo.querySelector('#min_temp h4'),
+              humidityTag = moreInfo.querySelector('#humidity h4'),
+              windTag = moreInfo.querySelector('#wind h4');
 
         
         maxTempTag.innerHTML = Math.round(weatherData.main.temp_max) + ' °';

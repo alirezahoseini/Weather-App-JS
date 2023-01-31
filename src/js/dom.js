@@ -45,6 +45,7 @@ class Dom {
     // Access to user city from LS
     const userCityName = localStorage.getItem('userCity').toLowerCase();
 
+
     // created url
     const url = `http://api.openweathermap.org/data/2.5/forecast?q=${userCityName}&appid=${key}&units=metric`;
     // send request
@@ -65,6 +66,15 @@ class Dom {
       this.showVpnError()
     }
 
+    //   // For test offline -------------
+    //   const data = JSON.parse(localStorage.getItem('weather'));
+    //   this.runApp(data)
+    //   this.addClassTimeOut("#loading", 300, "hidde");
+    //   this.removeClassTimeOut("#app", 100, "hidden");
+    //   this.addClassTimeOut("#select_first_city", 100, "hidden");
+    //   theme.firstLoadSetTheme()
+
+ 
     //   // For test offline -------------
     //   const data = JSON.parse(localStorage.getItem('weather'));
     //   this.runApp(data)
