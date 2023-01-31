@@ -4,8 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link href="./src/assets/images/favicon.ico" rel="shortcut icon" />
     <!-- styles  -->
-    <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
+    <!-- <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet"> -->
     <link rel="stylesheet" href="./src/styles/css-reset.css" />
     <link rel="stylesheet" href="./src/styles/tailwind_output.css" />
     <link rel="stylesheet" href="./src/styles/css/animations.css" />
@@ -331,7 +333,7 @@
                   </div>
                   <span class="ml-2 loading_frame">
                     Min temp :
-                    <h4 class="font-bold inline-block"> 28 </h4>
+                    <h4 class="font-bold inline-block"> ... </h4>
                   </span>
                 </div>
                 <!-- End of Main temp  -->
@@ -346,7 +348,7 @@
                   </div>
                   <span class="ml-2 loading_frame">
                     Max temp :
-                    <h4 class="font-bold inline-block"> 35 </h4>
+                    <h4 class="font-bold inline-block"> ... </h4>
                   </span>
                 </div>
                 <!-- End of Max temp  -->
@@ -379,7 +381,7 @@
                   <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
                     <span class="weather_info dark:text-slate-100 loading_frame text-sm">Clear Sky</span>
                     <span class="slide-image loading_frame">
-                      <img src="./src/assets/images/weather/clear_sky/clear_sky_night.webp" class="weather_icon">
+                      <img src="./src/assets/images/weather/rain_day.webp" class="weather_icon">
                     </span>
                     <span class="weather_time font-bold dark:text-slate-100 loading_frame">09:00</span>
                   </div>
@@ -388,7 +390,7 @@
                   <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
                     <span class="weather_info  dark:text-slate-100 loading_frame text-sm">Clear Sky</span>
                     <span class="slide-image loading_frame">
-                      <img src="./src/assets/images/weather/clear_sky/clear_sky_night.webp" class="weather_icon">
+                      <img src="./src/assets/images/weather/rain_day.webp" class="weather_icon">
                     </span>
                     <span class="weather_time font-bold  dark:text-slate-100 loading_frame">09:00</span>
                   </div>
@@ -397,7 +399,7 @@
                   <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
                     <span class="weather_info dark:text-slate-100  loading_frame text-sm">Clear Sky</span>
                     <span class="slide-image loading_frame">
-                      <img src="./src/assets/images/weather/clear_sky/clear_sky_night.webp" class="weather_icon">
+                      <img src="./src/assets/images/weather/rain_day.webp" class="weather_icon">
                     </span>
                     <span class="weather_time font-bold  dark:text-slate-100 loading_frame">09:00</span>
                   </div>
@@ -406,7 +408,7 @@
                   <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
                     <span class="weather_info dark:text-slate-100  loading_frame text-sm">Clear Sky</span>
                     <span class="slide-image loading_frame">
-                      <img src="./src/assets/images/weather/clear_sky/clear_sky_night.webp" class="weather_icon">
+                      <img src="./src/assets/images/weather/rain_day.webp" class="weather_icon">
                     </span>
                     <span class="weather_time font-bold  dark:text-slate-100 loading_frame">09:00</span>
                   </div>
@@ -415,7 +417,7 @@
                   <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
                     <span class="weather_info dark:text-slate-100  loading_frame text-sm">Clear Sky</span>
                     <span class="slide-image loading_frame">
-                      <img src="./src/assets/images/weather/clear_sky/clear_sky_night.webp" class="weather_icon">
+                      <img src="./src/assets/images/weather/rain_day.webp" class="weather_icon">
                     </span>
                     <span class="weather_time font-bold  dark:text-slate-100 loading_frame">09:00</span>
                   </div>
@@ -424,7 +426,7 @@
                   <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
                     <span class="weather_info dark:text-slate-100 loading_frame text-sm">Clear Sky</span>
                     <span class="slide-image loading_frame">
-                      <img src="./src/assets/images/weather/clear_sky/clear_sky_night.webp" class="weather_icon">
+                      <img src="./src/assets/images/weather/rain_day.webp" class="weather_icon">
                     </span>
                     <span class="weather_time font-bold dark:text-slate-100 loading_frame">09:00</span>
                   </div>
@@ -433,7 +435,7 @@
                   <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
                     <span class="weather_info dark:text-slate-100 loading_frame text-sm">Clear Sky</span>
                     <span class="slide-image loading_frame">
-                      <img src="./src/assets/images/weather/clear_sky/clear_sky_night.webp" class="weather_icon">
+                      <img src="./src/assets/images/weather/rain_day.webp" class="weather_icon">
                     </span>
                     <span class="weather_time font-bold dark:text-slate-100 loading_frame">09:00</span>
                   </div>
@@ -599,6 +601,7 @@
             Scripts
     ----------------------->
     <script type="module" src="./src/js/theme.js"></script>
+    <script type="module" src="./src/js/iconFinder.js"></script>
     <script type="module" src="./src/js/weatherApp.js"></script>
     <script type="module" src="./src/js/dom.js"></script>
     <script type="module" src="./src/js/userCity.js"></script>

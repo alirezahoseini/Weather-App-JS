@@ -28,10 +28,11 @@ class Dom {
 
   // Show APP Page
   async showApp() {
+    const key = '72caee2eff37548de75d5d9674aa2510';
     // Set 10s timeout for showing vpn error
-    const showErorTimeOut = setTimeout(() => {
-      this.showVpnError();
-    }, 20000);
+    // const showErorTimeOut = setTimeout(() => {
+    //   this.showVpnError();
+    // }, 20000);
     // show app page
     this.removeClassTimeOut("#app", 300, "hidden");
     // set theme
@@ -43,12 +44,12 @@ class Dom {
 
     // Access to user city from LS
     const userCityName = localStorage.getItem('userCity').toLowerCase();
+
     // created url
-    const url = `https://key48798231.herokuapp.com/weather?input=${userCityName}`;
+    const url = `http://api.openweathermap.org/data/2.5/forecast?q=${userCityName}&appid=${key}&units=metric`;
     // send request
     const request = await fetch(url).then((res) => res)
     .catch((error) => {
-      this.showVpnError()
       console.log(error)
     })
     // access response
@@ -56,21 +57,23 @@ class Dom {
 
     // check response error
     if(request.status === 200){
+      console.log(response)
       this.runApp(response)
       this.addClassTimeOut("#select_first_city", 100, "hidden");
-      clearTimeout(showErorTimeOut)
+      // clearTimeout(showErorTimeOut)
     }else{
       this.showVpnError()
     }
 
-      // // For test offline -------------
-      // const data = JSON.parse(localStorage.getItem('weather'));
-      // this.runApp(data)
-      // this.addClassTimeOut("#loading", 300, "hidde");
-      // this.removeClassTimeOut("#app", 100, "hidden");
-      // this.addClassTimeOut("#select_first_city", 100, "hidden");
-      // theme.firstLoadSetTheme()
+    //   // For test offline -------------
+    //   const data = JSON.parse(localStorage.getItem('weather'));
+    //   this.runApp(data)
+    //   this.addClassTimeOut("#loading", 300, "hidde");
+    //   this.removeClassTimeOut("#app", 100, "hidden");
+    //   this.addClassTimeOut("#select_first_city", 100, "hidden");
+    //   theme.firstLoadSetTheme()
 
+ 
   }
   // Show First page and select city
   showFirstPage() {
@@ -113,6 +116,18 @@ class Dom {
   runApp(data){
     localStorage.setItem('weather', JSON.stringify(data));
     weatherApp.setDateAndTime();
+
+
+    // Access to the weather data
+    const weatherData = data.list;
+
+    weatherApp.setRealtimeWeather(weatherData[0]);
+    weatherApp.nextHours(weatherData);
+
+    // Remove loading frame classes
+    this.removeLoadingFrame('main_weather');
+    this.removeLoadingFrame('more_data_section');
+    this.removeLoadingFrame('next_hours_weather');
   }
   // Background hiddden Closer popups
   backgroundHidden(){

@@ -1,6 +1,9 @@
+import IconFinder from "./iconFinder.js";
+const iconFinder = new IconFinder();
 class WeatherApp {
     // Set Realtime Weather
-    setRealtimeWeather(weatherData){
+    async setRealtimeWeather(weatherData){
+        console.log(weatherData)
         // Set user City
         const userCity = localStorage.getItem('userCity');
         const userCityTag = document.querySelector('#realtime_weather .location')
@@ -8,123 +11,73 @@ class WeatherApp {
 
         // Set description
         const descriptionTag = document.querySelector('#realtime_weather .description')
-        descriptionTag.innerHTML =  weatherData.weather_description;
+        descriptionTag.innerHTML =  weatherData.weather[0].description;
 
         // Set weather temperature
         const tempTag = document.querySelector('#realtime_weather .temp')
-        tempTag.innerHTML = Math.floor(weatherData.temp_now);
+        tempTag.innerHTML = Math.floor(weatherData.main.temp);
 
         // Set weather icon
         const weatherImgTag = document.querySelector('#realtime_weather .real-img img')
-        let time = JSON.parse(localStorage.getItem('time'));
-        time = time.hour;
-        console.log(time)
- 
-        if(hours > 19 || hours < 6){
-            weatherImgTag.src = weatherData.night_icon;
-        }else{
-            weatherImgTag.src = weatherData.day_icon;
-        }
+        weatherImgTag.src = await iconFinder.findIcon(weatherData);
         
         // Set More info ------- access to elements
         const moreInfo = document.querySelector('#more_data_section'),
-              maxTemp = moreInfo.querySelector('#max_temp h4'),
-              minTemp = moreInfo.querySelector('#min_temp h4'),
-              humidity = moreInfo.querySelector('#humidity h4'),
-              wind = moreInfo.querySelector('#wind h4');
+              maxTempTag = moreInfo.querySelector('#max_temp h4'),
+              minTempTag = moreInfo.querySelector('#min_temp h4'),
+              humidityTag = moreInfo.querySelector('#humidity h4'),
+              windTag = moreInfo.querySelector('#wind h4');
 
         
-        maxTemp.innerHTML = Math.round(weatherData.temp_max) + ' °';
-        minTemp.innerHTML = Math.round(weatherData.temp_min) + ' °';
-        humidity.innerHTML = weatherData.humidity;
-        wind.innerHTML = weatherData.wind;
+        maxTempTag.innerHTML = Math.round(weatherData.main.temp_max) + ' °';
+        minTempTag.innerHTML = Math.round(weatherData.main.temp_min) + ' °';
+        humidityTag.innerHTML = weatherData.main.humidity;
+        windTag.innerHTML = weatherData.wind.speed;
 
     }
     // Next hours Weather 
-    nextHours(weatherData){
-        // access to the time 
-        const date = new Date();
-        const hours = date.getHours();
+    async nextHours(weatherData){
+        console.log(weatherData)
         // access to the slider static childs
         const sliderChildes = document.querySelectorAll('.nextHours .swiper-slide');
         
         // Create next hours weathers in slider
-        weatherData.forEach((weather, index) => {
+        // weatherData.forEach((weather, index) => {
+        //     // access slide element
+        //     const slideElement = sliderChildes[index];
+        //     /// access to the weather hours
+        //     let time = (weather.dt_txt).split(" ")[1];
+        //     time = time.slice(0,2);
+        //     iconFinder.findIcon(time, weather)
+
+
+
+        //     // // access to tags
+        //     // const weatherInfo = slideElement.querySelector('.weather_info'),
+        //     //       weatherIcon = slideElement.querySelector('.weather_icon'),
+        //     //       weatherTime = slideElement.querySelector('.weather_time');
+        //     // // set data
+        //     // weatherInfo.innerHTML = weather.weather;
+        //     // weatherIcon.src = icon;
+        //     // weatherTime.innerHTML = time;
+        //     // slideElement.setAttribute('timeId', index)
+
+        //     // // active current time
+        //     // if(currentTime === time){
+        //     //     slideElement.classList.add('active');
+        //     // }
+
+        //     // // switching in times
+        //     // slideElement.addEventListener('click', () => this.activeThisTime(index));
+        // });
+        for (let index = 0; index <= 35; index++) {
+            const weather = weatherData[index]
             // access slide element
             const slideElement = sliderChildes[index];
-            /// access to the weather hours
-            let time = (weather.date).split(" ")[1];
-            time = time.slice(0,5);
-            // set icon by any hours
-            let icon = '';
-            switch (time) {
-                case "18:00":
-                    icon = icon = weather.day_icon;;
-                    break;
-                case "21:00":
-                    icon = icon = weather.night_icon;;
-                    break;
-                case "00:00":
-                    icon = icon = weather.night_icon;;
-                    break;
-                case "03:00":
-                    icon = icon = weather.night_icon;;
-                    break;
-                case "06:00":
-                    icon = icon = weather.day_icon;;
-                    break;
-                case "09:00":
-                    icon = icon = weather.day_icon;;
-                    break;
-                case "12:00":
-                    icon = icon = weather.day_icon;;
-                    break;
-                case "15:00":
-                    icon = icon = weather.day_icon;;
-                    break;
-                default:
-                    icon = icon = weather.day_icon;;
-                    break;
-            }
+            const icon = await iconFinder.findIcon(weather);
 
-            /// Access to current time
-            let currentTime = '';
-            if(hours >= 18 && hours < 21){
-                currentTime = '18:00';
-            }else if(hours >= 21 && hours < 24){
-                currentTime = '21:00';
-            }else if(hours >= 24 || hours < 3){
-                currentTime = "00:00"
-            }else if(hours >= 3 && hours < 6){
-                currentTime = '03:00'
-            }else if(hours >= 6 && hours < 9){
-                currentTime = '06:00'
-            }else if(hours >= 9 && hours < 12){
-                currentTime = '09:00'
-            }else if(hours >= 12 && hours < 15){
-                currentTime = '12:00'
-            }else if(hours >= 15 && hours < 18){
-                currentTime = '15:00'
-            }
-
-            // access to tags
-            const weatherInfo = slideElement.querySelector('.weather_info'),
-                  weatherIcon = slideElement.querySelector('.weather_icon'),
-                  weatherTime = slideElement.querySelector('.weather_time');
-            // set data
-            weatherInfo.innerHTML = weather.weather;
-            weatherIcon.src = icon;
-            weatherTime.innerHTML = time;
-            slideElement.setAttribute('timeId', index)
-
-            // active current time
-            if(currentTime === time){
-                slideElement.classList.add('active');
-            }
-
-            // switching in times
-            slideElement.addEventListener('click', () => this.activeThisTime(index));
-        });
+            console.log(icon)
+        }
     }
     //
     activeThisTime(selectedTime){
@@ -151,12 +104,14 @@ class WeatherApp {
     async setDateAndTime(){
         // Access to user city
         const userCity = localStorage.getItem('userCity');
+
         // base url and api key
-        const url = 'https://api.api-ninjas.com/v1/worldtime?city=';
-        const key = 'UugH/GVejG63QV8L9voW/w==AEG2K0kCQF2h4aiG';
+        const url = 'https://api.ipgeolocation.io/timezone?apiKey=';
+        const key = '05eb684275634618a6ef2f613715aef8';
+
 
         // Get Date and time from Api
-        const response = fetch(url + userCity,{
+        const response = fetch(`${url}${key}&location=${userCity}`,{
             headers: { 'X-Api-Key': key},
             contentType: 'application/json',
         }).then(res => {
@@ -164,22 +119,42 @@ class WeatherApp {
         }).catch(error => {
             console.log(error);
         })
-        // // Set date and time in Local storage
-        localStorage.setItem('time', JSON.stringify(await response) )
+        // Set date and time in Local storage
+        localStorage.setItem('time', JSON.stringify(await response))
     
-        const time = JSON.parse(localStorage.getItem('time'));
+        // Extract time from api
+        const data = await response;
+        let timeData = data.time_24;
+        timeData = timeData.split(':')
+        timeData = {
+            hour : timeData[0],
+            minute : timeData[1],
+            second : timeData[2]
+        }
 
-        const {hour , minute , second, day_of_week, date} = await response;
+        //Extract Date data from api
+        let dateData = {
+            // Access day of week
+            day : () => {
+                let dayName = data.date_time_txt;
+                dayName = dayName.split(',');
+                dayName = dayName[0];
+                return dayName;
+            },
+            date : data.date
+        }
+
+
         
         // access to HTML elemnts 
         const dateTag = document.querySelector('#time_and_date .date');
         const timeTag = document.querySelector('#time_and_date .time');
 
-        dateTag.innerHTML = `${day_of_week}    /    ${date}`;
-        timeTag.innerHTML = `${ hour }: ${minute} : ${second}`;
+        dateTag.innerHTML = `${dateData.day()}    /    ${dateData.date}`;
+        timeTag.innerHTML = `${ timeData.hour }: ${timeData.minute} : ${timeData.second}`;
     
         // run clock
-        this.runClock([hour, minute, second])
+        this.runClock([timeData.hour, timeData.minute, timeData.second])
     }
     // Run clock
     runClock(timeData){
@@ -242,17 +217,7 @@ class WeatherApp {
             timeTag.innerHTML = `${showHour} : ${showMinute} : ${showSeconde}`
         }, 1000);
 
-
-        this.setRealtimeWeather(data[0]);
-        this.nextHours(data);
-
-        // // Remove loading frame classes
-        this.removeLoadingFrame('main_weather');
-        this.removeLoadingFrame('more_data_section');
-        this.removeLoadingFrame('next_hours_weather');
     }
-
-
 
 }
 
