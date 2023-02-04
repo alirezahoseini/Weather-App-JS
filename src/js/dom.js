@@ -58,7 +58,6 @@ class Dom {
 
     // check response error
     if(request.status === 200){
-      console.log(response)
       this.runApp(response)
       this.addClassTimeOut("#select_first_city", 100, "hidden");
       // clearTimeout(showErorTimeOut)
@@ -135,9 +134,8 @@ class Dom {
     weatherApp.nextHours(weatherData);
 
     // Remove loading frame classes
-    this.removeLoadingFrame('main_weather');
-    this.removeLoadingFrame('more_data_section');
-    this.removeLoadingFrame('next_hours_weather');
+    weatherApp.removeLoadingFrame('main_weather');
+    weatherApp.removeLoadingFrame('more_data_section');
   }
   // Background hiddden Closer popups
   backgroundHidden(){
@@ -172,13 +170,7 @@ class Dom {
       errorTextBox.classList.remove('animate_bottom')
     }, 500);
   }
-  // Remove loading frame
-  removeLoadingFrame(elementId){
-    // access to the loading classes
-    const loadingClasses = document.querySelectorAll(`#${elementId} .loading_frame`);
-    // remove classes
-    loadingClasses.forEach(currentElement => currentElement.classList.remove('loading_frame'))
-  }
+  
   
 }
 
