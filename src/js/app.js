@@ -64,7 +64,7 @@ function openSelectCity() {
     localStorage.removeItem('autoUserCity');
     // show and run app
     dom.removeClass('#loading', 'hidde')
-    // dom.showApp()
+    dom.showApp()
   })
   // Close Select options
   backBtn.addEventListener('click', () => animations.closeSelectCityOptions())

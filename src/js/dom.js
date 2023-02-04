@@ -29,10 +29,10 @@ class Dom {
   // Show APP Page
   async showApp() {
     const key = '72caee2eff37548de75d5d9674aa2510';
-    // Set 10s timeout for showing vpn error
-    // const showErorTimeOut = setTimeout(() => {
-    //   this.showVpnError();
-    // }, 20000);
+    // Set 20s timeout for showing vpn error
+    const showErorTimeOut = setTimeout(() => {
+      this.showVpnError();
+    }, 20000);
     // show app page
     this.removeClassTimeOut("#app", 300, "hidden");
     // set theme
@@ -56,33 +56,17 @@ class Dom {
     // access response
     const response = await request.json();
 
+    console.log(response)
+
     // check response error
     if(request.status === 200){
+      console.log('ok')
       this.runApp(response)
       this.addClassTimeOut("#select_first_city", 100, "hidden");
-      // clearTimeout(showErorTimeOut)
+      clearTimeout(showErorTimeOut)
     }else{
       this.showVpnError()
     }
-
-    //   // For test offline -------------
-    //   const data = JSON.parse(localStorage.getItem('weather'));
-    //   this.runApp(data)
-    //   this.addClassTimeOut("#loading", 300, "hidde");
-    //   this.removeClassTimeOut("#app", 100, "hidden");
-    //   this.addClassTimeOut("#select_first_city", 100, "hidden");
-    //   theme.firstLoadSetTheme()
-
- 
-    //   // For test offline -------------
-    //   const data = JSON.parse(localStorage.getItem('weather'));
-    //   this.runApp(data)
-    //   this.addClassTimeOut("#loading", 300, "hidde");
-    //   this.removeClassTimeOut("#app", 100, "hidden");
-    //   this.addClassTimeOut("#select_first_city", 100, "hidden");
-    //   theme.firstLoadSetTheme()
-
- 
   }
   // Show First page and select city
   showFirstPage() {
