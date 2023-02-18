@@ -83,6 +83,33 @@ class GetApis{
 
         return completeData ;
     }
+
+    async chackingCoustomCity(city){
+        // Access to user city from LS
+        const key = '72caee2eff37548de75d5d9674aa2510';
+        // created url
+        const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&units=metric`;
+        // send request
+        const request = await fetch(url).then((res) => res)
+        .catch((error) => {
+            dom.addClass("#loading", "hidde")
+            console.log(error)
+        })
+        .catch((error) => {
+            dom.addClass("#loading", "hidde")
+            console.log(error)
+        })
+        // access response
+        const response = await request.json();
+
+         // check response error
+        if (request.status === 200) {
+            return true
+        } else {
+            return false
+        }
+    }
+
 }
 
 export default GetApis;

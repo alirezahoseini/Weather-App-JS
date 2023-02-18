@@ -1,5 +1,8 @@
 import Dom from "./dom.js";
+import GetApis from "./getApis.js";
 const dom = new Dom();
+const getApis = new GetApis();
+
 
 class UserCity {
   // Checking localstorage for exist city
@@ -11,11 +14,6 @@ class UserCity {
   accessUserCityWithIp() {
     sendRequest();
     function sendRequest() {
-      // if server not response affter 20s , show error
-      let showError = setTimeout(() => {
-        dom.showVpnError();
-      }, 20000);
-
       const url = "https://api.ipgeolocation.io/ipgeo?apiKey=";
       const key = "05eb684275634618a6ef2f613715aef8";
       fetch(url + key, {
@@ -96,7 +94,7 @@ class UserCity {
       loading = document.querySelector("#loading");
 
     continueBtn.addEventListener('click', () => {
-      let customCityValue = document.querySelector("#custom_city").value; 
+      let customCityValue = document.querySelector("#custom_city").value;
       customCityValue = customCityValue.toLowerCase()
       const defaultCitiesValue = document.querySelector("#default_cities").value;
 
@@ -123,13 +121,11 @@ class UserCity {
     const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&units=metric`;
     // send request
     const request = await fetch(url).then((res) => res)
-    .catch((error) => {
-      // dom.showVpnError()
-      dom.addClass("#loading", "hidde")
-      console.log(error)
-    })
       .catch((error) => {
-        // dom.showVpnError()
+        dom.addClass("#loading", "hidde")
+        console.log(error)
+      })
+      .catch((error) => {
         dom.addClass("#loading", "hidde")
         console.log(error)
       })
@@ -139,17 +135,62 @@ class UserCity {
     console.log(response)
 
     // check response error
-    if(request.status === 200){
+    if (request.status === 200) {
       // Go to app
       dom.addClass("#select_first_city", "hidden");
       localStorage.setItem('userCity', city)
       dom.showApp();
-    }else{
+    } else {
       // Back to select City
       dom.addClass('#loading', 'hidde')
       dom.showMessage('Your city Not Found, Try again ', 'info', 'danger')
     }
 
+  }
+  // Submit Change city form
+  async submitChangeCityForm(event){
+    event.preventDefault()
+    
+    // Access to elments
+    const form = document.querySelector('#change_city_form');
+    const status = form.getAttribute('form-status'),
+          customCityInput = document.querySelector('#change_city_form #custom-city'),
+          defaultCitiesInput = document.querySelector('#change_city_form #default-cities'),
+          loading = document.querySelector('#change_city_form #loading');
+
+
+    let city = '';
+
+    // Default city
+    if(customCityInput.value === '' && defaultCitiesInput.value !== null){
+      city = defaultCitiesInput.value;
+    // custom city 
+    }else if(defaultCitiesInput.value == 'null' && customCityInput.value !== '' ){
+      loading.classList.add('active')
+      /// Chacking city with api
+      const isValidCity = await getApis.chackingCoustomCity(customCityInput.value);
+      // Show error
+      if (isValidCity == false){
+        loading.classList.remove('active')
+        dom.showMessage('Your city Not Found, Try again ', 'info', 'danger')
+      }else{
+        // Set city
+        city = customCityInput.value;
+      }
+    }
+
+    // chacking form status and set city to localStorage
+    if(city !== '' && city !== null){
+      if(status === 'firstCity'){
+        // Set first city
+        localStorage.setItem('userCity', city)
+        window.location.reload();
+      }else if (status === 'secondeCity'){
+        // set seconde city
+        localStorage.setItem('secondeCity', city)
+        window.location.reload();
+      }
+    }
   }
 }
 

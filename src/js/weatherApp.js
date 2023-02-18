@@ -29,8 +29,8 @@ class WeatherApp {
 
 
 
-        maxTempTag.innerHTML = Math.round(weatherData.main.temp_max) + ' °';
-        minTempTag.innerHTML = Math.round(weatherData.main.temp_min) + ' °';
+        maxTempTag.innerHTML = weatherData.main.temp_max + ' °';
+        minTempTag.innerHTML = weatherData.main.temp_min + ' °';
         humidityTag.innerHTML = weatherData.main.humidity;
         windTag.innerHTML = weatherData.wind.speed;
 
