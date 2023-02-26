@@ -32,9 +32,10 @@ function eventlisteners() {
     dom.closeChangeCityForm()
     dom.resetChangeCityForm()
   });
-
+  // Submit change cityu form
   document.querySelector('#change_city_form #submit-form').addEventListener('click', (event) => userCity.submitChangeCityForm(event))
-
+  // 
+  document.querySelector('#secondeCity .add-city-button').addEventListener('click', dom.openChangeCityPopup)
 }
 
 /*-------------------

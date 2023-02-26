@@ -224,8 +224,7 @@
         <!-- End of Header -->
         <!-- Start main app  -->
         <div id="main_app"
-          class="w-full flex flex-col md:flex-row md:justify-around items-start"
-        >
+          class="w-full flex flex-col md:flex-row md:justify-around items-start">
           <div class="w-full md:w-4/12 flex flex-col">
             <!--  Start Gradient box - Main Weather -->
             <div
@@ -369,13 +368,14 @@
             </div>
             <!-- End of Time And Date  -->
           </div>
-          <!-- Start Next hours weather -->
+          <!-- Start Next hours weather and seconde city-->
           <div id="next_hours_weather" class="w-full md:w-7/12 my-4 md:mt-0">
+            <!-- Start Next hours weather -->
             <h3 class="text-slate-800 dark:text-slate-100 font-bold mb-3">
               Today
             </h3>
             <!-- Swiper -->
-            <div class="swiper nextHours">
+            <div id="nextHours" class="swiper nextHours">
               <div class="swiper-wrapper">
                   <!-- Start slide 1  -->
                   <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
@@ -440,13 +440,140 @@
                     <span class="weather_time font-bold dark:text-slate-100 loading_frame">09:00</span>
                   </div>
                   <!-- End of slide 7  -->
-                
-              
               </div>
             </div>
             <!-- Swiper JS -->
+            <!-- End of Next hours weather -->
+            <!-- Start Seconde city -->
+            <div id="secondeCity" class="w-full my-4">
+              <!-- Start Add seconde Button -->
+              <div id="add-city-button" class="add-city-button w-full py-10 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white rounded-xl cursor-pointer hidden" >
+                <div class="flex flex-col items-center justify-center">
+                  <i href="" class="icon-plus text-5xl pointer-events-none z-0 inline mb-3"></i>
+                  <span>Add seconde city</span>
+                </div>
+              </div>
+              <!-- End of Add seconde Button -->
+              <!-- Seconde city info -->
+              <div class="seconde-city-info w-full flex flex-col md:flex-row rounded-2xl bg-gray-50 dark:bg-slate-800 p-3 items-center justify-start hidden">
+                <!-- Start Main weather -->
+                <div class="main-weather w-full md:w-4/12 md:items-center justify-around md:justify-start flex md:flex-col">
+                  <div class="w-5/12 lg:w-6/12 lg:mb-2 loading_frame animate real-img">
+                    <img
+                      src="./src/assets/images/first page/27.webp"
+                      alt="title"
+                      class="w-full mx-auto"
+                    />
+                  </div>
+                  <div class=" flex flex-col w-auto mt-3 md:mt-0">
+                    <!--  Start Realtime City  -->
+                    <div class="realtitle--city flex flex-col">
+                      <h3 class="location text-base sm:text-lg capitalize loading_frame">
+                        Los Angeles
+                      </h3>
+                      <div
+                        class="description text-xs text-slate-800 my-1 capitalize loading_frame"
+                      >
+                      CLear sky
+                      </div>
+                    </div>
+                    <div class="flex text-left loading_frame">
+                      <h1
+                        class="temp md:text-3xl lg:text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-t from-blue-500 to-slate-200"
+                      >
+                        14
+                      </h1>
+                      <span
+                        class="font-semibold text-transparent bg-clip-text bg-gradient-to-t from-blue-400 to-slate-300 relative text-5xl md:text-2xl lg:text-3xl"
+                      >
+                        °
+                      </span>
+                    </div>
+                    <!-- End of Realtime City  -->
+                  </div>
+                </div>
+                <!-- End of Main weather -->
+                <!-- Start More weather -->
+                <div class="more-weather w-full p-4 flex flex-col">
+                    <!-- Row 1 -->
+                    <div class="more_data-row w-full flex">
+                      <!-- Wind  -->
+                      <div id="wind" class="flex flex-col items-center w-1/2">
+                        <div class="w-12 loading_frame">
+                          <img
+                            src="./src/assets/animated-svg/wind.svg"
+                            class="mb-2"
+                            alt=""
+                          />
+                        </div>
+                        <span class=" text ml-2 loading_frame">
+                          Wind :
+                          <h4 class="font-bold inline-block"> 2.8 </h4>
+                          <span class="text-sm">km/h</span>
+                        </span>
+                      </div>
+                      <!-- End of Wind  -->
+                      <!-- humidity  -->
+                      <div id="humidity" class="flex flex-col items-center w-1/2">
+                        <div class="w-12 loading_frame">
+                          <img
+                            src="./src/assets/animated-svg/raindrop-measure.svg"
+                            class="mb-2"
+                            alt=""
+                          />
+                        </div>
+                        <span class=" text ml-2 loading_frame">
+                          Humidity :
+                          <h4 class="font-bold inline-block"> 35 </h4>
+                          <span class="text-sm">%</span>
+                        </span>
+                      </div>
+                      <!-- End of humidity  -->
+                    </div>
+                    <!-- End of Row 1 -->
+                    <!-- Row 2  -->
+                    <div class="more_data-row w-full flex mt-4">
+                      <!-- Min temp  -->
+                      <div id="min_temp" class="flex flex-col items-center w-1/2">
+                        <div class="w-12 loading_frame">
+                          <img
+                            src="./src/assets/animated-svg/thermometer-colder.svg"
+                            class="mb-2"
+                            alt=""
+                          />
+                        </div>
+                        <span class=" text ml-2 loading_frame">
+                          Min temp :
+                          <h4 class="font-bold inline-block"> ... </h4>
+                        </span>
+                      </div>
+                      <!-- End of Main temp  -->
+                      <!-- Max temp  -->
+                      <div id="max_temp" class="flex flex-col items-center w-1/2">
+                        <div class="w-12 loading_frame">
+                          <img
+                            src="./src/assets/animated-svg/thermometer-warmer.svg"
+                            class="mb-2"
+                            alt=""
+                          />
+                        </div>
+                        <span class=" text ml-2 loading_frame">
+                          Max temp :
+                          <h4 class="font-bold inline-block"> ... </h4>
+                        </span>
+                      </div>
+                      <!-- End of Max temp  -->
+                    </div>
+                    <!-- End of Row 2  -->
+                </div>
+                <!-- End of More weather -->
+              </div>
+              <!-- Seconde city info -->
+            </div>
+            <!-- End of Seconde city -->
           </div>
-          <!-- End of Next hours weather -->
+          <!-- End of Next hours weather and seconde city -->
+
         </div>
         <!-- End off main app  -->
       </div>
@@ -600,12 +727,12 @@
         <!-- Start change city body -->
         <div id="change_city--body" class="w-full h-full mt-3 mb-5">
           <!------------ Start Change First city -->
-          <div id='change-first-city-button'class="w-full flex items-center justify-start  border-2  dark:hover:text-indigo-500 border-indigo-600 dark:border-indigo-600 rounded-xl p-3 cursor-pointer bg-indigo-600 dark:hover:bg-slate-800 hover:bg-white text-white hover:text-indigo-600 my-3 text-base transition duration-700 change-city-button" >
+          <div id='change-first-city-button'class="w-full flex items-center justify-start  border-2  dark:hover:text-indigo-500 border-indigo-600 dark:border-indigo-600 rounded-xl p-3 cursor-pointer bg-indigo-600 dark:hover:bg-slate-800 hover:bg-white text-white hover:text-indigo-600 my-3 transition duration-700 change-city-button sm:text-sm lg:text-base" >
             <i class="icon-edit-square text-4xl font-thin"></i>
             <div class=" ml-3">Change your city</div>
           </div>
           <!------------ End of Change First city -->
-          <div id="change-seconde-city-button" class="change-city-button w-full flex items-center justify-start  border-2  dark:hover:text-purple-600 border-purple-600 dark:border-purple-600 rounded-xl p-3 cursor-pointer bg-purple-600 dark:hover:bg-slate-800 hover:bg-white   text-white hover:text-purple-600 my-3 text-base" >
+          <div id="change-seconde-city-button" class="change-city-button w-full flex items-center justify-start  border-2  dark:hover:text-purple-600 border-purple-600 dark:border-purple-600 rounded-xl p-3 cursor-pointer bg-purple-600 dark:hover:bg-slate-800 hover:bg-white   text-white hover:text-purple-600 my-3 sm:text-sm  lg:text-base" >
             <i class="icon-add text-4xl font-thin  "></i>
             <div class=" ml-3">Add second city</div>
           </div>
@@ -672,12 +799,12 @@
           </div>
           <button id="submit-form" class="w-1/2 p-3 rounded-xl text-white bg-blue-500 mx-auto block my-5" type="submit" disabled>Done</button>
         </form>
-        <!--  -->
+        <!-- Loading -->
         <div id="loading" class="w-full bg-white dark:bg-slate-800 h-full fixed top-0 right-0 flex items-center justify-center flex-col">
           <i class="icon-star text-blue-600 text-4xl lg:text-6xl"></i>
           <span class="text-sm text-gray-600 mt-3">Loading...</span>
         </div>
-        <!--  -->
+        <!-- Loading -->
       </div>
     </div>
     <!-------------------------------

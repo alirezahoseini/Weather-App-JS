@@ -107,6 +107,9 @@ body {
   .realtitle--degree{
     font-size: 25vw;
   }
+  #secondeCity .temp{
+    font-size: 15vw;
+  }
   .realtitle--degree span{
     font-size: 15vw;
   }
@@ -338,7 +341,7 @@ body.dark .loading_frame{
   -o-transition: .3s;
   opacity: 0;
   visibility: hidden;
-  pointer-events: all;
+  pointer-events: none;
 }
 #change_city_popup.active #main{
   transform: translateY(0px);
@@ -348,6 +351,7 @@ body.dark .loading_frame{
   -o-transform: translateY(0px);
   opacity: 1;
   visibility: visible;
+  pointer-events: all;
 }
 /* End of change city popup   */
 
@@ -403,3 +407,31 @@ body.dark .loading_frame{
 /* ---------------------
   End of change city Form 
 ---------------------- */
+
+
+/* ---------------------
+    Start Seconde city
+---------------------- */
+body.dark .seconde-city-info .location.loading_frame{
+  color: #2564eb00 !important;
+} 
+body.dark .seconde-city-info .location{
+  color: #f3f3f3 !important;
+} 
+body.dark .seconde-city-info .description.loading_frame{
+  color: #2564eb00 !important;
+} 
+body.dark .seconde-city-info .description{
+  color: #d8d8d8 !important;
+} 
+body.dark .seconde-city-info .text.loading_frame{
+  color: #d8d8d800 !important;
+} 
+body.dark .seconde-city-info .text{
+  color: #ececec !important;
+} 
+/* ---------------------
+  End of Seconde city
+---------------------- */
+
+

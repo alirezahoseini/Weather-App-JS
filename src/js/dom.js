@@ -1,7 +1,9 @@
+import GetApis from "./getApis.js";
 import Theme from "./theme.js";
 import WeatherApp from "./weatherApp.js";
 const theme = new Theme();
 const weatherApp = new WeatherApp();
+const getApis = new GetApis();
 
 
 class Dom {
@@ -28,8 +30,6 @@ class Dom {
 
   // Show APP Page
   async showApp() {
-    const key = '72caee2eff37548de75d5d9674aa2510';
-
     // show app page
     this.removeClassTimeOut("#app", 300, "hidden");
     // set theme
@@ -39,27 +39,28 @@ class Dom {
     // hidde first select city page
     this.addClass("#select_first_city", "hidden");
 
+    //---- Run first city
     // Access to user city from LS
     const userCityName = localStorage.getItem('userCity').toLowerCase();
-
-
-    // created url
-    const url = `http://api.openweathermap.org/data/2.5/forecast?q=${userCityName}&appid=${key}&units=metric`;
-    // send request
-    const request = await fetch(url).then((res) => res)
-      .catch((error) => {
-        console.log(error)
-      })
-    // access response
-    const response = await request.json();
-
     // check response error
-    if (request.status === 200) {
+    try {
+      // access response
+      const response = await getApis.getWeather(userCityName);
       this.runApp(response)
       this.addClassTimeOut("#select_first_city", 100, "hidden");
-    } else {
+    } catch (error) {
       this.showVpnError()
     }
+
+    //---- Run seconde city
+    // Access to seconde city from LS
+    const secondeCity = localStorage.getItem('secondeCity');
+    if(secondeCity !== null){
+      weatherApp.runSecondeCity()
+    }else{
+      this.removeClass('#add-city-button', 'hidden')
+    }
+
   }
   // Show First page and select city
   showFirstPage() {

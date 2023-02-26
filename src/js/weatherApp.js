@@ -94,7 +94,7 @@ class WeatherApp {
         });
 
         // Remove loading frame on next hour
-        this.removeLoadingFrame('next_hours_weather');
+        this.removeLoadingFrame('nextHours');
         for (let index = 0; index <= 35; index++) {
             const weather = weatherData[index]
             // access slide element
@@ -210,6 +210,49 @@ class WeatherApp {
         const loadingClasses = document.querySelectorAll(`#${elementId} .loading_frame`);
         // remove classes
         loadingClasses.forEach(currentElement => currentElement.classList.remove('loading_frame'))
+    }
+    // Run seconde city
+    async runSecondeCity(){
+        // access to seconde city from local storage
+        const userCity = localStorage.getItem('secondeCity').toLocaleLowerCase();
+
+        // show seconde city section
+        document.querySelector('#secondeCity .seconde-city-info').classList.remove('hidden');
+
+        // Access to seconde city weather
+        let weather = await getApis.getWeather(userCity);
+        weather = weather.list[0];
+        this.removeLoadingFrame('secondeCity');
+
+        // Set user City
+        const userCityTag = document.querySelector('#secondeCity .location')
+        userCityTag.innerHTML = userCity;
+
+        // Set description
+        const descriptionTag = document.querySelector('#secondeCity .description')
+        descriptionTag.innerHTML = weather.weather[0].description;
+
+        // Set weather temperature
+        const tempTag = document.querySelector('#secondeCity .temp')
+        tempTag.innerHTML = Math.floor(weather.main.temp);
+
+        // Set weather icon
+        const weatherImgTag = document.querySelector('#secondeCity .real-img img')
+        weatherImgTag.src =  await getApis.findIcon(weather);
+
+        // Set More info ------- access to elements
+        const moreInfo = document.querySelector('#secondeCity .more-weather'),
+            maxTempTag = moreInfo.querySelector('#max_temp h4'),
+            minTempTag = moreInfo.querySelector('#min_temp h4'),
+            humidityTag = moreInfo.querySelector('#humidity h4'),
+            windTag = moreInfo.querySelector('#wind h4');
+
+
+
+        maxTempTag.innerHTML = weather.main.temp_max + ' °';
+        minTempTag.innerHTML = weather.main.temp_min + ' °';
+        humidityTag.innerHTML = weather.main.humidity;
+        windTag.innerHTML = weather.wind.speed;
     }
 
 }
