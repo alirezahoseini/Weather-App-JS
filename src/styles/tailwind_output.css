@@ -1836,6 +1836,24 @@ body.dark .seconde-city-info .text{
   End of Seconde city
 ---------------------- */
 
+.seconde-city-info::after{
+  content: 'Seconde city';
+  position: absolute;
+  rotate: 90deg;
+  right: 0;
+  top: 50%;
+  opacity: .3;
+  transform: translatey(-30px);
+  -webkit-transform: translatey(-30px);
+  -moz-transform: translatey(-30px);
+  -ms-transform: translatey(-30px);
+  -o-transform: translatey(-30px);
+}
+
+body.dark .seconde-city-info::after{
+  color: white;
+}
+
 .hover\:border-white:hover {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
@@ -2162,5 +2180,3 @@ body.dark .seconde-city-info .text{
     width: 41.666667%;
   }
 }
-
-

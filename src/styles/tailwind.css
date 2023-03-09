@@ -435,3 +435,19 @@ body.dark .seconde-city-info .text{
 ---------------------- */
 
 
+.seconde-city-info::after{
+  content: 'Seconde city';
+  position: absolute;
+  rotate: 90deg;
+  right: 0;
+  top: 50%;
+  opacity: .3;
+  transform: translatey(-30px);
+  -webkit-transform: translatey(-30px);
+  -moz-transform: translatey(-30px);
+  -ms-transform: translatey(-30px);
+  -o-transform: translatey(-30px);
+}
+body.dark .seconde-city-info::after{
+  color: white;
+}
