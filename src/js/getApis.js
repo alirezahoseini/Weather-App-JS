@@ -1,13 +1,11 @@
 class GetApis{
-    async findIcon(weather){
-
+    async findIcon(weather){ 
         // Access to time
-        let currentHour = weather.dt_txt;
+        let currentHour = weather.date;
         currentHour = currentHour.split(' ')
         const time = currentHour[1].slice(0, 2);
-
+        
         let currentStatus = '';
-
         // Gain status
         if(time >= '06' && time <= '19' ){
             currentStatus = 'day'
@@ -16,7 +14,7 @@ class GetApis{
         }
 
         // Create icon link
-        let icon = weather.weather[0].main;
+        let icon = weather.weather;
         icon = icon.toLowerCase()
         icon = `./src/assets/images/weather/${icon}_${currentStatus}.webp`;
 
@@ -86,9 +84,9 @@ class GetApis{
     }
 
     async chackingCoustomCity(city){
-        const key = '72caee2eff37548de75d5d9674aa2510';
         // created url
-        const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&units=metric`;
+        const url = `https://quaint-fawn-snaps.cyclic.app/weather?input=${city}`;
+
         // send request
         const request = await fetch(url).then((res) => res)
         .catch((error) => {
@@ -111,19 +109,15 @@ class GetApis{
     }
 
     async getWeather(city){
-        const key = '72caee2eff37548de75d5d9674aa2510';
-        // // created url
-        const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&units=metric`;
+        // created url
+        const url = `https://quaint-fawn-snaps.cyclic.app/weather?input=${city}`;
         // send request
         const request = await fetch(url).then((res) => res)
         .catch((error) => {
             dom.addClass("#loading", "hidde")
             console.log(error)
         })
-        .catch((error) => {
-            dom.addClass("#loading", "hidde")
-            console.log(error)
-        })
+        
         // access response
         const response = await request.json();
 

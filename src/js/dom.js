@@ -50,6 +50,7 @@ class Dom {
       this.addClassTimeOut("#select_first_city", 100, "hidden");
     } catch (error) {
       this.showVpnError()
+      console.log(error)
     }
 
     //---- Run seconde city
@@ -106,7 +107,7 @@ class Dom {
 
 
     // Access to the weather data
-    const weatherData = data.list;
+    const weatherData = data;
 
     weatherApp.setRealtimeWeather(weatherData[0]);
     weatherApp.nextHours(weatherData);

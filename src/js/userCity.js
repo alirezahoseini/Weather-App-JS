@@ -21,8 +21,10 @@ class UserCity {
       })
         .then((res) => {
           // set result
-          res.json().then((output) => setResult(output));
-          clearTimeout(showError)
+
+          res.json().then((output) => {
+            setResult(output)
+          });
         })
         .catch((error) => {
           console.log(error);
@@ -116,23 +118,16 @@ class UserCity {
   // Checking custom city 
   async checkingCustomCity(city) {
     // Access to user city from LS
-    const key = '72caee2eff37548de75d5d9674aa2510';
     // created url
-    const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&units=metric`;
+    const url = `https://quaint-fawn-snaps.cyclic.app/weather?input=${city}`;
     // send request
     const request = await fetch(url).then((res) => res)
       .catch((error) => {
         dom.addClass("#loading", "hidde")
         console.log(error)
       })
-      .catch((error) => {
-        dom.addClass("#loading", "hidde")
-        console.log(error)
-      })
     // access response
     const response = await request.json();
-
-    console.log(response)
 
     // check response error
     if (request.status === 200) {

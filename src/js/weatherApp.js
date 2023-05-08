@@ -10,11 +10,11 @@ class WeatherApp {
 
         // Set description
         const descriptionTag = document.querySelector('#realtime_weather .description')
-        descriptionTag.innerHTML = weatherData.weather[0].description;
+        descriptionTag.innerHTML = weatherData.weather;
 
         // Set weather temperature
         const tempTag = document.querySelector('#realtime_weather .temp')
-        tempTag.innerHTML = Math.floor(weatherData.main.temp);
+        tempTag.innerHTML = Math.floor(weatherData.temp_now);
 
         // Set weather icon
         const weatherImgTag = document.querySelector('#realtime_weather .real-img img')
@@ -29,10 +29,10 @@ class WeatherApp {
 
 
 
-        maxTempTag.innerHTML = weatherData.main.temp_max + ' °';
-        minTempTag.innerHTML = weatherData.main.temp_min + ' °';
-        humidityTag.innerHTML = weatherData.main.humidity;
-        windTag.innerHTML = weatherData.wind.speed;
+        maxTempTag.innerHTML = weatherData.temp_max + ' °';
+        minTempTag.innerHTML = weatherData.temp_min + ' °';
+        humidityTag.innerHTML = weatherData.humidity;
+        windTag.innerHTML = weatherData.wind;
 
     }
     // Next hours Weather 
@@ -50,7 +50,7 @@ class WeatherApp {
         let currentHour = '';
         for (let index = 0; index < weatherData.length; index++) {
             /// access to the weather hours
-            let time = (weatherData[index].dt_txt).split(" ")[1];
+            let time = (weatherData[index].date).split(" ")[1];
             time = time.slice(0, 2);
 
             // console.log(time)
@@ -69,7 +69,7 @@ class WeatherApp {
         // Create next hours weathers in slider
         finallyItems.forEach(async (weather, index) => {
             // access to te time 
-            let time = (weather.dt_txt).split(" ")[1];
+            let time = (weather.date).split(" ")[1];
             time = time.slice(0, 2);
 
             // access slide element
@@ -79,7 +79,7 @@ class WeatherApp {
                 weatherIcon = slideElement.querySelector('.weather_icon'),
                 weatherTime = slideElement.querySelector('.weather_time');
             // set data
-            weatherInfo.innerHTML = weather.weather[0].main;
+            weatherInfo.innerHTML = weather.weather;
             weatherIcon.src = await getApis.findIcon(weather);
             weatherTime.innerHTML = time + ':00';
             slideElement.setAttribute('timeId', index)
@@ -95,12 +95,6 @@ class WeatherApp {
 
         // Remove loading frame on next hour
         this.removeLoadingFrame('nextHours');
-        for (let index = 0; index <= 35; index++) {
-            const weather = weatherData[index]
-            // access slide element
-            const slideElement = sliderChildes[index];
-            const icon = await getApis.findIcon(weather);
-        }
     }
     
     //
@@ -221,7 +215,7 @@ class WeatherApp {
 
         // Access to seconde city weather
         let weather = await getApis.getWeather(userCity);
-        weather = weather.list[0];
+        weather = weather[0];
         this.removeLoadingFrame('secondeCity');
 
         // Set user City
@@ -230,11 +224,11 @@ class WeatherApp {
 
         // Set description
         const descriptionTag = document.querySelector('#secondeCity .description')
-        descriptionTag.innerHTML = weather.weather[0].description;
+        descriptionTag.innerHTML = weather.weather_description;
 
         // Set weather temperature
         const tempTag = document.querySelector('#secondeCity .temp')
-        tempTag.innerHTML = Math.floor(weather.main.temp);
+        tempTag.innerHTML = Math.floor(weather.temp_now);
 
         // Set weather icon
         const weatherImgTag = document.querySelector('#secondeCity .real-img img')
@@ -249,10 +243,10 @@ class WeatherApp {
 
 
 
-        maxTempTag.innerHTML = weather.main.temp_max + ' °';
-        minTempTag.innerHTML = weather.main.temp_min + ' °';
-        humidityTag.innerHTML = weather.main.humidity;
-        windTag.innerHTML = weather.wind.speed;
+        maxTempTag.innerHTML = weather.temp_max + ' °';
+        minTempTag.innerHTML = weather.temp_min + ' °';
+        humidityTag.innerHTML = weather.humidity;
+        windTag.innerHTML = weather.wind;
     }
 
 }
