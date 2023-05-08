@@ -1,4 +1,4 @@
-![image]('https://s8.uupload.ir/files/weather-app-cover_48xr.jpg')
+![image](https://s8.uupload.ir/files/weather-app-cover_48xr.jpg)
   
 
 ### Hello🤚
