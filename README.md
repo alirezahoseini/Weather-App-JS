@@ -14,7 +14,7 @@ I implemented this project to learn and master the use of APIs in JavaScript and
         and night is one of its features
 
 
-[🧩 Open source weather back-end ](http://a-hosseini.ir/projects/weather)
+[🧩 Open source weather back-end ](https://github.com/m0x31h0x64i/weather)
 
 
 ### Features
