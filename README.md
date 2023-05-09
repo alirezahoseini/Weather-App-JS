@@ -8,10 +8,10 @@ I implemented this project to learn and master the use of APIs in JavaScript and
 [Live Demo](https://a-hosseini.ir/projects/weather)
 
 ### Backend and APIs
-        I used this interesting and practical web 
-        service to develop the project.
-        Complete information, dedicated icon for day
-        and night is one of its features
+  I used this interesting and practical web 
+  service to develop the project.
+  Complete information, dedicated icon for day
+  and night is one of its features
 
 
 [🧩 Open source weather back-end ](https://github.com/m0x31h0x64i/weather)
