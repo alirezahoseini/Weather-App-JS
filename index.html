@@ -1,790 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <link href="./src/assets/images/favicon.ico" rel="shortcut icon" />
-    <!-- styles  -->
-    <!-- <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet"> -->
-    <link rel="stylesheet" href="./src/styles/css-reset.css" />
-    <link rel="stylesheet" href="./src/styles/tailwind_output.css" />
-    <link rel="stylesheet" href="./src/styles/css/animations.css" />
-    <link
-      rel="stylesheet"
-      href="./src/assets/fonts/Font-icons/iconly.min.css"
-    />
-    <link rel="stylesheet" href="./src/assets/swiperjs/swiper-min.css" />
-    <!-- End of styles  -->
-    <title>Weather App</title>
-  </head>
-  <body>
-    <div
-      id="container"
-      class="w-full min-h-screen bg-white dark:bg-slate-900 overflow-hidden relative"
-    >
-      <!-------------------------------
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <link href="./src/assets/images/favicon.ico" rel="shortcut icon" />
+  <!-- styles  -->
+  <!-- <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet"> -->
+  <link rel="stylesheet" href="./src/styles/css-reset.css" />
+  <link rel="stylesheet" href="./src/styles/tailwind_output.css" />
+  <link rel="stylesheet" href="./src/styles/css/animations.css" />
+  <link rel="stylesheet" href="./src/assets/fonts/Font-icons/iconly.min.css" />
+  <link rel="stylesheet" href="./src/assets/swiperjs/swiper-min.css" />
+  <!-- End of styles  -->
+  <title>Weather App</title>
+</head>
+
+<body>
+  <div id="container" class="w-full min-h-screen bg-white dark:bg-slate-900 overflow-hidden relative">
+    <!-------------------------------
             Start Select the first city
        --------------------------------->
+    <div id="select_first_city" class="w-full min-h-screen relative hidden justify-center items-center">
+      <!-- Start First Page  -->
       <div
-        id="select_first_city"
-        class="w-full min-h-screen relative hidden justify-center items-center"
-      >
-        <!-- Start First Page  -->
-        <div
-          class="select_first_city--first_page w-11/12 sm:w-8/12 md:w-6/12 xl:w-5/12 rounded-3xl mx-auto my-3 bg-gradient-to-b from-blue-300 to-blue-600 transition duration-700 animate_bottom"
-        >
-          <img
-            src="./src/assets/images/first page/27.webp"
-            alt="sun image"
-            class="body--image transition duration-700 w-6/12 mx-auto my-12 animate_bottom"
-          />
-          <div class="body--texts px-4 lg:px-0 text-center">
-            <h1
-              class="text-white font-bold text-xl sm:text-2xl animate_bottom transition duration-700"
-            >
-              Discover the Weather in Your City
-            </h1>
-            <p
-              class="text-gray-300 text-sm mt-4 leading-7 animate_bottom transition duration-700"
-            >
-              Get to know your Weather maps and radar precipitation forecast
-            </p>
-            <button
-              class="bg-white rounded-lg w-6/12 py-3 my-6 text-blue-600 border-transparent border-2 hover:text-white hover:bg-transparent hover:border-white outline-none animate_bottom transition duration-700"
-            >
-              Get Started
+        class="select_first_city--first_page w-11/12 sm:w-8/12 md:w-6/12 xl:w-5/12 rounded-3xl mx-auto my-3 bg-gradient-to-b from-blue-300 to-blue-600 transition duration-700 animate_bottom">
+        <img src="./src/assets/images/first page/27.webp" alt="sun image"
+          class="body--image transition duration-700 w-6/12 mx-auto my-12 animate_bottom" />
+        <div class="body--texts px-4 lg:px-0 text-center">
+          <h1 class="text-white font-bold text-xl sm:text-2xl animate_bottom transition duration-700">
+            Discover the Weather in Your City
+          </h1>
+          <p class="text-gray-300 text-sm mt-4 leading-7 animate_bottom transition duration-700">
+            Get to know your Weather maps and radar precipitation forecast
+          </p>
+          <button
+            class="bg-white rounded-lg w-6/12 py-3 my-6 text-blue-600 border-transparent border-2 hover:text-white hover:bg-transparent hover:border-white outline-none animate_bottom transition duration-700">
+            Get Started
+          </button>
+        </div>
+      </div>
+      <!-- End of First Page  -->
+      <!-- Start Select Box Popup -->
+      <div
+        class="select_first_city--selectbox w-11/12 sm:w-8/12 md:w-6/12 xl:w-5/12 rounded-3xl mx-auto my-3 bg-white absolute top-0 invisible transition duration-700 animate_bottom">
+        <button id="first_city--back_btn"
+          class="bg-gray-100 px-4 py-2 rounded-lg flex items-center text-gray-700 hover:bg-gray-700 hover:text-white invisible animate_left transition duration-700">
+          <i class="icon-arrow-left-square mr-2"></i>
+          <span class="text-sm">Back</span>
+        </button>
+        <img src="./src/assets/images/first page/location-pin.webp" alt="sun image"
+          class="selectbox--image mx-auto transition duration-700 animate_bottom" />
+        <h2
+          class="font-bold text-gray-700 text-xl sm:text-2xl text-center mb-10 transition duration-700 animate_bottom">
+          Select your City
+        </h2>
+        <!-- Start Found your city with ip  -->
+        <div class="selectbox--founded_city_with_ip w-11/12 mx-auto transition duration-700">
+          <label for="city_with_ip" class="text-sm text-gray-400 mb-2 block">City found with your ip</label>
+          <div class="flex relative items-center justify-between">
+            <input name="city_with_ip" id="city_with_ip"
+              class="block bg-gray-50 focus:border-gray-400 transition-all cursor-pointer p-3 rounded-lg outline-none border-2 text-sm pr-8 text-gray-800 w-full"
+              value="loading . . ." disabled />
+          </div>
+          <div class="buttons w-full flex justify-around items-center my-4 transition duration-700 animate_bottom">
+            <button id="true_btn"
+              class="w-5/12 bg-blue-100 p-3 rounded-lg text-blue-600 hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center">
+              <i class="icon-accept text-lg mr-2"></i>
+              <span>it's true</span>
+            </button>
+            <button id="wrong_btn"
+              class="w-5/12 bg-red-100 p-3 rounded-lg text-red-600 hover:bg-red-600 hover:text-white transition-all flex items-center justify-center">
+              <i class="icon-close-square text-lg mr-2"></i>
+              <span>wrong</span>
             </button>
           </div>
         </div>
-        <!-- End of First Page  -->
-        <!-- Start Select Box Popup -->
+        <!-- End of Found your city by ip  -->
+        <!-- Start Select Default city -->
         <div
-          class="select_first_city--selectbox w-11/12 sm:w-8/12 md:w-6/12 xl:w-5/12 rounded-3xl mx-auto my-3 bg-white absolute top-0 invisible transition duration-700 animate_bottom"
-        >
-          <button
-            id="first_city--back_btn"
-            class="bg-gray-100 px-4 py-2 rounded-lg flex items-center text-gray-700 hover:bg-gray-700 hover:text-white invisible animate_left transition duration-700"
-          >
-            <i class="icon-arrow-left-square mr-2"></i>
-            <span class="text-sm">Back</span>
-          </button>
-          <img
-            src="./src/assets/images/first page/location-pin.webp"
-            alt="sun image"
-            class="selectbox--image mx-auto transition duration-700 animate_bottom"
-          />
-          <h2
-            class="font-bold text-gray-700 text-xl sm:text-2xl text-center mb-10 transition duration-700 animate_bottom"
-          >
-            Select your City
-          </h2>
-          <!-- Start Found your city with ip  -->
-          <div
-            class="selectbox--founded_city_with_ip w-11/12 mx-auto transition duration-700"
-          >
-            <label for="city_with_ip" class="text-sm text-gray-400 mb-2 block"
-              >City found with your ip</label
-            >
-            <div class="flex relative items-center justify-between">
-              <input
-                name="city_with_ip"
-                id="city_with_ip"
-                class="block bg-gray-50 focus:border-gray-400 transition-all cursor-pointer p-3 rounded-lg outline-none border-2 text-sm pr-8 text-gray-800 w-full"
-                value="loading . . ."
-                disabled
-              />
-            </div>
-            <div
-              class="buttons w-full flex justify-around items-center my-4 transition duration-700 animate_bottom"
-            >
-              <button
-                id="true_btn"
-                class="w-5/12 bg-blue-100 p-3 rounded-lg text-blue-600 hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center"
-              >
-                <i class="icon-accept text-lg mr-2"></i>
-                <span>it's true</span>
-              </button>
-              <button
-                id="wrong_btn"
-                class="w-5/12 bg-red-100 p-3 rounded-lg text-red-600 hover:bg-red-600 hover:text-white transition-all flex items-center justify-center"
-              >
-                <i class="icon-close-square text-lg mr-2"></i>
-                <span>wrong</span>
-              </button>
-            </div>
-          </div>
-          <!-- End of Found your city by ip  -->
-          <!-- Start Select Default city -->
-          <div
-            class="selectbox--default_cities w-11/12 mx-auto h-0 transition duration-700 animate_bottom invisible hidden"
-          >
-            <label for="default_cities" class="text-sm text-gray-400 mb-2 block"
-              >Default Cities</label
-            >
-            <div class="flex select relative">
-              <select
-                name="default_cities"
-                id="default_cities"
-                class="w-full block bg-gray-50 focus:border-gray-400 transition-all cursor-pointer p-3 rounded-lg outline-none border-2 text-sm pr-8 text-gray-800"
-              >
-                <option value="null">Choose from default cities</option>
-                <option value="tehran">Tehran</option>
-                <option value="tabriz">Tabriz</option>
-                <option value="mashhad">Mashhad</option>
-                <option value="isfahan">Isfahan</option>
-                <option value="london">London</option>
-                <option value="moscow">Moscow</option>
-                <option value="toronto">Toronto</option>
-                <option value="tokyo">Tokyo</option>
-                <option value="berlin">Berlin</option>
-              </select>
-              <i class="icon-arrow-down-1 absolute right-3 text-xl"></i>
-            </div>
-          </div>
-          <!--  End of Select Default city -->
-          <div
-            class="selectbox--line items-center justify-around w-full px-3 mx-auto text-gray-400 mt-5 mb-3 h-0 transition duration-700 animate_bottom invisible hidden"
-          >
-            <hr class="w-5/12" />
-            <span>or</span>
-            <hr class="w-5/12" />
-          </div>
-          <!-- Enter custom city -->
-          <div
-            class="selectbox--custom_city w-11/12 mx-auto h-0 transition duration-700 animate_bottom invisible hidden"
-          >
-            <label for="custom_city" class="text-sm text-gray-400 mb-2 block"
-              >Enter custom city</label
-            >
-            <div class="flex relative">
-              <input
-                type="text"
-                name="custom_city"
-                id="custom_city"
-                placeholder="For example, Tehran..."
-                class="w-full block bg-gray-50 focus:border-gray-400 transition-all cursor-pointer p-3 rounded-lg outline-none border-2 text-sm pr-8 text-gray-800"
-              />
-            </div>
-          </div>
-          <!-- Enter custom city -->
-          <button
-            type="button"
-            class="selectbox--continue-btn bg-blue-600 hover:bg-blue-800 text-white my-7 py-3 rounded-lg w-1/2 mx-auto block opacity-50 cursor-pointer cursor-not-allowed h-0 transition duration-700 animate_bottom invisible hidden"
-            disabled="true"
-          >
-            Continue
-          </button>
-        </div>
-        <!-- Start Select Box Popup -->
-      </div>
-      <!-------------------------------
-            End of Select the first city
-       --------------------------------->
-      <!-------------------------------
-                Start APP
-       --------------------------------->
-      <div
-        id="app"
-        class="hidden px-3 max-w-screen-xl mx-auto transition duration-100"
-      >
-        <!-- Start Header -->
-        <div
-          id="header"
-          class="max-w-screen-xl mx-auto w-full py-3 mb-4 px-4 flex justify-between items-center"
-        >
-          <h2>
-            <a
-              href="#"
-              class="text-lg font-bold text-gray-600 dark:text-gray-100"
-              >Weather App.</a
-            >
-          </h2>
-          
-          <div class="flex">
-            <!-- Start change city Button -->
-            <span
-            id="change_city_popup_button"
-            class="mr-5 text-xl bg-slate-100 cursor-pointer transition duration-200 p-3 font-black hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-gray-200 rounded-lg flex items-center justify-center"
-            >
-              <i class="icon-location"></i>
-            </span>
-            <!-- End of change city Button -->
-            <!-- Start Theme switcher Button -->
-            <span
-              id="switcher_btn"
-              class="text-xl bg-slate-100 cursor-pointer transition duration-200 p-3 font-black hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-gray-200 rounded-lg flex items-center justify-center"
-            >
-              <i class="icon-sun"></i>
-            </span>
-            <!-- End of Theme switcher Button -->
-          </div>
-        </div>
-        <!-- End of Header -->
-        <!-- Start main app  -->
-        <div id="main_app"
-          class="w-full flex flex-col md:flex-row md:justify-around items-start">
-          <div class="w-full md:w-4/12 flex flex-col">
-            <!--  Start Gradient box - Main Weather -->
-            <div
-              id="main_weather"
-              class="bg-gradient-to-b from-blue-300 to-blue-700 rounded-3xl p-4 w-full loading_color"
-            >
-              <!-------------------------------
-                    Start realtime weather
-              --------------------------------->
-              <div id="realtime_weather" class="text-white relative flex">
-                <!-- start realtime titles  -->
-                <div class="flex justify-around items-center">
-                  <div class="real-img w-5/12 loading_frame animate ">
-                    <img
-                      src="./src/assets/images/first page/27.webp"
-                      alt="title"
-                      class="w-full mx-auto"
-                    />
-                  </div>
-                  <div class="realtitle--degree flex flex-col w-auto">
-                    <!--  Start Realtime City  -->
-                    <div class="realtitle--city flex flex-col">
-                      <h2 class="location text-lg sm:text-2xl capitalize loading_frame">
-                        Los Angeles
-                      </h2>
-                      <div
-                        class="description text-sm text-blue-100 my-1 capitalize loading_frame"
-                      >
-                      CLear sky
-                      </div>
-                    </div>
-                    <!-- End of Realtime City  -->
-                    <div class="flex text-left loading_frame">
-                      <h3
-                        class="temp md:text-6xl lg:text-8xl font-semibold text-transparent bg-clip-text bg-gradient-to-t from-blue-500 to-white"
-                      >
-                        14
-                      </h3>
-                      <span
-                        class="font-semibold text-transparent bg-clip-text bg-gradient-to-t from-blue-300 to-white relative md:text-4xl lg:text-5xl"
-                      >
-                        °
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <!-- End of realtime titles  -->
-              </div>
-              <!-------------------------------
-                   End of realtime weather
-              --------------------------------->
-            </div>
-            <!-- End of Gradient box - Main Weather -->
-            <!--  Start more Weather data SECTION -->
-            <div
-              id="more_data_section"
-              class="mt-4 bg-gray-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-3xl w-full p-4 flex flex-col"
-            >
-              <!-- Row 1 -->
-              <div class="more_data-row w-full flex">
-                <!-- Wind  -->
-                <div id="wind" class="flex flex-col items-center w-1/2">
-                  <div class="w-12 loading_frame">
-                    <img
-                      src="./src/assets/animated-svg/wind.svg"
-                      class="mb-2"
-                      alt=""
-                    />
-                  </div>
-                  <span class="ml-2 loading_frame">
-                    Wind :
-                    <h4 class="font-bold inline-block"> 2.8 </h4>
-                    <span class="text-sm">km/h</span>
-                  </span>
-                </div>
-                <!-- End of Wind  -->
-                <!-- humidity  -->
-                <div id="humidity" class="flex flex-col items-center w-1/2">
-                  <div class="w-12 loading_frame">
-                    <img
-                      src="./src/assets/animated-svg/raindrop-measure.svg"
-                      class="mb-2"
-                      alt=""
-                    />
-                  </div>
-                  <span class="ml-2 loading_frame">
-                    Humidity :
-                    <h4 class="font-bold inline-block"> 35 </h4>
-                    <span class="text-sm">%</span>
-                  </span>
-                </div>
-                <!-- End of humidity  -->
-              </div>
-              <!-- End of Row 1 -->
-              <!-- Row 2  -->
-              <div class="more_data-row w-full flex mt-4">
-                <!-- Min temp  -->
-                <div id="min_temp" class="flex flex-col items-center w-1/2">
-                  <div class="w-12 loading_frame">
-                    <img
-                      src="./src/assets/animated-svg/thermometer-colder.svg"
-                      class="mb-2"
-                      alt=""
-                    />
-                  </div>
-                  <span class="ml-2 loading_frame">
-                    Min temp :
-                    <h4 class="font-bold inline-block"> ... </h4>
-                  </span>
-                </div>
-                <!-- End of Main temp  -->
-                <!-- Max temp  -->
-                <div id="max_temp" class="flex flex-col items-center w-1/2">
-                  <div class="w-12 loading_frame">
-                    <img
-                      src="./src/assets/animated-svg/thermometer-warmer.svg"
-                      class="mb-2"
-                      alt=""
-                    />
-                  </div>
-                  <span class="ml-2 loading_frame">
-                    Max temp :
-                    <h4 class="font-bold inline-block"> ... </h4>
-                  </span>
-                </div>
-                <!-- End of Max temp  -->
-              </div>
-              <!-- End of Row 2  -->
-            </div>
-            <!-- End of more Weather data SECTION-->
-            <!-- Time And Date  -->
-            <div id="time_and_date">
-              <div class="mt-4 bg-gray-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-3xl w-full p-4 flex justify-between items-center">
-                <div class="time loading_frame">
-                  20:35:42   
-                </div>
-                <div class="date text-sm loading_frame">
-                  sat / 2022,18,25
-                </div>
-              </div>
-            </div>
-            <!-- End of Time And Date  -->
-          </div>
-          <!-- Start Next hours weather and seconde city-->
-          <div id="next_hours_weather" class="w-full md:w-7/12 my-4 md:mt-0">
-            <!-- Start Next hours weather -->
-            <h3 class="text-slate-800 dark:text-slate-100 font-bold mb-3">
-              Today
-            </h3>
-            <!-- Swiper -->
-            <div id="nextHours" class="swiper nextHours">
-              <div class="swiper-wrapper">
-                  <!-- Start slide 1  -->
-                  <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
-                    <span class="weather_info dark:text-slate-100 loading_frame text-sm">Clear Sky</span>
-                    <span class="slide-image loading_frame">
-                      <img src="./src/assets/images/weather/rain_day.webp" class="weather_icon">
-                    </span>
-                    <span class="weather_time font-bold dark:text-slate-100 loading_frame">09:00</span>
-                  </div>
-                  <!-- End of slide 1  -->
-                  <!-- Start slide 2  -->
-                  <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
-                    <span class="weather_info  dark:text-slate-100 loading_frame text-sm">Clear Sky</span>
-                    <span class="slide-image loading_frame">
-                      <img src="./src/assets/images/weather/rain_day.webp" class="weather_icon">
-                    </span>
-                    <span class="weather_time font-bold  dark:text-slate-100 loading_frame">09:00</span>
-                  </div>
-                  <!-- End of slide 2  -->
-                  <!-- Start slide 3  -->
-                  <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
-                    <span class="weather_info dark:text-slate-100  loading_frame text-sm">Clear Sky</span>
-                    <span class="slide-image loading_frame">
-                      <img src="./src/assets/images/weather/rain_day.webp" class="weather_icon">
-                    </span>
-                    <span class="weather_time font-bold  dark:text-slate-100 loading_frame">09:00</span>
-                  </div>
-                  <!-- End of slide 3  -->
-                  <!-- Start slide 4  -->
-                  <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
-                    <span class="weather_info dark:text-slate-100  loading_frame text-sm">Clear Sky</span>
-                    <span class="slide-image loading_frame">
-                      <img src="./src/assets/images/weather/rain_day.webp" class="weather_icon">
-                    </span>
-                    <span class="weather_time font-bold  dark:text-slate-100 loading_frame">09:00</span>
-                  </div>
-                  <!-- End of slide 4  -->
-                  <!-- Start slide 5  -->
-                  <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
-                    <span class="weather_info dark:text-slate-100  loading_frame text-sm">Clear Sky</span>
-                    <span class="slide-image loading_frame">
-                      <img src="./src/assets/images/weather/rain_day.webp" class="weather_icon">
-                    </span>
-                    <span class="weather_time font-bold  dark:text-slate-100 loading_frame">09:00</span>
-                  </div>
-                  <!-- End of slide 5  -->
-                  <!-- Start slide 6  -->
-                  <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
-                    <span class="weather_info dark:text-slate-100 loading_frame text-sm">Clear Sky</span>
-                    <span class="slide-image loading_frame">
-                      <img src="./src/assets/images/weather/rain_day.webp" class="weather_icon">
-                    </span>
-                    <span class="weather_time font-bold dark:text-slate-100 loading_frame">09:00</span>
-                  </div>
-                  <!-- End of slide 6  -->
-                  <!-- Start slide 7  -->
-                  <div class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
-                    <span class="weather_info dark:text-slate-100 loading_frame text-sm">Clear Sky</span>
-                    <span class="slide-image loading_frame">
-                      <img src="./src/assets/images/weather/rain_day.webp" class="weather_icon">
-                    </span>
-                    <span class="weather_time font-bold dark:text-slate-100 loading_frame">09:00</span>
-                  </div>
-                  <!-- End of slide 7  -->
-              </div>
-            </div>
-            <!-- Swiper JS -->
-            <!-- End of Next hours weather -->
-            <!-- Start Seconde city -->
-            <div id="secondeCity" class="w-full my-4 relative">
-              <!-- Start Add seconde Button -->
-              <div id="add-city-button" class="add-city-button w-full py-10 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white rounded-xl cursor-pointer hidden" >
-                <div class="flex flex-col items-center justify-center">
-                  <i href="" class="icon-plus text-5xl pointer-events-none z-0 inline mb-3"></i>
-                  <span>Add seconde city</span>
-                </div>
-              </div>
-              <!-- End of Add seconde Button -->
-              <!-- Seconde city info -->
-              <div class="seconde-city-info w-full flex flex-col md:flex-row rounded-2xl bg-gray-50 dark:bg-slate-800 p-3 items-center justify-start hidden relative">
-                <!-- Start Main weather -->
-                <div class="main-weather w-full md:w-4/12 md:items-center justify-around md:justify-start flex md:flex-col">
-                  <div class="w-5/12 lg:w-6/12 lg:mb-2 loading_frame animate real-img">
-                    <img
-                      src="./src/assets/images/first page/27.webp"
-                      alt="title"
-                      class="w-full mx-auto"
-                    />
-                  </div>
-                  <div class=" flex flex-col w-auto mt-3 md:mt-0">
-                    <!--  Start Realtime City  -->
-                    <div class="realtitle--city flex flex-col">
-                      <h3 class="location text-base sm:text-lg capitalize loading_frame">
-                        Los Angeles
-                      </h3>
-                      <div
-                        class="description text-xs text-slate-800 my-1 capitalize loading_frame"
-                      >
-                      CLear sky
-                      </div>
-                    </div>
-                    <div class="flex text-left loading_frame">
-                      <h1
-                        class="temp md:text-3xl lg:text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-t from-blue-500 to-slate-200"
-                      >
-                        14
-                      </h1>
-                      <span
-                        class="font-semibold text-transparent bg-clip-text bg-gradient-to-t from-blue-400 to-slate-300 relative text-5xl md:text-2xl lg:text-3xl"
-                      >
-                        °
-                      </span>
-                    </div>
-                    <!-- End of Realtime City  -->
-                  </div>
-                </div>
-                <!-- End of Main weather -->
-                <!-- Start More weather -->
-                <div class="more-weather w-full p-4 flex flex-col">
-                    <!-- Row 1 -->
-                    <div class="more_data-row w-full flex">
-                      <!-- Wind  -->
-                      <div id="wind" class="flex flex-col items-center w-1/2">
-                        <div class="w-12 loading_frame">
-                          <img
-                            src="./src/assets/animated-svg/wind.svg"
-                            class="mb-2"
-                            alt=""
-                          />
-                        </div>
-                        <span class=" text ml-2 loading_frame">
-                          Wind :
-                          <h4 class="font-bold inline-block"> 2.8 </h4>
-                          <span class="text-sm">km/h</span>
-                        </span>
-                      </div>
-                      <!-- End of Wind  -->
-                      <!-- humidity  -->
-                      <div id="humidity" class="flex flex-col items-center w-1/2">
-                        <div class="w-12 loading_frame">
-                          <img
-                            src="./src/assets/animated-svg/raindrop-measure.svg"
-                            class="mb-2"
-                            alt=""
-                          />
-                        </div>
-                        <span class=" text ml-2 loading_frame">
-                          Humidity :
-                          <h4 class="font-bold inline-block"> 35 </h4>
-                          <span class="text-sm">%</span>
-                        </span>
-                      </div>
-                      <!-- End of humidity  -->
-                    </div>
-                    <!-- End of Row 1 -->
-                    <!-- Row 2  -->
-                    <div class="more_data-row w-full flex mt-4">
-                      <!-- Min temp  -->
-                      <div id="min_temp" class="flex flex-col items-center w-1/2">
-                        <div class="w-12 loading_frame">
-                          <img
-                            src="./src/assets/animated-svg/thermometer-colder.svg"
-                            class="mb-2"
-                            alt=""
-                          />
-                        </div>
-                        <span class=" text ml-2 loading_frame">
-                          Min temp :
-                          <h4 class="font-bold inline-block"> ... </h4>
-                        </span>
-                      </div>
-                      <!-- End of Main temp  -->
-                      <!-- Max temp  -->
-                      <div id="max_temp" class="flex flex-col items-center w-1/2">
-                        <div class="w-12 loading_frame">
-                          <img
-                            src="./src/assets/animated-svg/thermometer-warmer.svg"
-                            class="mb-2"
-                            alt=""
-                          />
-                        </div>
-                        <span class=" text ml-2 loading_frame">
-                          Max temp :
-                          <h4 class="font-bold inline-block"> ... </h4>
-                        </span>
-                      </div>
-                      <!-- End of Max temp  -->
-                    </div>
-                    <!-- End of Row 2  -->
-                </div>
-                <!-- End of More weather -->
-              </div>
-              <!-- Seconde city info -->
-            </div>
-            <!-- End of Seconde city -->
-          </div>
-          <!-- End of Next hours weather and seconde city -->
-
-        </div>
-        <!-- End off main app  -->
-      </div>
-      <!-------------------------------
-                End of APP
-       --------------------------------->
-      <!-------------------------------
-                Start Loading
-       --------------------------------->
-      <div
-        id="loading"
-        class="w-full bg-white dark:bg-slate-800 h-screen fixed top-0 right-0 flex items-center justify-center flex-col"
-      >
-        <i class="icon-star text-blue-600 text-4xl lg:text-6xl"></i>
-        <span class="text-sm text-gray-600 mt-3">Loading...</span>
-      </div>
-      <!-------------------------------
-                End of Loading
-       --------------------------------->
-      <!-------------------------------
-              Start Message box
-       --------------------------------->
-      <div
-        id="message_box"
-        class="w-full md:w-1/2 lg:w-1/3 absolute right-0 top-0 z-50 flex flex-col items-center p-2">
-      </div>
-      <!-------------------------------
-              End of Message box
-       --------------------------------->
-      <!-------------------------------
-          Start Hidden Background section
-       --------------------------------->
-      <div
-        id="hidden_background_section"
-        class="w-screen h-screen fixed top-0 left-0 z-30 cursor-pointer bg-slate-700 opacity-50"
-      ></div>
-      <!-------------------------------
-          End of Hidden Background section
-       --------------------------------->
-      <!-- Start Theme Switcher MENU  -->
-      <div
-        id="switcher_menu"
-        class="w-screen fixed left-0 bottom-0 h-screen flex items-end md:items-center justify-center z-50"
-      >
-        <!-- Start switcher MAIN  -->
-        <div
-          id="main"
-          class="w-screen z-20 dark:text-white bg-white text-slate-800 dark:bg-slate-800 p-4 md:py-1 rounded-t-3xl md:rounded-3xl md:w-1/2 lg:w-1/3 transform translate-y-40 md:translate-y-10"
-        >
-          <div class="switcher_menu--header relative mb-8 md:mb-0">
-            <div
-              class="line md:hidden w-8 mx-auto rounded-xl h-1 bg-slate-400 dark:bg-slate-600"
-            ></div>
-          </div>
-          <!-- Switcher menu --- BODY  -->
-          <div class="switcher_menu--body">
-            <div class="custom_radio_inputs">
-              <!-- Start Option 1 -->
-              <div class="option flex justify-between my-5 pr-3">
-                <label for="dark" class="flex items-center cursor-pointer">
-                  <i class="icon-night text-lg mr-2"></i>
-                  <span>Dark</span>
-                </label>
-                <input
-                  type="radio"
-                  name="theme"
-                  value="dark"
-                  id="dark"
-                  class="invisible"
-                />
-                <label
-                  for="dark"
-                  class="w-5 h-5 rounded-full border-2 border-blue-600 p-1 cursor-pointer"
-                >
-                  <i class="w-full h-full block rounded-full"></i>
-                </label>
-              </div>
-              <!-- End of Option 1 -->
-              <!-- Start Option 2 -->
-              <div class="option flex justify-between my-5 pr-3">
-                <label for="light" class="flex items-center cursor-pointer">
-                  <i class="icon-sun text-lg mr-2"></i>
-                  <span>Light</span>
-                </label>
-                <input
-                  type="radio"
-                  name="theme"
-                  value="light"
-                  id="light"
-                  class="invisible"
-                />
-                <label
-                  for="light"
-                  class="w-5 h-5 rounded-full border-2 border-blue-600 p-1 cursor-pointer"
-                >
-                  <i class="w-full h-full block rounded-full"></i>
-                </label>
-              </div>
-              <!-- End of Option 2 -->
-              <!-- Start Option 3 -->
-              <div class="option flex justify-between my-5 pr-3">
-                <label for="auto" class="flex items-center cursor-pointer">
-                  <i class="icon-mobile text-lg mr-2"></i>
-                  <span>Use device settings</span>
-                </label>
-                <input
-                  type="radio"
-                  name="theme"
-                  value="auto"
-                  id="auto"
-                  class="invisible"
-                />
-                <label
-                  for="auto"
-                  class="w-5 h-5 rounded-full border-2 border-blue-600 p-1 cursor-pointer"
-                >
-                  <i class="w-full h-full block rounded-full"></i>
-                </label>
-              </div>
-              <!-- End of Option 3 -->
-            </div>
-          </div>
-          <!-- Switcher menu --- BODY  -->
-        </div>
-        <!-- End of switcher MAIN  -->
-      </div>
-      <!-- End of Theme Switcher MENU  -->
-    </div>
-    <!---------------------------
-      Start change city popup
-    --------------------------->
-    <div id="change_city_popup" class="w-full fixed bottom-0 right-0 mx-0 h-screen flex items-end md:items-center justify-center z-30">
-      <!-- Start change city MAIN  -->
-      <div id="main" class="w-screen z-20 dark:text-white bg-white text-slate-800 dark:bg-slate-800 p-4 md:py-1 rounded-t-3xl md:rounded-3xl md:w-1/2 lg:w-1/3 transform translate-y-40  md:translate-y-10 ">
-        <!-- change city Header -->
-        <div class="back-btn flex items-center justify-start cursor-pointer absolute left-3 top-4">
-          <i class="icon-arrow-left-1 text-4xl"></i>
-          <span>Back</span>
-        </div>
-        <div class="title">
-          <picture class="flex justify-center mt-5 mb-2 dark:text-slate-100">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="82" height="82" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-              <path d="M12 11m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-              <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
-            </svg>
-          </picture>
-          <span class="font-bold text-lg text-center block mb-10">Management of cities</span>
-        </div>
-        <!-- change city Header -->
-        <!-- Start change city body -->
-        <div id="change_city--body" class="w-full h-full mt-3 mb-5">
-          <!------------ Start Change First city -->
-          <div id='change-first-city-button'class="w-full flex items-center justify-start  border-2  dark:hover:text-indigo-500 border-indigo-600 dark:border-indigo-600 rounded-xl p-3 cursor-pointer bg-indigo-600 dark:hover:bg-slate-800 hover:bg-white text-white hover:text-indigo-600 my-3 transition duration-700 change-city-button sm:text-sm lg:text-base" >
-            <i class="icon-edit-square text-4xl font-thin"></i>
-            <div class=" ml-3">Change your city</div>
-          </div>
-          <!------------ End of Change First city -->
-          <div id="change-seconde-city-button" class="change-city-button w-full flex items-center justify-start  border-2  dark:hover:text-purple-600 border-purple-600 dark:border-purple-600 rounded-xl p-3 cursor-pointer bg-purple-600 dark:hover:bg-slate-800 hover:bg-white   text-white hover:text-purple-600 my-3 sm:text-sm  lg:text-base" >
-            <i class="icon-add text-4xl font-thin  "></i>
-            <div class=" ml-3">Add second city</div>
-          </div>
-        </div>
-        <!-- End ofchange city body -->
-      </div>
-      <!-- End of change city MAIN  -->
-    </div>
-    <!-------------------------------
-        End of change city popup  
-    ------------------------------->
-    <!-------------------------------
-        Start change city form 
-    ------------------------------->
-    <div id="change_city_form" class="w-full fixed bottom-0 right-0 mx-0 h-screen flex items-end md:items-center justify-center z-30" form-status="null">
-      <div class="main w-screen z-20 dark:text-white bg-white text-slate-800 dark:bg-slate-800 p-4 md:py-1 rounded-t-3xl md:rounded-3xl md:w-1/2 lg:w-1/3 transform translate-y-40  md:translate-y-10 relative overflow-hidden">
-        <!-- change city Header -->
-        <div class="back-btn flex items-center justify-start cursor-pointer absolute left-3 top-4">
-          <i class="icon-arrow-left-1 text-4xl"></i>
-          <span>Back</span>
-        </div>
-        <div class="title">
-          <picture class="flex justify-center mt-5 mb-2 dark:text-slate-100">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="82" height="82" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-              <path d="M12 11m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-              <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
-            </svg>
-          </picture>
-          <span class="font-bold text-lg text-center block mb-5">Management of cities</span>
-        </div>
-        <!-- change city Header -->
-        <form>
-          <div class="form-group">
-            <label for="custom-city" class="text-sm mb-1 mt-5 inline-block">Custom City</label>
-            <input type="text" name="custom-city" id="custom-city" placeholder="For example, Tehran..."
-            class="w-full block bg-gray-50 dark:bg-slate-700 dark:border-slate-600 transition-all cursor-pointer p-3 rounded-lg outline-none border-2 text-sm pr-8 text-gray-800 dark:text-slate-100 focus:border-blue-400 dark:focus:border-blue-400">
-          </div>
-          <div
-              class="items-center justify-around w-full px-3 mx-auto text-gray-400 dark:text-slate-500 mt-7 mb-5 h-0 flex"
-            >
-            <hr class="w-5/12" />
-            <span>or</span>
-            <hr class="w-5/12" />
-          </div>
-          <div class="form-group">
-            <label for="default-cities" class="text-sm mb-1 inline-block">Default Cities</label>
-            <select
-            name="default-cities"
-            id="default-cities"
-            class="w-full block bg-gray-50 dark:bg-slate-700 dark:border-slate-600 dark:text-slate-100 transition-all cursor-pointer p-3 rounded-lg outline-none border-2 text-sm pr-8 text-gray-800 focus:border-blue-400 dark:focus:border-blue-400"
-            >
+          class="selectbox--default_cities w-11/12 mx-auto h-0 transition duration-700 animate_bottom invisible hidden">
+          <label for="default_cities" class="text-sm text-gray-400 mb-2 block">Default Cities</label>
+          <div class="flex select relative">
+            <select name="default_cities" id="default_cities"
+              class="w-full block bg-gray-50 focus:border-gray-400 transition-all cursor-pointer p-3 rounded-lg outline-none border-2 text-sm pr-8 text-gray-800">
               <option value="null">Choose from default cities</option>
               <option value="tehran">Tehran</option>
               <option value="tabriz">Tabriz</option>
@@ -796,51 +97,623 @@
               <option value="tokyo">Tokyo</option>
               <option value="berlin">Berlin</option>
             </select>
+            <i class="icon-arrow-down-1 absolute right-3 text-xl"></i>
           </div>
-          <button id="submit-form" class="w-1/2 p-3 rounded-xl text-white bg-blue-500 mx-auto block my-5" type="submit" disabled>Done</button>
-        </form>
-        <!-- Loading -->
-        <div id="loading" class="w-full bg-white dark:bg-slate-800 h-full fixed top-0 right-0 flex items-center justify-center flex-col">
-          <i class="icon-star text-blue-600 text-4xl lg:text-6xl"></i>
-          <span class="text-sm text-gray-600 mt-3">Loading...</span>
         </div>
-        <!-- Loading -->
+        <!--  End of Select Default city -->
+        <div
+          class="selectbox--line items-center justify-around w-full px-3 mx-auto text-gray-400 mt-5 mb-3 h-0 transition duration-700 animate_bottom invisible hidden">
+          <hr class="w-5/12" />
+          <span>or</span>
+          <hr class="w-5/12" />
+        </div>
+        <!-- Enter custom city -->
+        <div class="selectbox--custom_city w-11/12 mx-auto h-0 transition duration-700 animate_bottom invisible hidden">
+          <label for="custom_city" class="text-sm text-gray-400 mb-2 block">Enter custom city</label>
+          <div class="flex relative">
+            <input type="text" name="custom_city" id="custom_city" placeholder="For example, Tehran..."
+              class="w-full block bg-gray-50 focus:border-gray-400 transition-all cursor-pointer p-3 rounded-lg outline-none border-2 text-sm pr-8 text-gray-800" />
+          </div>
+        </div>
+        <!-- Enter custom city -->
+        <button type="button"
+          class="selectbox--continue-btn bg-blue-600 hover:bg-blue-800 text-white my-7 py-3 rounded-lg w-1/2 mx-auto block opacity-50 cursor-pointer cursor-not-allowed h-0 transition duration-700 animate_bottom invisible hidden"
+          disabled="true">
+          Continue
+        </button>
       </div>
+      <!-- Start Select Box Popup -->
     </div>
     <!-------------------------------
+            End of Select the first city
+       --------------------------------->
+    <!-------------------------------
+                Start APP
+       --------------------------------->
+    <div id="app" class="hidden px-3 max-w-screen-xl mx-auto transition duration-100">
+      <!-- Start Header -->
+      <div id="header" class="max-w-screen-xl mx-auto w-full py-3 mb-4 px-4 flex justify-between items-center">
+        <h2>
+          <a href="#" class="text-lg font-bold text-gray-600 dark:text-gray-100">Weather App.</a>
+        </h2>
+
+        <div class="flex">
+          <!-- Start change city Button -->
+          <span id="change_city_popup_button"
+            class="mr-5 text-xl bg-slate-100 cursor-pointer transition duration-200 p-3 font-black hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-gray-200 rounded-lg flex items-center justify-center">
+            <i class="icon-location"></i>
+          </span>
+          <!-- End of change city Button -->
+          <!-- Start Theme switcher Button -->
+          <span id="switcher_btn"
+            class="text-xl bg-slate-100 cursor-pointer transition duration-200 p-3 font-black hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-gray-200 rounded-lg flex items-center justify-center">
+            <i class="icon-sun"></i>
+          </span>
+          <!-- End of Theme switcher Button -->
+        </div>
+      </div>
+      <!-- End of Header -->
+      <!-- Start main app  -->
+      <div id="main_app" class="w-full flex flex-col md:flex-row md:justify-around items-start">
+        <div class="w-full md:w-4/12 flex flex-col">
+          <!--  Start Gradient box - Main Weather -->
+          <div id="main_weather"
+            class="bg-gradient-to-b from-blue-300 to-blue-700 rounded-3xl p-4 w-full loading_color">
+            <!-------------------------------
+                    Start realtime weather
+              --------------------------------->
+            <div id="realtime_weather" class="text-white relative flex">
+              <!-- start realtime titles  -->
+              <div class="flex justify-around items-center">
+                <div class="real-img w-5/12 loading_frame animate ">
+                  <img src="./src/assets/images/first page/27.webp" alt="title" class="w-full mx-auto" />
+                </div>
+                <div class="realtitle--degree flex flex-col w-auto">
+                  <!--  Start Realtime City  -->
+                  <div class="realtitle--city flex flex-col">
+                    <h2 class="location text-lg sm:text-2xl capitalize loading_frame">
+                      Los Angeles
+                    </h2>
+                    <div class="description text-sm text-blue-100 my-1 capitalize loading_frame">
+                      CLear sky
+                    </div>
+                  </div>
+                  <!-- End of Realtime City  -->
+                  <div class="flex text-left loading_frame">
+                    <h3
+                      class="temp md:text-6xl lg:text-8xl font-semibold text-transparent bg-clip-text bg-gradient-to-t from-blue-500 to-white">
+                      14
+                    </h3>
+                    <span
+                      class="font-semibold text-transparent bg-clip-text bg-gradient-to-t from-blue-300 to-white relative md:text-4xl lg:text-5xl">
+                      °
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <!-- End of realtime titles  -->
+            </div>
+            <!-------------------------------
+                   End of realtime weather
+              --------------------------------->
+          </div>
+          <!-- End of Gradient box - Main Weather -->
+          <!--  Start more Weather data SECTION -->
+          <div id="more_data_section"
+            class="mt-4 bg-gray-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-3xl w-full p-4 flex flex-col">
+            <!-- Row 1 -->
+            <div class="more_data-row w-full flex">
+              <!-- Wind  -->
+              <div id="wind" class="flex flex-col items-center w-1/2">
+                <div class="w-12 loading_frame">
+                  <img src="./src/assets/animated-svg/wind.svg" class="mb-2" alt="" />
+                </div>
+                <span class="ml-2 loading_frame">
+                  Wind :
+                  <h4 class="font-bold inline-block"> 2.8 </h4>
+                  <span class="text-sm">km/h</span>
+                </span>
+              </div>
+              <!-- End of Wind  -->
+              <!-- humidity  -->
+              <div id="humidity" class="flex flex-col items-center w-1/2">
+                <div class="w-12 loading_frame">
+                  <img src="./src/assets/animated-svg/raindrop-measure.svg" class="mb-2" alt="" />
+                </div>
+                <span class="ml-2 loading_frame">
+                  Humidity :
+                  <h4 class="font-bold inline-block"> 35 </h4>
+                  <span class="text-sm">%</span>
+                </span>
+              </div>
+              <!-- End of humidity  -->
+            </div>
+            <!-- End of Row 1 -->
+            <!-- Row 2  -->
+            <div class="more_data-row w-full flex mt-4">
+              <!-- Min temp  -->
+              <div id="min_temp" class="flex flex-col items-center w-1/2">
+                <div class="w-12 loading_frame">
+                  <img src="./src/assets/animated-svg/thermometer-colder.svg" class="mb-2" alt="" />
+                </div>
+                <span class="ml-2 loading_frame">
+                  Min temp :
+                  <h4 class="font-bold inline-block"> ... </h4>
+                </span>
+              </div>
+              <!-- End of Main temp  -->
+              <!-- Max temp  -->
+              <div id="max_temp" class="flex flex-col items-center w-1/2">
+                <div class="w-12 loading_frame">
+                  <img src="./src/assets/animated-svg/thermometer-warmer.svg" class="mb-2" alt="" />
+                </div>
+                <span class="ml-2 loading_frame">
+                  Max temp :
+                  <h4 class="font-bold inline-block"> ... </h4>
+                </span>
+              </div>
+              <!-- End of Max temp  -->
+            </div>
+            <!-- End of Row 2  -->
+          </div>
+          <!-- End of more Weather data SECTION-->
+          <!-- Time And Date  -->
+          <div id="time_and_date">
+            <div
+              class="mt-4 bg-gray-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-3xl w-full p-4 flex justify-between items-center">
+              <div class="time loading_frame">
+                20:35:42
+              </div>
+              <div class="date text-sm loading_frame">
+                sat / 2022,18,25
+              </div>
+            </div>
+          </div>
+          <!-- End of Time And Date  -->
+        </div>
+        <!-- Start Next hours weather and seconde city-->
+        <div id="next_hours_weather" class="w-full md:w-7/12 my-4 md:mt-0">
+          <!-- Start Next hours weather -->
+          <h3 class="text-slate-800 dark:text-slate-100 font-bold mb-3">
+            Today
+          </h3>
+          <!-- Swiper -->
+          <div id="nextHours" class="swiper nextHours">
+            <div class="swiper-wrapper">
+              <!-- Start slide 1  -->
+              <div
+                class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
+                <span class="weather_info dark:text-slate-100 loading_frame text-sm">Clear Sky</span>
+                <span class="slide-image loading_frame">
+                  <img src="./src/assets/images/weather/rain_day.webp" class="weather_icon">
+                </span>
+                <span class="weather_time font-bold dark:text-slate-100 loading_frame">09:00</span>
+              </div>
+              <!-- End of slide 1  -->
+              <!-- Start slide 2  -->
+              <div
+                class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
+                <span class="weather_info  dark:text-slate-100 loading_frame text-sm">Clear Sky</span>
+                <span class="slide-image loading_frame">
+                  <img src="./src/assets/images/weather/rain_day.webp" class="weather_icon">
+                </span>
+                <span class="weather_time font-bold  dark:text-slate-100 loading_frame">09:00</span>
+              </div>
+              <!-- End of slide 2  -->
+              <!-- Start slide 3  -->
+              <div
+                class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
+                <span class="weather_info dark:text-slate-100  loading_frame text-sm">Clear Sky</span>
+                <span class="slide-image loading_frame">
+                  <img src="./src/assets/images/weather/rain_day.webp" class="weather_icon">
+                </span>
+                <span class="weather_time font-bold  dark:text-slate-100 loading_frame">09:00</span>
+              </div>
+              <!-- End of slide 3  -->
+              <!-- Start slide 4  -->
+              <div
+                class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
+                <span class="weather_info dark:text-slate-100  loading_frame text-sm">Clear Sky</span>
+                <span class="slide-image loading_frame">
+                  <img src="./src/assets/images/weather/rain_day.webp" class="weather_icon">
+                </span>
+                <span class="weather_time font-bold  dark:text-slate-100 loading_frame">09:00</span>
+              </div>
+              <!-- End of slide 4  -->
+              <!-- Start slide 5  -->
+              <div
+                class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
+                <span class="weather_info dark:text-slate-100  loading_frame text-sm">Clear Sky</span>
+                <span class="slide-image loading_frame">
+                  <img src="./src/assets/images/weather/rain_day.webp" class="weather_icon">
+                </span>
+                <span class="weather_time font-bold  dark:text-slate-100 loading_frame">09:00</span>
+              </div>
+              <!-- End of slide 5  -->
+              <!-- Start slide 6  -->
+              <div
+                class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
+                <span class="weather_info dark:text-slate-100 loading_frame text-sm">Clear Sky</span>
+                <span class="slide-image loading_frame">
+                  <img src="./src/assets/images/weather/rain_day.webp" class="weather_icon">
+                </span>
+                <span class="weather_time font-bold dark:text-slate-100 loading_frame">09:00</span>
+              </div>
+              <!-- End of slide 6  -->
+              <!-- Start slide 7  -->
+              <div
+                class="swiper-slide flex flex-col bg-gray-50 dark:bg-slate-800 py-3 rounded-2xl items-center justify-between relative">
+                <span class="weather_info dark:text-slate-100 loading_frame text-sm">Clear Sky</span>
+                <span class="slide-image loading_frame">
+                  <img src="./src/assets/images/weather/rain_day.webp" class="weather_icon">
+                </span>
+                <span class="weather_time font-bold dark:text-slate-100 loading_frame">09:00</span>
+              </div>
+              <!-- End of slide 7  -->
+            </div>
+          </div>
+          <!-- Swiper JS -->
+          <!-- End of Next hours weather -->
+          <!-- Start Seconde city -->
+          <div id="secondeCity" class="w-full my-4 relative">
+            <!-- Start Add seconde Button -->
+            <div id="add-city-button"
+              class="add-city-button w-full py-10 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white rounded-xl cursor-pointer hidden">
+              <div class="flex flex-col items-center justify-center">
+                <i href="" class="icon-plus text-5xl pointer-events-none z-0 inline mb-3"></i>
+                <span>Add seconde city</span>
+              </div>
+            </div>
+            <!-- End of Add seconde Button -->
+            <!-- Seconde city info -->
+            <div
+              class="seconde-city-info w-full flex flex-col md:flex-row rounded-2xl bg-gray-50 dark:bg-slate-800 p-3 items-center justify-start hidden relative">
+              <!-- Start Main weather -->
+              <div
+                class="main-weather w-full md:w-4/12 md:items-center justify-around md:justify-start flex md:flex-col">
+                <div class="w-5/12 lg:w-6/12 lg:mb-2 loading_frame animate real-img">
+                  <img src="./src/assets/images/first page/27.webp" alt="title" class="w-full mx-auto" />
+                </div>
+                <div class=" flex flex-col w-auto mt-3 md:mt-0">
+                  <!--  Start Realtime City  -->
+                  <div class="realtitle--city flex flex-col">
+                    <h3 class="location text-base sm:text-lg capitalize loading_frame">
+                      Los Angeles
+                    </h3>
+                    <div class="description text-xs text-slate-800 my-1 capitalize loading_frame">
+                      CLear sky
+                    </div>
+                  </div>
+                  <div class="flex text-left loading_frame">
+                    <h1
+                      class="temp md:text-3xl lg:text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-t from-blue-500 to-slate-200">
+                      14
+                    </h1>
+                    <span
+                      class="font-semibold text-transparent bg-clip-text bg-gradient-to-t from-blue-400 to-slate-300 relative text-5xl md:text-2xl lg:text-3xl">
+                      °
+                    </span>
+                  </div>
+                  <!-- End of Realtime City  -->
+                </div>
+              </div>
+              <!-- End of Main weather -->
+              <!-- Start More weather -->
+              <div class="more-weather w-full p-4 flex flex-col">
+                <!-- Row 1 -->
+                <div class="more_data-row w-full flex">
+                  <!-- Wind  -->
+                  <div id="wind" class="flex flex-col items-center w-1/2">
+                    <div class="w-12 loading_frame">
+                      <img src="./src/assets/animated-svg/wind.svg" class="mb-2" alt="" />
+                    </div>
+                    <span class=" text ml-2 loading_frame">
+                      Wind :
+                      <h4 class="font-bold inline-block"> 2.8 </h4>
+                      <span class="text-sm">km/h</span>
+                    </span>
+                  </div>
+                  <!-- End of Wind  -->
+                  <!-- humidity  -->
+                  <div id="humidity" class="flex flex-col items-center w-1/2">
+                    <div class="w-12 loading_frame">
+                      <img src="./src/assets/animated-svg/raindrop-measure.svg" class="mb-2" alt="" />
+                    </div>
+                    <span class=" text ml-2 loading_frame">
+                      Humidity :
+                      <h4 class="font-bold inline-block"> 35 </h4>
+                      <span class="text-sm">%</span>
+                    </span>
+                  </div>
+                  <!-- End of humidity  -->
+                </div>
+                <!-- End of Row 1 -->
+                <!-- Row 2  -->
+                <div class="more_data-row w-full flex mt-4">
+                  <!-- Min temp  -->
+                  <div id="min_temp" class="flex flex-col items-center w-1/2">
+                    <div class="w-12 loading_frame">
+                      <img src="./src/assets/animated-svg/thermometer-colder.svg" class="mb-2" alt="" />
+                    </div>
+                    <span class=" text ml-2 loading_frame">
+                      Min temp :
+                      <h4 class="font-bold inline-block"> ... </h4>
+                    </span>
+                  </div>
+                  <!-- End of Main temp  -->
+                  <!-- Max temp  -->
+                  <div id="max_temp" class="flex flex-col items-center w-1/2">
+                    <div class="w-12 loading_frame">
+                      <img src="./src/assets/animated-svg/thermometer-warmer.svg" class="mb-2" alt="" />
+                    </div>
+                    <span class=" text ml-2 loading_frame">
+                      Max temp :
+                      <h4 class="font-bold inline-block"> ... </h4>
+                    </span>
+                  </div>
+                  <!-- End of Max temp  -->
+                </div>
+                <!-- End of Row 2  -->
+              </div>
+              <!-- End of More weather -->
+            </div>
+            <!-- Seconde city info -->
+          </div>
+          <!-- End of Seconde city -->
+        </div>
+        <!-- End of Next hours weather and seconde city -->
+
+      </div>
+      <!-- End off main app  -->
+      <!-- Start Copyright  -->
+      <div id="copyright" class="text-xs flex justify-center items-center dark:text-slate-200">
+        <h5 class="dark:border-slate-600 mr-2">Made with Love</h5>
+        <a class="text-blue-600 font-bold " href="https://github.com/alirezahoseini/Weather-App-JS" target="_blank">
+          Alireza hosseini
+        </a>
+      </div>
+    </div>
+    <!-- End of Copyright  -->
+  </div>
+  <!-------------------------------
+                End of APP
+       --------------------------------->
+  <!-------------------------------
+                Start Loading
+       --------------------------------->
+  <div id="loading"
+    class="w-full bg-white dark:bg-slate-800 h-screen fixed top-0 right-0 flex items-center justify-center flex-col">
+    <i class="icon-star text-blue-600 text-4xl lg:text-6xl"></i>
+    <span class="text-sm text-gray-600 mt-3">Loading...</span>
+  </div>
+  <!-------------------------------
+                End of Loading
+       --------------------------------->
+  <!-------------------------------
+              Start Message box
+       --------------------------------->
+  <div id="message_box" class="w-full md:w-1/2 lg:w-1/3 absolute right-0 top-0 z-50 flex flex-col items-center p-2">
+  </div>
+  <!-------------------------------
+              End of Message box
+       --------------------------------->
+  <!-------------------------------
+          Start Hidden Background section
+       --------------------------------->
+  <div id="hidden_background_section"
+    class="w-screen h-screen fixed top-0 left-0 z-30 cursor-pointer bg-slate-700 opacity-50"></div>
+  <!-------------------------------
+          End of Hidden Background section
+       --------------------------------->
+  <!-- Start Theme Switcher MENU  -->
+  <div id="switcher_menu"
+    class="w-screen fixed left-0 bottom-0 h-screen flex items-end md:items-center justify-center z-50">
+    <!-- Start switcher MAIN  -->
+    <div id="main"
+      class="w-screen z-20 dark:text-white bg-white text-slate-800 dark:bg-slate-800 p-4 md:py-1 rounded-t-3xl md:rounded-3xl md:w-1/2 lg:w-1/3 transform translate-y-40 md:translate-y-10">
+      <div class="switcher_menu--header relative mb-8 md:mb-0">
+        <div class="line md:hidden w-8 mx-auto rounded-xl h-1 bg-slate-400 dark:bg-slate-600"></div>
+      </div>
+      <!-- Switcher menu --- BODY  -->
+      <div class="switcher_menu--body">
+        <div class="custom_radio_inputs">
+          <!-- Start Option 1 -->
+          <div class="option flex justify-between my-5 pr-3">
+            <label for="dark" class="flex items-center cursor-pointer">
+              <i class="icon-night text-lg mr-2"></i>
+              <span>Dark</span>
+            </label>
+            <input type="radio" name="theme" value="dark" id="dark" class="invisible" />
+            <label for="dark" class="w-5 h-5 rounded-full border-2 border-blue-600 p-1 cursor-pointer">
+              <i class="w-full h-full block rounded-full"></i>
+            </label>
+          </div>
+          <!-- End of Option 1 -->
+          <!-- Start Option 2 -->
+          <div class="option flex justify-between my-5 pr-3">
+            <label for="light" class="flex items-center cursor-pointer">
+              <i class="icon-sun text-lg mr-2"></i>
+              <span>Light</span>
+            </label>
+            <input type="radio" name="theme" value="light" id="light" class="invisible" />
+            <label for="light" class="w-5 h-5 rounded-full border-2 border-blue-600 p-1 cursor-pointer">
+              <i class="w-full h-full block rounded-full"></i>
+            </label>
+          </div>
+          <!-- End of Option 2 -->
+          <!-- Start Option 3 -->
+          <div class="option flex justify-between my-5 pr-3">
+            <label for="auto" class="flex items-center cursor-pointer">
+              <i class="icon-mobile text-lg mr-2"></i>
+              <span>Use device settings</span>
+            </label>
+            <input type="radio" name="theme" value="auto" id="auto" class="invisible" />
+            <label for="auto" class="w-5 h-5 rounded-full border-2 border-blue-600 p-1 cursor-pointer">
+              <i class="w-full h-full block rounded-full"></i>
+            </label>
+          </div>
+          <!-- End of Option 3 -->
+        </div>
+      </div>
+      <!-- Switcher menu --- BODY  -->
+    </div>
+    <!-- End of switcher MAIN  -->
+  </div>
+  <!-- End of Theme Switcher MENU  -->
+  </div>
+  <!---------------------------
+      Start change city popup
+    --------------------------->
+  <div id="change_city_popup"
+    class="w-full fixed bottom-0 right-0 mx-0 h-screen flex items-end md:items-center justify-center z-30">
+    <!-- Start change city MAIN  -->
+    <div id="main"
+      class="w-screen z-20 dark:text-white bg-white text-slate-800 dark:bg-slate-800 p-4 md:py-1 rounded-t-3xl md:rounded-3xl md:w-1/2 lg:w-1/3 transform translate-y-40  md:translate-y-10 ">
+      <!-- change city Header -->
+      <div class="back-btn flex items-center justify-start cursor-pointer absolute left-3 top-4">
+        <i class="icon-arrow-left-1 text-4xl"></i>
+        <span>Back</span>
+      </div>
+      <div class="title">
+        <picture class="flex justify-center mt-5 mb-2 dark:text-slate-100">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="82" height="82"
+            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M12 11m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+            <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+          </svg>
+        </picture>
+        <span class="font-bold text-lg text-center block mb-10">Management of cities</span>
+      </div>
+      <!-- change city Header -->
+      <!-- Start change city body -->
+      <div id="change_city--body" class="w-full h-full mt-3 mb-5">
+        <!------------ Start Change First city -->
+        <div id='change-first-city-button'
+          class="w-full flex items-center justify-start  border-2  dark:hover:text-indigo-500 border-indigo-600 dark:border-indigo-600 rounded-xl p-3 cursor-pointer bg-indigo-600 dark:hover:bg-slate-800 hover:bg-white text-white hover:text-indigo-600 my-3 transition duration-700 change-city-button sm:text-sm lg:text-base">
+          <i class="icon-edit-square text-4xl font-thin"></i>
+          <div class=" ml-3">Change your city</div>
+        </div>
+        <!------------ End of Change First city -->
+        <div id="change-seconde-city-button"
+          class="change-city-button w-full flex items-center justify-start  border-2  dark:hover:text-purple-600 border-purple-600 dark:border-purple-600 rounded-xl p-3 cursor-pointer bg-purple-600 dark:hover:bg-slate-800 hover:bg-white   text-white hover:text-purple-600 my-3 sm:text-sm  lg:text-base">
+          <i class="icon-add text-4xl font-thin  "></i>
+          <div class=" ml-3">Add second city</div>
+        </div>
+      </div>
+      <!-- End ofchange city body -->
+    </div>
+    <!-- End of change city MAIN  -->
+  </div>
+  <!-------------------------------
+        End of change city popup  
+    ------------------------------->
+  <!-------------------------------
+        Start change city form 
+    ------------------------------->
+  <div id="change_city_form"
+    class="w-full fixed bottom-0 right-0 mx-0 h-screen flex items-end md:items-center justify-center z-30"
+    form-status="null">
+    <div
+      class="main w-screen z-20 dark:text-white bg-white text-slate-800 dark:bg-slate-800 p-4 md:py-1 rounded-t-3xl md:rounded-3xl md:w-1/2 lg:w-1/3 transform translate-y-40  md:translate-y-10 relative overflow-hidden">
+      <!-- change city Header -->
+      <div class="back-btn flex items-center justify-start cursor-pointer absolute left-3 top-4">
+        <i class="icon-arrow-left-1 text-4xl"></i>
+        <span>Back</span>
+      </div>
+      <div class="title">
+        <picture class="flex justify-center mt-5 mb-2 dark:text-slate-100">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="82" height="82"
+            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M12 11m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+            <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+          </svg>
+        </picture>
+        <span class="font-bold text-lg text-center block mb-5">Management of cities</span>
+      </div>
+      <!-- change city Header -->
+      <form>
+        <div class="form-group">
+          <label for="custom-city" class="text-sm mb-1 mt-5 inline-block">Custom City</label>
+          <input type="text" name="custom-city" id="custom-city" placeholder="For example, Tehran..."
+            class="w-full block bg-gray-50 dark:bg-slate-700 dark:border-slate-600 transition-all cursor-pointer p-3 rounded-lg outline-none border-2 text-sm pr-8 text-gray-800 dark:text-slate-100 focus:border-blue-400 dark:focus:border-blue-400">
+        </div>
+        <div
+          class="items-center justify-around w-full px-3 mx-auto text-gray-400 dark:text-slate-500 mt-7 mb-5 h-0 flex">
+          <hr class="w-5/12" />
+          <span>or</span>
+          <hr class="w-5/12" />
+        </div>
+        <div class="form-group">
+          <label for="default-cities" class="text-sm mb-1 inline-block">Default Cities</label>
+          <select name="default-cities" id="default-cities"
+            class="w-full block bg-gray-50 dark:bg-slate-700 dark:border-slate-600 dark:text-slate-100 transition-all cursor-pointer p-3 rounded-lg outline-none border-2 text-sm pr-8 text-gray-800 focus:border-blue-400 dark:focus:border-blue-400">
+            <option value="null">Choose from default cities</option>
+            <option value="tehran">Tehran</option>
+            <option value="tabriz">Tabriz</option>
+            <option value="mashhad">Mashhad</option>
+            <option value="isfahan">Isfahan</option>
+            <option value="london">London</option>
+            <option value="moscow">Moscow</option>
+            <option value="toronto">Toronto</option>
+            <option value="tokyo">Tokyo</option>
+            <option value="berlin">Berlin</option>
+          </select>
+        </div>
+        <button id="submit-form" class="w-1/2 p-3 rounded-xl text-white bg-blue-500 mx-auto block my-5" type="submit"
+          disabled>Done</button>
+      </form>
+      <!-- Loading -->
+      <div id="loading"
+        class="w-full bg-white dark:bg-slate-800 h-full fixed top-0 right-0 flex items-center justify-center flex-col">
+        <i class="icon-star text-blue-600 text-4xl lg:text-6xl"></i>
+        <span class="text-sm text-gray-600 mt-3">Loading...</span>
+      </div>
+      <!-- Loading -->
+    </div>
+  </div>
+  <!-------------------------------
         end of change city form 
     ------------------------------->
-    <!-------------------------------
+  <!-------------------------------
         Start VPN ERROR
     --------------------------------->
-     <div id="vpn_error" class="w-screen h-screen bg-slate-500 dark:bg-opacity-0 fixed top-0 right-0 bg-opacity-20 flex items-center justify-center" >
-        <div id="error-text" class="animate_bottom bg-white dark:bg-slate-800 w-11/12 md:w-6/12 lg:w-5/12 rounded-xl text-center flex flex-col items-center justify-center">
-          <i class="icon-key text-8xl text-slate-600 dark:text-slate-300 my-6"></i>
-          <span class="dark:text-white">
-            Please turn on your <strong>VPN</strong>
-          </span>
-          <span class="mt-4 text-center w-11/12 mx-auto bg-slate-100 dark:bg-slate-600 dark:text-white p-3 rounded-2xl mb-3 text-slate-900 text-sm">Without VPN, we cannot receive information from the server</span>
-          <button class="bg-blue-600 px-7 py-1 text-white rounded-lg my-3 text-sm" onclick="window.location.reload()">
-            <span>Refresh</span>
-            <i class="icon-rotate-right ml-2"></i>
-          </button>
-        </div>
-     </div>
-    <!-------------------------------
+  <div id="vpn_error"
+    class="w-screen h-screen bg-slate-500 dark:bg-opacity-0 fixed top-0 right-0 bg-opacity-20 flex items-center justify-center">
+    <div id="error-text"
+      class="animate_bottom bg-white dark:bg-slate-800 w-11/12 md:w-6/12 lg:w-5/12 rounded-xl text-center flex flex-col items-center justify-center">
+      <i class="icon-key text-8xl text-slate-600 dark:text-slate-300 my-6"></i>
+      <span class="dark:text-white">
+        Please turn on your <strong>VPN</strong>
+      </span>
+      <span
+        class="mt-4 text-center w-11/12 mx-auto bg-slate-100 dark:bg-slate-600 dark:text-white p-3 rounded-2xl mb-3 text-slate-900 text-sm">Without
+        VPN, we cannot receive information from the server</span>
+      <button class="bg-blue-600 px-7 py-1 text-white rounded-lg my-3 text-sm" onclick="window.location.reload()">
+        <span>Refresh</span>
+        <i class="icon-rotate-right ml-2"></i>
+      </button>
+    </div>
+  </div>
+  <!-------------------------------
       Start VPN ERROR
      --------------------------------->
 
-    <!-----------------------
+  <!-----------------------
             Scripts
     ----------------------->
-    <script type="module" src="./src/js/theme.js"></script>
-    <script type="module" src="./src/js/getApis.js"></script>
-    <script type="module" src="./src/js/weatherApp.js"></script>
-    <script type="module" src="./src/js/dom.js"></script>
-    <script type="module" src="./src/js/userCity.js"></script>
-    <script type="module" src="./src/js/app.js"></script>
-    <script type="module" src="./src/js/animaitons.js"></script>
-    <script src="./src/assets/swiperjs/swiper-min.js"></script>
-    <script src="./src/assets/swiperjs/slider-config.js"></script>
-  </body>
+  <script type="module" src="./src/js/theme.js"></script>
+  <script type="module" src="./src/js/getApis.js"></script>
+  <script type="module" src="./src/js/weatherApp.js"></script>
+  <script type="module" src="./src/js/dom.js"></script>
+  <script type="module" src="./src/js/userCity.js"></script>
+  <script type="module" src="./src/js/app.js"></script>
+  <script type="module" src="./src/js/animaitons.js"></script>
+  <script src="./src/assets/swiperjs/swiper-min.js"></script>
+  <script src="./src/assets/swiperjs/slider-config.js"></script>
+</body>
+
 </html>
