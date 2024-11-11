@@ -115,7 +115,7 @@ class GetApis{
         // // created url
         const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&units=metric`;
         // send request
-        const request = await fetch(url).then((res) => res)
+        const request = await fetch(url, {method: "GET"}).then((res) => res)
         .catch((error) => {
             dom.addClass("#loading", "hidde")
             console.log(error)
