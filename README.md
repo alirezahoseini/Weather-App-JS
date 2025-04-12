@@ -5,7 +5,7 @@
 With this web application, you can get information about the weather of your city and region🌦️
 I implemented this project to learn and master the use of APIs in JavaScript and front-end
   
-[Live Demo](https://a-hosseini.ir/projects/weather)
+[Live Demo](https://weather.a-hosseini.ir/)
 
 ### Backend and APIs
         I used this interesting and practical web 
